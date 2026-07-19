@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Etela Technologies (E-Tech)
 
-## Getting Started
+Premium dark-first marketing site for **Etela Technologies**, an AI Advisory & Cybersecurity consulting firm.
 
-First, run the development server:
+**Tagline:** Rise. Defend. Overcome.
+
+## Stack
+
+- Next.js 14 (App Router) + TypeScript
+- Tailwind CSS (brand tokens in `tailwind.config.ts` + CSS variables)
+- Framer Motion
+- lucide-react
+- Supabase (consultation + newsletter)
+- Vercel-ready
+
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env.local
+# Optional: add Supabase keys for form persistence
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Without Supabase env vars, consultation and newsletter endpoints still accept submissions and log payloads server-side (dev-friendly).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Supabase setup
 
-## Learn More
+1. Create a Supabase project.
+2. Run `supabase/schema.sql` in the SQL editor.
+3. Set in `.env.local`:
 
-To learn more about Next.js, take a look at the following resources:
+```
+NEXT_PUBLIC_SUPABASE_URL=...
+NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+  app/                 # App Router pages + API routes
+  components/          # Named inventory components + sections
+  data/content.ts      # Copy, services, FAQ, etc.
+  lib/                 # motion helpers, supabase client, cn
+supabase/schema.sql    # Table + RLS policies
+```
+
+## Component inventory
+
+StickyNavbar, HeroSection, GlassCard, ServiceCard, ValueCard, WhyChooseFeature, IndustryPill, ProcessTimeline, TestimonialCarousel, FAQAccordion, ConsultationForm, ContactSection, SiteFooter, BackToTopButton, LoadingScreen, SectionEyebrow.
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push the repo and import into Vercel.
+2. Add the same env vars in the Vercel project settings.
+3. Deploy.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Future routes
+
+Nav and footer already reserve slots for `/blog`, `/resources`, `/insights`, `/news`, `/careers`, `/team`, `/events`, `/portal`.
