@@ -80,7 +80,7 @@ function validate(data: FormState): FieldErrors {
 }
 
 const inputClass =
-  "w-full min-w-0 rounded-2xl border border-cocoa/12 bg-white px-4 py-3.5 font-sans text-sm text-cocoa placeholder:text-cocoa/70 transition-all duration-400 ease-premium focus:border-purple focus:outline-none focus:ring-2 focus:ring-purple/20";
+  "w-full min-w-0 rounded-media border border-cocoa/12 bg-white px-4 py-3.5 font-sans text-sm text-cocoa placeholder:text-cocoa/70 transition-all duration-300 ease-premium focus:border-purple focus:outline-none focus:ring-2 focus:ring-purple/20";
 
 const labelClass = "mb-1.5 block font-sans text-sm font-semibold text-cocoa";
 
@@ -404,7 +404,7 @@ export function ConsultationForm() {
             <label
               key={type.value}
               className={cn(
-                "flex min-h-11 cursor-pointer items-center gap-2 rounded-full border px-5 py-3 text-sm font-medium transition-all duration-400 ease-premium",
+                "flex min-h-11 cursor-pointer items-center gap-2 rounded-media border px-5 py-3 text-sm font-medium transition-all duration-300 ease-premium",
                 form.consultationType === type.value
                   ? "border-purple bg-purple/5 text-purple"
                   : "border-cocoa/12 text-cocoa hover:border-cocoa/25"
@@ -453,7 +453,7 @@ export function ConsultationForm() {
 
       {serverError ? (
         <div
-          className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+          className="rounded-media border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
           role="alert"
         >
           <p className="break-words">{serverError}</p>

@@ -16,7 +16,7 @@ export function Logo({ className, onClick, compact = false }: LogoProps) {
       aria-label="Etela Technologies home"
     >
       <span
-        className="relative flex h-9 w-9 items-center justify-center rounded-2xl border border-beige/12 bg-purple-dim/50"
+        className="relative flex h-9 w-9 items-center justify-center rounded-media border border-beige/12 bg-purple-dim/50"
         aria-hidden
       >
         <svg viewBox="0 0 32 32" className="h-5 w-5" fill="none">

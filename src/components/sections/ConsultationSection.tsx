@@ -15,6 +15,11 @@ export function ConsultationSection() {
           {/* Left: heading + reassurance rail */}
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
+              <p className="mb-4 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-beige/60">
+                <span aria-hidden>08</span>
+                <span className="h-px w-8 bg-beige/25" aria-hidden />
+                <span>Engage</span>
+              </p>
               <h2
                 id="consultation-heading"
                 className="heading-display mb-4 text-3xl font-semibold text-white md:text-4xl"
@@ -26,9 +31,9 @@ export function ConsultationSection() {
                 confidence.
               </p>
 
-              <ul className="space-y-4 border-t border-beige/10 pt-8">
-                <li className="flex items-start gap-3">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl border border-beige/[0.08] bg-black/30">
+              <ul className="space-y-4 border-t border-beige/25 pt-8">
+                <li className="flex items-start gap-4">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-media border border-beige/25 bg-black/15">
                     <BrandIcon name="clock" className="h-4 w-4 text-purple-light" />
                   </span>
                   <div className="min-w-0">
@@ -40,8 +45,8 @@ export function ConsultationSection() {
                     </p>
                   </div>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl border border-beige/[0.08] bg-black/30">
+                <li className="flex items-start gap-4">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-media border border-beige/25 bg-black/15">
                     <BrandIcon name="shieldCheck" className="h-4 w-4 text-purple-light" />
                   </span>
                   <div className="min-w-0">
@@ -54,8 +59,8 @@ export function ConsultationSection() {
                     </p>
                   </div>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl border border-beige/[0.08] bg-black/30">
+                <li className="flex items-start gap-4">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-media border border-beige/25 bg-black/15">
                     <BrandIcon name="users" className="h-4 w-4 text-purple-light" />
                   </span>
                   <div className="min-w-0">
@@ -71,12 +76,10 @@ export function ConsultationSection() {
             </div>
           </div>
 
-          {/* Right: light paper form */}
+          {/* Right: flat paper form */}
           <div className="lg:col-span-7">
-            <div className="bezel-shell !border-beige/15 !bg-white/[0.06] p-2">
-              <div className="rounded-core border border-cocoa/5 bg-white p-6 shadow-bezel-light md:p-10 lg:p-12">
-                <ConsultationForm />
-              </div>
+            <div className="border border-beige/15 bg-white p-6 md:p-10 lg:p-12">
+              <ConsultationForm />
             </div>
           </div>
         </div>

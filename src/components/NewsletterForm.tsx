@@ -102,7 +102,7 @@ export function NewsletterForm() {
           placeholder="you@company.com"
           aria-invalid={status === "error"}
           aria-describedby={message ? "newsletter-status" : undefined}
-          className="w-full min-w-0 rounded-full border border-beige/15 bg-black/30 px-5 py-3.5 font-sans text-sm text-beige placeholder:text-beige-muted focus:border-purple-light focus:outline-none focus:ring-2 focus:ring-purple-light/20 sm:max-w-xs"
+          className="w-full min-w-0 rounded-media border border-beige/25 bg-black/15 px-5 py-3.5 font-sans text-sm text-white placeholder:text-beige-muted focus:border-purple-light focus:outline-none focus:ring-2 focus:ring-purple-light/20 sm:max-w-xs"
         />
         <button
           type="submit"

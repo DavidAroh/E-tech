@@ -20,6 +20,7 @@ import { EASE_ENTRANCE, EASE_PREMIUM } from "@/lib/motion";
 import { LIMITS } from "@/lib/validation";
 import { BrandIcon } from "../BrandIcon";
 import { cn } from "@/lib/cn";
+import { lenisRef } from "@/lib/smoothScroll";
 
 type Stage = "profile" | "questions" | "scoring";
 
@@ -112,6 +113,10 @@ export function AssessmentFlow({
   }, []);
 
   function scrollToTop() {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(topRef.current ?? 0, { duration: 0.9 });
+      return;
+    }
     topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -222,7 +227,7 @@ export function AssessmentFlow({
         ref={topRef}
         id="start"
         aria-labelledby="profile-heading"
-        className="section-padding content-auto bg-cocoa"
+        className="section-padding content-auto bg-black"
       >
         <div className="container-content mx-auto max-w-3xl">
           <ProgressRail
@@ -365,7 +370,7 @@ export function AssessmentFlow({
                 </div>
               </div>
 
-              <p className="mt-6 rounded-2xl border border-beige/[0.06] bg-black/30 px-4 py-3 text-xs leading-relaxed text-beige-muted/80">
+              <p className="mt-6 rounded-media border border-beige/[0.06] bg-black/30 px-4 py-3 text-xs leading-relaxed text-beige-muted/80">
                 {PRIVACY_NOTICE}
               </p>
 
@@ -400,7 +405,7 @@ export function AssessmentFlow({
       <section
         ref={topRef}
         aria-labelledby="scoring-heading"
-        className="section-padding content-auto bg-cocoa"
+        className="section-padding content-auto bg-black"
       >
         <div className="container-content mx-auto flex max-w-xl flex-col items-center py-20 text-center">
           <BrandIcon
@@ -429,7 +434,7 @@ export function AssessmentFlow({
     <section
       ref={topRef}
       aria-labelledby="questions-heading"
-      className="section-padding content-auto bg-cocoa"
+      className="section-padding content-auto bg-black"
     >
       <div className="container-content mx-auto max-w-3xl">
         <p className="sr-only" id="questions-heading">
@@ -452,7 +457,7 @@ export function AssessmentFlow({
           >
             <div className="bezel-core p-6 md:p-8">
               <div className="mb-5 flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-beige/[0.08] bg-black/30">
+                <span className="flex h-10 w-10 items-center justify-center rounded-media border border-beige/[0.08] bg-black/30">
                   <BrandIcon
                     name={currentDomain.icon}
                     className="h-5 w-5 text-purple-light"
@@ -489,7 +494,7 @@ export function AssessmentFlow({
                 <button
                   type="button"
                   onClick={handlePreviousDomain}
-                  className="inline-flex items-center gap-2 rounded-full border border-beige/15 px-5 py-3 font-sans text-sm font-medium text-beige-muted transition-colors duration-400 ease-premium hover:border-beige/40 hover:text-beige"
+                  className="inline-flex items-center gap-2 rounded-control border border-beige/15 px-5 py-3 font-sans text-sm font-medium text-beige-muted transition-colors duration-300 hover:border-beige/40 hover:text-beige"
                 >
                   <BrandIcon name="caretLeft" className="h-4 w-4" />
                   {domainIndex === 0 ? "Profile" : "Previous"}
@@ -519,7 +524,7 @@ export function AssessmentFlow({
 /* ----------------------------- Subcomponents ----------------------------- */
 
 const profileInputClass =
-  "w-full min-w-0 rounded-2xl border border-beige/[0.08] bg-black/30 px-4 py-3.5 font-sans text-sm text-beige placeholder:text-beige-muted/50 transition-all duration-400 ease-premium focus:border-purple-light focus:outline-none focus:ring-2 focus:ring-purple/25";
+  "w-full min-w-0 rounded-media border border-beige/[0.08] bg-black/30 px-4 py-3.5 font-sans text-sm text-beige placeholder:text-beige-muted/50 transition-all duration-300 ease-premium focus:border-purple-light focus:outline-none focus:ring-2 focus:ring-purple/25";
 
 function ProfileField({
   id,
@@ -617,7 +622,7 @@ function RadioGroup({
           <label
             key={opt}
             className={cn(
-              "flex min-h-11 cursor-pointer items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium transition-all duration-400 ease-premium",
+              "flex min-h-11 cursor-pointer items-center gap-2 rounded-media border px-4 py-2.5 text-sm font-medium transition-all duration-300 ease-premium",
               selected
                 ? "border-purple-light/60 bg-purple/15 text-white"
                 : "border-beige/15 text-beige-muted hover:border-beige/35 hover:text-beige"
@@ -656,7 +661,7 @@ function QuestionRow({
     <fieldset
       id={`q-${q.id}`}
       className={cn(
-        "rounded-2xl border p-4 transition-colors duration-400 ease-premium md:p-5",
+        "rounded-media border p-4 transition-colors duration-300 ease-premium md:p-5",
         value
           ? "border-purple-light/25 bg-black/25"
           : "border-beige/[0.06] bg-black/20"
@@ -681,7 +686,7 @@ function QuestionRow({
             <label
               key={v}
               className={cn(
-                "flex cursor-pointer items-center justify-center gap-2 rounded-full border px-3 py-2.5 text-center text-xs font-medium tracking-wide transition-all duration-400 ease-premium sm:text-sm",
+                "flex cursor-pointer items-center justify-center gap-2 rounded-media border px-3 py-2.5 text-center text-xs font-medium tracking-wide transition-all duration-300 ease-premium sm:text-sm",
                 selected
                   ? "border-purple-light/60 bg-purple/15 text-white"
                   : "border-beige/15 text-beige-muted hover:border-beige/35 hover:text-beige"
@@ -720,28 +725,28 @@ function ProgressRail({
       : Math.min(100, Math.round((totalAnswered / TOTAL_QUESTIONS) * 100));
   return (
     <div className="sticky top-20 z-10" aria-hidden={false}>
-      <div className="bezel-shell !p-1">
-        <div className="flex items-center gap-3 rounded-core border border-beige/[0.06] bg-cocoa px-4 py-3">
+      <div className="border border-beige/[0.1] bg-black/60 px-4 py-3.5">
+        <div className="flex items-center gap-3">
           <div className="min-w-0 flex-1">
-            <div className="mb-1.5 flex items-center justify-between">
-              <p className="font-sans text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-beige-muted/70">
+            <div className="mb-1.5 flex items-center justify-between gap-3">
+              <p className="font-mono text-[0.625rem] tracking-[0.18em] text-beige-muted/70">
                 {stage === "profile"
                   ? "Step 1 · Profile"
                   : `Step 2 · Domain ${domainIndex + 1} of ${DOMAINS.length}`}
               </p>
-              <p className="font-sans text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-purple-light">
+              <p className="font-mono text-[0.625rem] tracking-[0.18em] text-purple-light">
                 {pct}% complete
               </p>
             </div>
             <div
-              className="h-1.5 w-full overflow-hidden rounded-full bg-black/40"
+              className="h-1 w-full overflow-hidden bg-beige/10"
               role="progressbar"
               aria-valuenow={pct}
               aria-valuemin={0}
               aria-valuemax={100}
             >
               <motion.div
-                className="h-full rounded-full bg-gradient-to-r from-purple to-purple-mid"
+                className="h-full bg-purple-light"
                 initial={false}
                 animate={{ width: `${pct}%` }}
                 transition={{ duration: 0.4, ease: EASE_PREMIUM }}
@@ -753,7 +758,7 @@ function ProgressRail({
               <li
                 key={d.id}
                 className={cn(
-                  "h-2 w-6 rounded-full transition-colors duration-400",
+                  "h-2 w-6 transition-colors duration-300",
                   i < domainIndex
                     ? "bg-purple-light/70"
                     : i === domainIndex

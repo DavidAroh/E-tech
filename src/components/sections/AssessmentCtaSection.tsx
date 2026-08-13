@@ -1,5 +1,4 @@
 import { BrandIcon } from "../BrandIcon";
-import { MagneticButton } from "../MagneticButton";
 import { SectionReveal } from "../SectionReveal";
 
 /**
@@ -13,15 +12,16 @@ export function AssessmentCtaSection() {
       className="section-padding content-auto bg-cocoa"
     >
       <div className="container-content">
-        <div className="bezel-shell !border-purple-light/15 !bg-purple/[0.05] p-2">
-          <div className="bezel-core flex flex-col items-start gap-6 p-6 md:flex-row md:items-center md:justify-between md:p-10">
+        <div className="border-y border-beige/25 py-10 md:py-14">
+          <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
             <div className="max-w-xl">
-              <p className="font-sans text-[0.625rem] font-semibold uppercase tracking-[0.2em] text-purple-light">
-                Client Assessment
+              <p className="flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-purple-light">
+                <span aria-hidden>●</span>
+                <span>Client Assessment</span>
               </p>
               <h2
                 id="assessment-cta-heading"
-                className="heading-display mt-2 text-2xl font-semibold text-white md:text-3xl"
+                className="heading-display mt-3 text-2xl font-semibold text-white md:text-3xl"
               >
                 How prepared is your organization?
               </h2>
@@ -32,12 +32,12 @@ export function AssessmentCtaSection() {
               </p>
             </div>
             <div className="flex shrink-0 flex-wrap items-center gap-3">
-              <MagneticButton as="a" href="/assessment" className="btn-primary group">
+              <a href="/assessment" className="btn-primary group">
                 Start Client Assessment
                 <span className="btn-icon" aria-hidden>
                   <BrandIcon name="arrowUpRight" className="h-4 w-4" />
                 </span>
-              </MagneticButton>
+              </a>
               <a href="/#consultation" className="btn-ghost">
                 Request Professional Assessment
               </a>

@@ -1,4 +1,3 @@
-import { BrandIcon } from "../BrandIcon";
 import { SectionReveal } from "../SectionReveal";
 import { TestimonialCarousel } from "../TestimonialCarousel";
 
@@ -11,15 +10,14 @@ export function TestimonialsSection() {
     >
       <div className="container-content">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
-          {/* Left rail: heading + quiet quote mark + note */}
+          {/* Left rail: index + heading */}
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
-              <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl border border-beige/[0.08] bg-black/30">
-                <BrandIcon
-                  name="handshake"
-                  className="h-5 w-5 text-purple-light"
-                />
-              </div>
+              <p className="mb-4 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-beige/60">
+                <span aria-hidden>06</span>
+                <span className="h-px w-8 bg-beige/25" aria-hidden />
+                <span>References</span>
+              </p>
               <h2
                 id="testimonials-heading"
                 className="heading-display mb-4 text-3xl font-semibold text-white md:text-4xl"

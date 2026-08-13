@@ -19,6 +19,7 @@ const config: Config = {
           muted: "#E0C1A4",
         },
         white: "#FAFAF8",
+        paper: "#F1E9DA",
         purple: {
           DEFAULT: "#745133",
           light: "#CFB093",
@@ -29,16 +30,17 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-fraunces)", "Georgia", "serif"],
         sans: ["var(--font-jakarta)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       maxWidth: {
         content: "1280px",
       },
       borderRadius: {
-        shell: "2rem",
-        core: "calc(2rem - 0.375rem)",
-        card: "1.25rem",
-        control: "9999px",
-        media: "1.75rem",
+        shell: "1.5rem",
+        core: "1.25rem",
+        card: "0.75rem",
+        media: "0.5rem",
+        control: "0.375rem",
       },
       transitionTimingFunction: {
         entrance: "cubic-bezier(0.16, 1, 0.3, 1)",

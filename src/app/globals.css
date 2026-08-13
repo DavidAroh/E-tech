@@ -44,17 +44,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Fixed grain — below UI chrome, never blocks interaction */
-.site-grain {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  opacity: 0.028;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
-}
-
 ::selection {
   background: rgba(207, 176, 147, 0.35);
   color: var(--color-white);
@@ -78,21 +67,15 @@ body {
 }
 
 @layer components {
-  /* Glass ONLY for fixed/sticky chrome (nav, overlays) */
+  /* Solid chrome for fixed chrome (nav, overlays) — no blur, no glass */
   .glass-chrome {
-    background: rgba(110, 75, 45, 0.72);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border: 1px solid rgba(222, 191, 162, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.92);
+    border-bottom: 1px solid rgba(222, 191, 162, 0.12);
   }
 
   @media (prefers-reduced-transparency: reduce) {
     .glass-chrome {
-      background: rgba(110, 75, 45, 0.96);
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
+      background: #000;
     }
   }
 
@@ -113,55 +96,54 @@ body {
   .heading-display {
     font-family: var(--font-fraunces), Georgia, serif;
     font-optical-sizing: auto;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     color: var(--color-white);
   }
 
-  /* Double-bezel shell */
+  /* Flat panels — single hairline, no nesting illusion */
   .bezel-shell {
-    @apply rounded-shell border border-beige/[0.08] bg-beige/[0.03] p-1.5;
+    @apply rounded-card border border-beige/[0.08] bg-cocoa/[0.06];
   }
 
   .bezel-core {
-    @apply rounded-core border border-beige/[0.06] bg-cocoa shadow-bezel;
+    @apply rounded-card border border-transparent bg-transparent;
   }
 
   .bezel-core-soft {
-    @apply rounded-core border border-beige/[0.05] bg-black/40 shadow-bezel;
+    @apply rounded-card border border-transparent bg-transparent;
   }
 
-  /* Island CTAs — pill + optional nested icon */
+  /* Sharp CTAs — no pills, no nested icon wells */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-3 rounded-full bg-beige px-6 py-3.5
-      font-sans text-sm font-semibold tracking-wide text-cocoa transition-all duration-400 ease-premium
+    @apply inline-flex items-center justify-center gap-2 rounded-control bg-beige px-6 py-3.5
+      font-sans text-sm font-semibold tracking-wide text-cocoa transition-all duration-300 ease-premium
       hover:bg-beige-muted active:scale-[0.98];
   }
 
   .btn-primary .btn-icon {
-    @apply flex h-8 w-8 items-center justify-center rounded-full bg-cocoa/10 transition-transform
-      duration-400 ease-premium;
+    @apply flex h-4 w-4 items-center justify-center transition-transform duration-300 ease-premium;
   }
 
   .btn-primary:hover .btn-icon {
-    transform: translateX(2px) translateY(-1px) scale(1.05);
+    transform: translateX(3px);
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-beige/25
+    @apply inline-flex items-center justify-center gap-2 rounded-control border border-beige/25
       bg-transparent px-6 py-3.5 font-sans text-sm font-medium tracking-wide text-beige
-      transition-all duration-400 ease-premium hover:border-beige/50 hover:bg-beige/[0.04]
+      transition-all duration-300 ease-premium hover:border-beige/50 hover:bg-beige/[0.04]
       active:scale-[0.98];
   }
 
   .btn-secondary-light {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-cocoa/15
+    @apply inline-flex items-center justify-center gap-2 rounded-control border border-cocoa/15
       bg-transparent px-6 py-3.5 font-sans text-sm font-medium text-cocoa transition-all
-      duration-400 ease-premium hover:border-purple hover:text-purple active:scale-[0.98];
+      duration-300 ease-premium hover:border-purple hover:text-purple active:scale-[0.98];
   }
 
   .skip-link {
     @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100]
-      focus:rounded-full focus:bg-beige focus:px-4 focus:py-2 focus:text-sm focus:font-medium
+      focus:rounded-control focus:bg-beige focus:px-4 focus:py-2 focus:text-sm focus:font-medium
       focus:text-cocoa;
   }
 }
@@ -181,4 +163,3 @@ body {
 .heading-display {
   overflow-wrap: anywhere;
 }
-

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { Fraunces, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyNavbar } from "@/components/StickyNavbar";
 import "./globals.css";
@@ -20,6 +20,11 @@ const BackToTopButton = dynamic(
   { ssr: false }
 );
 
+const SmoothScroll = dynamic(
+  () => import("@/components/SmoothScroll").then((m) => m.SmoothScroll),
+  { ssr: false }
+);
+
 const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
@@ -32,6 +37,13 @@ const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   display: "swap",
   weight: ["400", "500", "600"],
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -80,13 +92,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${jakarta.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${jakarta.variable} ${mono.variable}`}>
       <body className="relative min-h-[100dvh] bg-black font-sans text-beige-muted antialiased">
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <div className="site-grain" aria-hidden />
         <AnalyticsInit />
+        <SmoothScroll />
         <LoadingScreen />
         <div className="relative z-[2]">
           <StickyNavbar />

@@ -44,7 +44,7 @@ function RiskBadge({ level, label }: { level: string; label: string }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold tracking-wide",
+        "inline-flex items-center gap-1.5 rounded-media border px-3 py-1 text-xs font-semibold tracking-wide",
         RISK_STYLES[level]
       )}
     >
@@ -124,7 +124,7 @@ export function AssessmentResults({
           <button
             type="button"
             onClick={onRestart}
-            className="inline-flex items-center gap-2 rounded-full border border-beige/15 px-5 py-3 font-sans text-sm font-medium text-beige-muted transition-colors duration-400 ease-premium hover:border-beige/40 hover:text-beige"
+            className="inline-flex items-center gap-2 rounded-control border border-beige/15 px-5 py-3 font-sans text-sm font-medium text-beige-muted transition-colors duration-300 hover:border-beige/40 hover:text-beige"
           >
             <BrandIcon name="refresh" className="h-4 w-4" />
             Start new assessment
@@ -220,7 +220,7 @@ function OverallGauge({ result }: { result: AssessmentResult }) {
               <div
                 key={r.level}
                 className={cn(
-                  "rounded-2xl border px-3 py-2 text-[0.625rem] font-medium",
+                  "rounded-media border px-3 py-2 text-[0.625rem] font-medium",
                   result.overallRiskLevel === r.level
                     ? RISK_STYLES[r.level]
                     : "border-beige/10 text-beige-muted/60"
@@ -253,10 +253,10 @@ function CategoryGrid({ result }: { result: AssessmentResult }) {
             key={d.domain.id}
             className="bezel-shell !p-1"
           >
-            <div className="flex h-full flex-col rounded-core border border-beige/[0.06] bg-cocoa/60 p-4">
+            <div className="flex h-full flex-col rounded-core border border-beige/[0.06] bg-black/25 p-4">
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-2.5">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-2xl border border-beige/[0.08] bg-black/30">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-media border border-beige/[0.08] bg-black/30">
                     <BrandIcon
                       name={d.domain.icon}
                       className="h-4 w-4 text-purple-light"
@@ -268,7 +268,7 @@ function CategoryGrid({ result }: { result: AssessmentResult }) {
                 </div>
                 <span
                   className={cn(
-                    "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[0.625rem] font-semibold tracking-wide",
+                    "inline-flex items-center gap-1.5 rounded-media border px-2.5 py-0.5 text-[0.625rem] font-semibold tracking-wide",
                     RISK_STYLES[d.riskLevel]
                   )}
                 >
@@ -299,7 +299,7 @@ function CategoryGrid({ result }: { result: AssessmentResult }) {
                 </div>
               </div>
 
-              <p className="mt-4 rounded-2xl border border-beige/[0.06] bg-black/25 px-3 py-2.5 text-xs leading-relaxed text-beige-muted">
+              <p className="mt-4 rounded-media border border-beige/[0.06] bg-black/25 px-3 py-2.5 text-xs leading-relaxed text-beige-muted">
                 <span className="font-semibold text-beige">Next step: </span>
                 {d.recommendation}
               </p>
@@ -326,9 +326,9 @@ function TopPriorities({ result }: { result: AssessmentResult }) {
             key={d.domain.id}
             className="bezel-shell !p-1.5"
           >
-            <div className="flex h-full flex-col rounded-core border border-beige/[0.06] bg-cocoa p-5">
+            <div className="flex h-full flex-col rounded-core border border-beige/[0.06] bg-black/25 p-5">
               <div className="flex items-center justify-between">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-purple-light/40 bg-purple/15 font-sans text-sm font-bold text-purple-light">
+                <span className="flex h-8 w-8 items-center justify-center rounded-media border border-purple-light/40 bg-purple/15 font-sans text-sm font-bold text-purple-light">
                   {i + 1}
                 </span>
                 <RiskBadge level={d.riskLevel} label={d.riskLabel} />
@@ -347,7 +347,7 @@ function TopPriorities({ result }: { result: AssessmentResult }) {
                 <span className="font-semibold text-beige">Action: </span>
                 {d.recommendation}
               </p>
-              <p className="mt-3 rounded-2xl border border-beige/[0.06] bg-black/25 px-3 py-2 text-xs text-beige-muted">
+              <p className="mt-3 rounded-media border border-beige/[0.06] bg-black/25 px-3 py-2 text-xs text-beige-muted">
                 <span className="font-semibold text-beige">E-Tech service: </span>
                 {d.domain.service}
               </p>
@@ -384,7 +384,7 @@ function KeyFindings({ result }: { result: AssessmentResult }) {
         {result.keyFindings.map((f) => (
           <div
             key={f.domainName}
-            className="rounded-card border border-beige/[0.06] bg-cocoa/50 px-4 py-3.5"
+            className=            "rounded-card border border-beige/[0.06] bg-black/25 px-4 py-3.5"
           >
             <p className="font-sans text-sm font-semibold text-white">
               {f.domainName}
@@ -420,9 +420,9 @@ function RecommendedServices({ result }: { result: AssessmentResult }) {
         {result.recommendedServices.map((s) => (
           <div
             key={s.slug}
-            className="flex items-start gap-3 rounded-card border border-beige/[0.06] bg-cocoa/50 p-4"
+            className="flex items-start gap-3 rounded-card border border-beige/[0.06] bg-black/25 p-4"
           >
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl border border-beige/[0.08] bg-black/30">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-media border border-beige/[0.08] bg-black/30">
               <BrandIcon name="shieldCheck" className="h-4 w-4 text-purple-light" />
             </span>
             <div className="min-w-0">
@@ -454,7 +454,7 @@ function Roadmap({ result }: { result: AssessmentResult }) {
             key={phase.key}
             className="bezel-shell !p-1.5"
           >
-            <div className="flex h-full flex-col rounded-core border border-beige/[0.06] bg-cocoa p-5">
+            <div className="flex h-full flex-col rounded-core border border-beige/[0.06] bg-black/25 p-5">
               <p className="font-sans text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-purple-light">
                 {phase.period}
               </p>
@@ -630,8 +630,7 @@ function ProfessionalCTA({
 
   return (
     <div className="mt-14">
-      <div className="bezel-shell !border-purple-light/15 !bg-purple/[0.06] p-2">
-        <div className="rounded-core border border-cocoa/5 bg-white p-6 shadow-bezel-light md:p-8">
+      <div className="border border-beige/25 bg-white p-6 md:p-8">
           <h3 className="font-display text-2xl font-semibold tracking-tight text-cocoa md:text-3xl">
             {PROFESSIONAL_CTA.title}
           </h3>
@@ -640,7 +639,7 @@ function ProfessionalCTA({
           </p>
 
           {status === "success" ? (
-            <div className="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-5 text-sm text-emerald-800" role="status" aria-live="polite">
+            <div className="mt-6 rounded-media border border-emerald-200 bg-emerald-50 px-4 py-5 text-sm text-emerald-800" role="status" aria-live="polite">
               <BrandIcon
                 name="checkCircle"
                 className="mb-2 h-8 w-8 text-emerald-600"
@@ -677,7 +676,7 @@ function ProfessionalCTA({
                   </button>
                   <a
                     href="/#services"
-                    className="inline-flex items-center justify-center rounded-full px-5 py-3 font-sans text-sm font-medium text-cocoa/70 underline-offset-4 transition-colors hover:text-purple hover:underline"
+                    className="inline-flex items-center justify-center rounded-control px-5 py-3 font-sans text-sm font-medium text-cocoa/70 underline-offset-4 transition-colors hover:text-purple hover:underline"
                   >
                     {PROFESSIONAL_CTA.secondary}
                   </a>
@@ -783,14 +782,14 @@ function ProfessionalCTA({
                   </LeadField>
 
                   {isDemo ? (
-                    <p className="rounded-2xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
+                    <p className="rounded-media border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
                       You are in demo mode. Real lead capture is still enabled so the
                       flow can be tested end-to-end.
                     </p>
                   ) : null}
 
                   {serverError ? (
-                    <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800" role="alert">
+                    <div className="rounded-media border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800" role="alert">
                       <p className="break-words">{serverError}</p>
                     </div>
                   ) : null}
@@ -829,13 +828,12 @@ function ProfessionalCTA({
             </>
           )}
         </div>
-      </div>
     </div>
   );
 }
 
 const leadInputClass =
-  "w-full min-w-0 rounded-2xl border border-cocoa/12 bg-white px-4 py-3.5 font-sans text-sm text-cocoa placeholder:text-cocoa/70 transition-all duration-400 ease-premium focus:border-purple focus:outline-none focus:ring-2 focus:ring-purple/20";
+  "w-full min-w-0 rounded-media border border-cocoa/12 bg-white px-4 py-3.5 font-sans text-sm text-cocoa placeholder:text-cocoa/70 transition-all duration-300 ease-premium focus:border-purple focus:outline-none focus:ring-2 focus:ring-purple/20";
 
 function LeadField({
   id,

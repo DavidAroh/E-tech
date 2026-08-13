@@ -6,89 +6,49 @@ import type { IconName } from "@/data/content";
 import { BrandIcon } from "../BrandIcon";
 import { MoreServices } from "../MoreServices";
 import { SectionReveal } from "../SectionReveal";
-import { cn } from "@/lib/cn";
 import { EASE_ENTRANCE } from "@/lib/motion";
 
-/**
- * Bento grid layout: asymmetric tiles with perpetual micro-animations.
- * No 3-column equal card wall. Featured card spans 2 cols on desktop.
- */
-
-const BENTO_LAYOUT = [
-  "md:col-span-2 lg:col-span-7",  // Featured - wide
-  "md:col-span-1 lg:col-span-5",  // Standard
-  "md:col-span-1 lg:col-span-5",  // Standard
-  "md:col-span-2 lg:col-span-7",  // Featured - wide
-  "md:col-span-1 lg:col-span-6",  // Standard
-  "md:col-span-1 lg:col-span-6",  // Standard
-];
-
-function BentoServiceCard({
+function ServiceRow({
   title,
   description,
   icon,
   index,
-  featured = false,
 }: {
   title: string;
   description: string;
   icon: IconName;
   index: number;
-  featured?: boolean;
 }) {
   const reduce = useReducedMotion();
 
   return (
     <motion.article
-      className={cn(
-        "group relative overflow-hidden rounded-[1.75rem] border border-beige/[0.06] bg-cocoa/60 p-6 md:p-7",
-        "transition-[border-color] duration-400 ease-premium",
-        "hover:border-beige/[0.12]",
-        BENTO_LAYOUT[index]
-      )}
-      initial={reduce ? false : { opacity: 1, y: 24 }}
+      className="group grid cursor-default gap-2 border-t border-cocoa/15 py-7 transition-colors duration-300 hover:bg-white/60 sm:grid-cols-12 sm:gap-6 md:py-9"
+      initial={reduce ? false : { opacity: 0, y: 10 }}
       whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px", amount: 0.2 }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.08,
-        ease: EASE_ENTRANCE,
-      }}
-      whileHover={reduce ? undefined : { y: -2 }}
+      transition={{ duration: 0.5, ease: EASE_ENTRANCE, delay: index * 0.04 }}
     >
-      {/* Subtle gradient overlay on hover */}
-      <div className="pointer-events-none absolute inset-0 rounded-[1.75rem] bg-gradient-to-br from-beige/[0.02] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-      <div className="relative flex h-full flex-col">
-        {/* Icon well with perpetual pulse on featured */}
-        <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl border border-beige/[0.08] bg-black/30">
+      <p className="font-mono text-xs tracking-[0.14em] text-cocoa/50 sm:col-span-2">
+        {String(index + 1).padStart(2, "0")}
+      </p>
+      <div className="flex items-start gap-4 sm:col-span-6">
+        <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-media border border-cocoa/15 bg-white/70">
           <BrandIcon
             name={icon}
-            className="h-5 w-5 text-beige transition-colors duration-400 group-hover:text-purple-light"
+            className="h-4 w-4 text-purple transition-colors duration-300 group-hover:text-cocoa"
           />
-          {featured && !reduce && (
-            <motion.div
-              className="absolute inset-0 rounded-2xl border border-beige/[0.15]"
-              animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0, 0.3] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
-          )}
-        </div>
-
-        <h3 className="heading-display mb-2 text-lg font-semibold text-white md:text-xl">
+        </span>
+        <h3 className="heading-display text-xl font-semibold text-cocoa transition-colors duration-300 group-hover:text-purple md:text-2xl">
           {title}
         </h3>
-        <p className="text-sm leading-relaxed text-beige-muted/80 md:text-base">
-          {description}
-        </p>
-
-        {/* Featured card: extra decorative element */}
-        {featured && (
-          <div className="mt-auto pt-5">
-            <div className="h-px w-full bg-gradient-to-r from-beige/10 via-beige/5 to-transparent" />
-          </div>
-        )}
       </div>
+      <p className="text-sm leading-relaxed text-cocoa/75 sm:col-span-3 md:text-[15px]">
+        {description}
+      </p>
+      <p className="hidden items-start justify-end font-mono text-xs text-cocoa/0 transition-colors duration-300 group-hover:text-cocoa/50 sm:col-span-1 sm:flex">
+        →
+      </p>
     </motion.article>
   );
 }
@@ -98,31 +58,37 @@ export function ServicesSection() {
     <SectionReveal
       id="services"
       aria-labelledby="services-heading"
-      className="section-padding content-auto bg-black"
+      className="section-padding content-auto bg-paper"
     >
       <div className="container-content">
-        <div className="mb-12 max-w-2xl md:mb-14">
-          <h2
-            id="services-heading"
-            className="heading-display mb-4 text-3xl font-semibold text-white md:text-4xl"
-          >
-            How we help
-          </h2>
-          <p className="max-w-prose text-base leading-relaxed text-beige-muted">
+        <div className="mb-6 flex flex-col gap-4 border-b border-cocoa/15 pb-8 md:flex-row md:items-end md:justify-between md:pb-10">
+          <div className="max-w-2xl">
+            <p className="mb-4 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-cocoa/70">
+              <span aria-hidden>03</span>
+              <span className="h-px w-8 bg-cocoa/30" aria-hidden />
+              <span>Services</span>
+            </p>
+            <h2
+              id="services-heading"
+              className="heading-display text-3xl font-semibold text-cocoa md:text-4xl"
+            >
+              How we help
+            </h2>
+          </div>
+          <p className="max-w-sm text-sm leading-relaxed text-cocoa/75 md:text-right md:text-[15px]">
             Six core engagements at the intersection of AI strategy and
             cybersecurity. Additional capabilities available on request.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-12 lg:gap-5">
+        <div>
           {primaryServices.map((service, i) => (
-            <BentoServiceCard
+            <ServiceRow
               key={service.slug}
               title={service.title}
               description={service.description}
               icon={service.icon}
               index={i}
-              featured={i === 0 || i === 3}
             />
           ))}
         </div>

@@ -58,7 +58,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
         >
           <button
             type="button"
-            className="absolute inset-0 bg-black/70 backdrop-blur-3xl"
+            className="absolute inset-0 bg-black/80"
             aria-label="Close search"
             tabIndex={-1}
             onClick={handleClose}
@@ -68,11 +68,11 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
-            className="relative w-full max-w-lg overflow-hidden rounded-shell border border-beige/10 bg-cocoa shadow-island"
-            initial={reduce ? false : { opacity: 1, y: 12, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={reduce ? undefined : { opacity: 1, y: 8, scale: 0.98 }}
-            transition={{ duration: 0.4, ease: EASE_ENTRANCE }}
+            className="relative w-full max-w-lg overflow-hidden rounded-card border border-beige/15 bg-black"
+            initial={reduce ? false : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reduce ? undefined : { opacity: 0, y: 6 }}
+            transition={{ duration: 0.3, ease: EASE_ENTRANCE }}
           >
             <p id={titleId} className="sr-only">
               Site search
@@ -95,7 +95,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
               <button
                 type="button"
                 onClick={handleClose}
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-beige-muted transition-colors hover:text-white"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-media border border-beige/10 text-beige-muted transition-colors hover:text-white"
                 aria-label="Close search"
               >
                 <BrandIcon name="x" className="h-4 w-4" />
@@ -123,7 +123,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
                     <a
                       href={item.href}
                       onClick={handleClose}
-                      className="flex min-h-11 items-center justify-between gap-3 px-4 py-3 text-sm text-beige transition-colors hover:bg-black/30 hover:text-white"
+                      className="flex min-h-11 items-center justify-between gap-3 px-4 py-3 text-sm text-beige transition-colors hover:bg-beige/[0.04] hover:text-white"
                     >
                       <span className="min-w-0 break-words">{item.label}</span>
                       <span className="shrink-0 text-[10px] uppercase tracking-[0.14em] text-beige-muted">

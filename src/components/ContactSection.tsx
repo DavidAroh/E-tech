@@ -1,7 +1,6 @@
 import { contactInfo } from "@/data/content";
 import type { IconName } from "@/data/content";
 import { BrandIcon } from "./BrandIcon";
-import { MagneticButton } from "./MagneticButton";
 import { SectionReveal } from "./SectionReveal";
 
 const socialIconPaths: Record<string, React.ReactNode> = {
@@ -28,24 +27,31 @@ export function ContactSection() {
     <SectionReveal
       id="contact"
       aria-labelledby="contact-heading"
-      className="section-padding content-auto bg-black"
+      className="section-padding content-auto bg-cocoa"
     >
       <div className="container-content">
-        <div className="mb-12 max-w-2xl md:mb-14">
-          <h2
-            id="contact-heading"
-            className="heading-display mb-4 text-3xl font-semibold text-white md:text-4xl"
-          >
-            Contact
-          </h2>
-          <p className="max-w-prose text-base leading-relaxed text-beige-muted">
+        <div className="mb-12 flex flex-col gap-4 border-b border-beige/25 pb-8 md:mb-14 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="mb-4 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-beige/60">
+              <span aria-hidden>09</span>
+              <span className="h-px w-8 bg-beige/25" aria-hidden />
+              <span>Contact</span>
+            </p>
+            <h2
+              id="contact-heading"
+              className="heading-display text-3xl font-semibold text-white md:text-4xl"
+            >
+              Contact
+            </h2>
+          </div>
+          <p className="max-w-sm text-sm leading-relaxed text-beige-muted md:text-right md:text-[15px]">
             Call, email, or book a consultation. We respond during business
             hours.
           </p>
         </div>
 
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
-          <ul className="space-y-5">
+          <ul className="divide-y divide-beige/25 border-y border-beige/25">
             <ContactRow
               icon="phone"
               label="Phone"
@@ -71,33 +77,28 @@ export function ContactSection() {
           </ul>
 
           <div>
-            <div className="bezel-shell mb-6">
-              <div
-                className="bezel-core flex aspect-[16/10] flex-col items-center justify-center gap-3 px-6 text-center"
-                role="img"
-                aria-label="Nigeria-based practice offering virtual and in-person engagements"
-              >
-                <BrandIcon
-                  name="map"
-                  className="h-8 w-8 text-purple-light"
-                />
-                <div>
-                  <p className="font-sans text-sm font-medium text-beige">
-                    Nigeria-based practice
-                  </p>
-                  <p className="mt-1 font-sans text-sm text-beige-muted">
-                    Virtual and in-person engagements nationwide
-                  </p>
-                </div>
+            <div
+              className="mb-8 flex aspect-[16/10] flex-col items-center justify-center gap-3 border border-beige/25 px-6 text-center"
+              role="img"
+              aria-label="Nigeria-based practice offering virtual and in-person engagements"
+            >
+              <BrandIcon name="map" className="h-8 w-8 text-purple-light" />
+              <div>
+                <p className="font-sans text-sm font-medium text-beige">
+                  Nigeria-based practice
+                </p>
+                <p className="mt-1 font-sans text-sm text-beige-muted">
+                  Virtual and in-person engagements nationwide
+                </p>
               </div>
             </div>
 
-            <div className="mb-6 flex flex-wrap gap-3">
+            <div className="mb-8 flex flex-wrap gap-3">
               {contactInfo.socials.map((social) => {
                 const isPlaceholder =
                   !social.href || social.href === "#" || social.href === "";
                 const className =
-                  "flex h-11 w-11 items-center justify-center rounded-full border border-beige/10 text-beige transition-colors duration-400 ease-premium hover:border-purple-light/40 hover:text-purple-light";
+                  "flex h-11 w-11 items-center justify-center rounded-media border border-beige/25 text-beige transition-colors duration-300 hover:border-purple-light/40 hover:text-purple-light";
                 const icon = (
                   <svg
                     viewBox="0 0 24 24"
@@ -141,12 +142,12 @@ export function ContactSection() {
               })}
             </div>
 
-            <MagneticButton as="a" href="#consultation" className="btn-primary group">
+            <a href="#consultation" className="btn-primary group">
               Book a Consultation
               <span className="btn-icon">
                 <BrandIcon name="arrowUpRight" className="h-4 w-4" />
               </span>
-            </MagneticButton>
+            </a>
           </div>
         </div>
       </div>
@@ -167,11 +168,11 @@ function ContactRow({
 }) {
   const content = (
     <>
-      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-beige/10 bg-cocoa">
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-media border border-beige/25 bg-black/15">
         <BrandIcon name={icon} className="h-5 w-5 text-purple-light" />
       </span>
       <span className="min-w-0">
-        <span className="block font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-beige-muted">
+        <span className="block font-mono text-[10px] tracking-[0.16em] text-beige-muted">
           {label}
         </span>
         <span className="mt-1 block font-sans text-base font-medium text-beige break-words">
@@ -186,7 +187,7 @@ function ContactRow({
       <li>
         <a
           href={href}
-          className="flex items-start gap-4 transition-colors duration-400 hover:text-white"
+          className="flex items-start gap-4 py-6 transition-colors duration-300 hover:text-white"
         >
           {content}
         </a>
@@ -194,5 +195,7 @@ function ContactRow({
     );
   }
 
-  return <li className="flex items-start gap-4">{content}</li>;
+  return (
+    <li className="flex items-start gap-4 py-6">{content}</li>
+  );
 }

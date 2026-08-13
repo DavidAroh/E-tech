@@ -80,7 +80,7 @@ export function LoadingScreen() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, ease: EASE_ENTRANCE }}
           >
-            <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-beige/15 bg-purple-dim/50">
+            <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-media border border-beige/15 bg-purple-dim/50">
               <svg
                 viewBox="0 0 32 32"
                 className="h-7 w-7"

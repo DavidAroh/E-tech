@@ -22,6 +22,17 @@ export function AboutSection() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left column: heading + mission */}
           <div className="lg:col-span-5">
+            <motion.p
+              initial={reduce ? false : { opacity: 0, y: 10 }}
+              whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, ease: EASE_ENTRANCE }}
+              className="mb-4 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-beige/60"
+            >
+              <span aria-hidden>02</span>
+              <span className="h-px w-8 bg-beige/25" aria-hidden />
+              <span>The Firm</span>
+            </motion.p>
             <motion.h2
               id="about-heading"
               className="heading-display mb-6 text-3xl font-semibold text-white md:text-4xl"
@@ -44,7 +55,7 @@ export function AboutSection() {
 
             {/* Value words - left-aligned, stacked */}
             <motion.ul
-              className="mt-10 space-y-3 border-t border-beige/10 pt-8"
+              className="mt-10 space-y-3 border-t border-beige/25 pt-8"
               initial={reduce ? false : { opacity: 1 }}
               whileInView={reduce ? undefined : { opacity: 1 }}
               viewport={{ once: true, margin: "-40px" }}
@@ -90,8 +101,8 @@ export function AboutSection() {
 
             {/* Decorative line */}
             <motion.div
-              className="h-px bg-gradient-to-r from-beige/10 via-beige/5 to-transparent pt-6"
-              initial={reduce ? false : { scaleX: 0, originX: 0 }}
+              className="h-px origin-left bg-beige/25"
+              initial={reduce ? false : { scaleX: 0 }}
               whileInView={reduce ? undefined : { scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4, ease: EASE_ENTRANCE }}

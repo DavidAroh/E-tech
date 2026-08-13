@@ -9,9 +9,10 @@ export function PlaceholderPage({ title, description }: PlaceholderPageProps) {
   return (
     <section className="section-padding min-h-[70dvh] bg-black pt-36">
       <div className="container-content max-w-2xl">
-        <span className="mb-5 inline-flex items-center rounded-full border border-beige/10 bg-beige/[0.04] px-3 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-purple-light">
-          Coming soon
-        </span>
+        <p className="mb-6 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-beige/60">
+          <span aria-hidden>●</span>
+          <span>Coming soon</span>
+        </p>
         <h1 className="heading-display mb-4 text-4xl font-bold text-white md:text-5xl">
           {title}
         </h1>

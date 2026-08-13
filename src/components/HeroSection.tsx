@@ -4,8 +4,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import { EASE_ENTRANCE } from "@/lib/motion";
 import { BrandIcon } from "./BrandIcon";
 import { HeroIllustration } from "./HeroIllustration";
-import { MagneticButton } from "./MagneticButton";
-import { SectionEyebrow } from "./SectionEyebrow";
 
 export function HeroSection() {
   const reduce = useReducedMotion();
@@ -14,45 +12,36 @@ export function HeroSection() {
     <section
       id="hero"
       aria-labelledby="hero-heading"
-      className="relative min-h-[100dvh] overflow-hidden bg-black"
+      className="relative flex min-h-[100dvh] flex-col bg-black"
     >
-      {/* Ambient warm/bronze depth — asymmetric, never neon */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden
-        style={{
-          background:
-            "radial-gradient(ellipse 55% 45% at 75% 25%, rgba(116,81,51,0.18), transparent 70%), radial-gradient(ellipse 40% 35% at 15% 85%, rgba(110,75,45,0.55), transparent 65%)",
-        }}
-      />
-
-      {/* Editorial split: type left, asset right */}
-      <div className="container-content relative grid min-h-[100dvh] items-center gap-12 px-4 pb-24 pt-32 sm:px-6 md:px-8 lg:grid-cols-12 lg:gap-12 lg:pt-28 xl:px-16">
+      <div className="container-content grid flex-1 items-center gap-12 px-4 pb-16 pt-32 sm:px-6 md:px-8 lg:grid-cols-12 lg:gap-12 lg:pt-36 xl:px-16">
         <div className="lg:col-span-6 xl:col-span-6">
-          <motion.div
-            initial={reduce ? false : { opacity: 1, y: 16 }}
+          <motion.p
+            initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE_ENTRANCE, delay: 0.08 }}
-            className="mb-5"
+            transition={{ duration: 0.5, ease: EASE_ENTRANCE, delay: 0.08 }}
+            className="mb-6 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-beige/60"
           >
-            <SectionEyebrow>AI Advisory &amp; Cybersecurity</SectionEyebrow>
-          </motion.div>
+            <span aria-hidden>01</span>
+            <span className="h-px w-8 bg-beige/25" aria-hidden />
+            <span>AI Advisory &amp; Cybersecurity</span>
+          </motion.p>
 
           <motion.h1
             id="hero-heading"
-            className="heading-display mb-5 max-w-xl text-[2.25rem] font-bold leading-[1.1] text-white sm:text-5xl lg:text-[3.05rem]"
-            initial={reduce ? false : { opacity: 1, y: 20 }}
+            className="heading-display mb-6 max-w-xl text-5xl font-bold leading-[1.04] text-white sm:text-6xl lg:text-[4.75rem]"
+            initial={reduce ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: EASE_ENTRANCE, delay: 0.12 }}
+            transition={{ duration: 0.7, ease: EASE_ENTRANCE, delay: 0.14 }}
           >
             Adopt AI securely and responsibly.
           </motion.h1>
 
           <motion.p
-            className="mb-9 max-w-md text-base leading-relaxed text-beige-muted md:text-lg"
-            initial={reduce ? false : { opacity: 1, y: 14 }}
+            className="mb-10 max-w-md text-base leading-relaxed text-beige-muted md:text-lg"
+            initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE_ENTRANCE, delay: 0.2 }}
+            transition={{ duration: 0.6, ease: EASE_ENTRANCE, delay: 0.22 }}
           >
             Boutique AI advisory and cybersecurity for organizations that need
             governance as much as innovation.
@@ -60,20 +49,16 @@ export function HeroSection() {
 
           <motion.div
             className="flex flex-wrap items-center gap-3 sm:gap-4"
-            initial={reduce ? false : { opacity: 1, y: 12 }}
+            initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease: EASE_ENTRANCE, delay: 0.28 }}
+            transition={{ duration: 0.55, ease: EASE_ENTRANCE, delay: 0.3 }}
           >
-            <MagneticButton
-              as="a"
-              href="#consultation"
-              className="btn-primary group"
-            >
+            <a href="#consultation" className="btn-primary group">
               Book a Consultation
               <span className="btn-icon">
                 <BrandIcon name="arrowUpRight" className="h-4 w-4" />
               </span>
-            </MagneticButton>
+            </a>
             <a href="#services" className="btn-ghost">
               View services
             </a>
@@ -82,36 +67,29 @@ export function HeroSection() {
 
         <motion.div
           className="flex justify-center lg:col-span-6 lg:justify-end"
-          initial={reduce ? false : { opacity: 1, scale: 0.98, y: 12 }}
+          initial={reduce ? false : { opacity: 0, scale: 0.99, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.85, ease: EASE_ENTRANCE, delay: 0.18 }}
+          transition={{ duration: 0.75, ease: EASE_ENTRANCE, delay: 0.2 }}
         >
-          <div className="bezel-shell w-full max-w-lg">
-            <div className="bezel-core overflow-hidden !p-0">
+          <div className="w-full max-w-lg">
+            <div className="overflow-hidden rounded-media border border-beige/[0.08]">
               <HeroIllustration />
             </div>
+            <p className="flex items-baseline justify-between gap-4 border-b border-beige/[0.08] py-3 font-mono text-[11px] tracking-[0.14em] text-beige/40">
+              <span>FIG. 01 — SECURE AI POSTURE</span>
+              <span aria-hidden>RISE · DEFEND · OVERCOME</span>
+            </p>
           </div>
         </motion.div>
       </div>
 
-      {/* Scroll cue — bottom center, subtle */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-6 flex justify-center">
-        <motion.div
-          className="flex flex-col items-center gap-2 text-cocoa-light/70"
-          initial={reduce ? false : { opacity: 1 }}
-          animate={reduce ? undefined : { opacity: [1, 0.4, 1] }}
-          transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-          aria-hidden
-        >
-          <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em]">
-            Scroll
-          </span>
-          <motion.span
-            animate={reduce ? undefined : { y: [0, 6, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            className="block h-8 w-px bg-gradient-to-b from-cocoa-light/70 to-cocoa/40"
-          />
-        </motion.div>
+      {/* Bottom index rail — static, no decoration */}
+      <div className="container-content px-4 pb-8 sm:px-6 md:px-8 xl:px-16">
+        <div className="flex items-baseline justify-between border-t border-beige/[0.08] pt-4 font-mono text-[11px] tracking-[0.16em] text-beige/40">
+          <span>ETELA TECHNOLOGIES</span>
+          <span className="hidden sm:inline">AI ADVISORY / CYBERSECURITY</span>
+          <span aria-hidden>03 — SERVICES ↓</span>
+        </div>
       </div>
     </section>
   );
