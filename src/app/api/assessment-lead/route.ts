@@ -4,29 +4,23 @@ import {
   LIMITS,
   clampText,
   isEmail,
-  isPastDate,
   isPhone,
 } from "@/lib/validation";
+import { SERVICE_OPTION_TO_SLUG } from "@/data/assessment";
 
 type Body = {
+  assessment_id?: string;
   name?: string;
-  company?: string;
+  organization?: string;
   email?: string;
   phone?: string;
-  industry?: string;
-  service_needed?: string;
-  serviceNeeded?: string;
+  org_size?: string;
+  service_required?: string;
   message?: string;
-  preferred_date?: string;
-  preferredDate?: string;
-  preferred_time?: string;
-  preferredTime?: string;
-  consultation_type?: string;
-  consultationType?: string;
-  submit_mode?: string;
+  overall_percentage?: number | string;
+  risk_level?: string;
 };
 
-// Simple in-memory rate limit (per process; fine for single-node / edge-lite)
 const hits = new Map<string, { count: number; reset: number }>();
 const WINDOW_MS = 60_000;
 const MAX_HITS = 12;
@@ -43,13 +37,16 @@ function rateLimit(key: string): boolean {
   return true;
 }
 
+const VALID_ORG_SIZES = new Set(["Small", "Medium", "Large"]);
+const VALID_SERVICES = new Set(Object.keys(SERVICE_OPTION_TO_SLUG));
+
 export async function POST(request: Request) {
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     request.headers.get("x-real-ip") ||
     "unknown";
 
-  if (!rateLimit(`consultation:${ip}`)) {
+  if (!rateLimit(`assessment-lead:${ip}`)) {
     return NextResponse.json(
       { error: "Too many requests. Please wait a moment and try again." },
       { status: 429 }
@@ -63,45 +60,21 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
   }
 
+  const assessment_id = clampText(body.assessment_id || "", 128);
   const name = clampText(body.name || "", LIMITS.name);
-  const company = clampText(body.company || "", LIMITS.company);
+  const organization = clampText(body.organization || "", LIMITS.company);
   const email = clampText(body.email || "", LIMITS.email).toLowerCase();
   const phone = clampText(body.phone || "", LIMITS.phone);
-  const industry = clampText(
-    body.industry || "",
-    LIMITS.industry
-  );
-  const service_needed = clampText(
-    body.service_needed || body.serviceNeeded || "",
-    LIMITS.service
-  );
+  const org_size = clampText(body.org_size || "", 32);
+  const service_required = clampText(body.service_required || "", LIMITS.service);
   const message = clampText(body.message || "", LIMITS.message);
-  const preferred_date = clampText(
-    body.preferred_date || body.preferredDate || "",
-    32
-  );
-  const preferred_time = clampText(
-    body.preferred_time || body.preferredTime || "",
-    16
-  );
-  const consultation_type = clampText(
-    body.consultation_type || body.consultationType || "",
-    32
-  );
-  const submit_mode = clampText(body.submit_mode || "book", 32);
+  const overall_percentage =
+    body.overall_percentage === undefined
+      ? null
+      : Number(body.overall_percentage);
+  const risk_level = clampText(body.risk_level || "", 32);
 
-  if (
-    !name ||
-    !company ||
-    !email ||
-    !phone ||
-    !industry ||
-    !service_needed ||
-    !message ||
-    !preferred_date ||
-    !preferred_time ||
-    !consultation_type
-  ) {
+  if (!name || !organization || !email || !phone || !org_size || !service_required) {
     return NextResponse.json(
       { error: "All required fields must be provided." },
       { status: 400 }
@@ -122,66 +95,61 @@ export async function POST(request: Request) {
     );
   }
 
-  if (isPastDate(preferred_date)) {
+  if (!VALID_ORG_SIZES.has(org_size)) {
     return NextResponse.json(
-      { error: "Preferred date must be today or in the future." },
+      { error: "Invalid organization size." },
       { status: 400 }
     );
   }
 
-  if (!["virtual", "in-person"].includes(consultation_type)) {
+  if (!VALID_SERVICES.has(service_required)) {
     return NextResponse.json(
-      { error: "Invalid consultation type." },
-      { status: 400 }
-    );
-  }
-
-  if (!["book", "schedule"].includes(submit_mode)) {
-    return NextResponse.json(
-      { error: "Invalid submit mode." },
+      { error: "Invalid service requested." },
       { status: 400 }
     );
   }
 
   const payload = {
+    assessment_id: assessment_id || null,
     name,
-    company,
+    organization,
     email,
     phone,
-    industry,
-    service_needed,
+    org_size,
+    service_required,
     message,
-    preferred_date,
-    preferred_time,
-    consultation_type,
-    submit_mode,
+    overall_percentage:
+      overall_percentage !== null && !Number.isNaN(overall_percentage)
+        ? Math.round(overall_percentage)
+        : null,
+    risk_level: risk_level || null,
     created_at: new Date().toISOString(),
   };
 
   const db = getFirestore();
 
   if (!db) {
-    console.info("[consultation] Firebase not configured. Payload:", {
+    console.info("[assessment-lead] Firebase not configured. Lead:", {
       ...payload,
-      message: `[${payload.message.length} chars]`,
+      message: `[${payload.message?.length ?? 0} chars]`,
     });
     return NextResponse.json({
       ok: true,
       stored: false,
       message:
-        "Received. Configure FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL and FIREBASE_PRIVATE_KEY to persist submissions.",
+        "Received. Configure FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL and FIREBASE_PRIVATE_KEY to persist leads.",
     });
   }
 
   try {
-    await db.collection(COLLECTIONS.consultations).add(payload);
+    await db.collection(COLLECTIONS.assessmentLeads).add(payload);
   } catch (err) {
     console.error(
-      "[consultation] Firestore write error:",
+      "[assessment-lead] Firestore write error:",
       err instanceof Error ? err.message : err
     );
     return NextResponse.json(
-      { error: "Unable to save your request. Please try again later." },
+      { error: "Unable to submit your request. Please try again later." },
       { status: 500 }
     );
   }

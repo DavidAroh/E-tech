@@ -1,0 +1,29 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "assessment_results",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "is_demo", "order": "ASCENDING" },
+        { "fieldPath": "date", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "assessment_results",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "risk_level", "order": "ASCENDING" },
+        { "fieldPath": "date", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "assessment_leads",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "service_required", "order": "ASCENDING" },
+        { "fieldPath": "created_at", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

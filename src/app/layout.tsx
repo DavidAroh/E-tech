@@ -5,6 +5,11 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { StickyNavbar } from "@/components/StickyNavbar";
 import "./globals.css";
 
+const AnalyticsInit = dynamic(
+  () => import("@/components/AnalyticsInit").then((m) => m.AnalyticsInit),
+  { ssr: false }
+);
+
 const LoadingScreen = dynamic(
   () => import("@/components/LoadingScreen").then((m) => m.LoadingScreen),
   { ssr: false }
@@ -81,6 +86,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <div className="site-grain" aria-hidden />
+        <AnalyticsInit />
         <LoadingScreen />
         <div className="relative z-[2]">
           <StickyNavbar />

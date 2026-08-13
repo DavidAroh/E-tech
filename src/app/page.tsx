@@ -28,6 +28,13 @@ const IndustriesSection = dynamic(
     ),
   { loading: () => <SectionSkeleton tone="black" /> }
 );
+const AssessmentCtaSection = dynamic(
+  () =>
+    import("@/components/sections/AssessmentCtaSection").then(
+      (m) => m.AssessmentCtaSection
+    ),
+  { loading: () => <SectionSkeleton tone="cocoa" /> }
+);
 const TestimonialsSection = dynamic(
   () =>
     import("@/components/sections/TestimonialsSection").then(
@@ -74,6 +81,7 @@ export default function HomePage() {
       <ServicesSection />
       <ProcessSection />
       <IndustriesSection />
+      <AssessmentCtaSection />
       <TestimonialsSection />
       <FAQSection />
       <ConsultationSection />

@@ -52,7 +52,7 @@ export type IconName =
 export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
+  { label: "Assessment", href: "/assessment" },
   { label: "Insights", href: "/insights" },
   { label: "Contact", href: "#contact" },
 ] as const;
@@ -232,6 +232,69 @@ export const services: ServiceItem[] = [
       "Practical zero-trust roadmaps that prioritize high-impact controls.",
     icon: "fingerprint",
   },
+  {
+    slug: "ai-risk-assessments",
+    title: "AI Risk Assessments",
+    description:
+      "AI inventory, use-case risk identification, and prioritized mitigation across your AI portfolio.",
+    icon: "brain",
+  },
+  {
+    slug: "ai-policy-development",
+    title: "AI Policy Development",
+    description:
+      "Acceptable-use policies covering approved tools, prohibited uses, data handling, and human oversight.",
+    icon: "book",
+  },
+  {
+    slug: "ai-governance",
+    title: "AI Governance",
+    description:
+      "Accountability, oversight, and leadership review processes for responsible AI adoption.",
+    icon: "scales",
+  },
+  {
+    slug: "cloud-security-assessment",
+    title: "Cloud Security Assessment",
+    description:
+      "MFA, access reviews, configuration, backups, and visibility checks for multi-cloud estates.",
+    icon: "cloud",
+  },
+  {
+    slug: "incident-response",
+    title: "Incident Response Readiness",
+    description:
+      "Written procedures, assigned roles, reporting paths, and tested response playbooks.",
+    icon: "eye",
+  },
+  {
+    slug: "security-monitoring",
+    title: "Security Monitoring",
+    description:
+      "Logging, alert review, escalation paths, and detection coverage for important systems.",
+    icon: "search",
+  },
+  {
+    slug: "deepfake-fraud-protection",
+    title: "Deepfake/Fraud Protection",
+    description:
+      "Verification procedures and targeted awareness for AI-enabled impersonation and fraud.",
+    icon: "shieldCheck",
+  },
+  {
+    slug: "compliance",
+    title: "Compliance Readiness",
+    description:
+      "Identify applicable requirements, map controls, maintain evidence, and review readiness.",
+    icon: "clipboard",
+  },
+  {
+    slug: "training-awareness",
+    title: "Training & Awareness",
+    description:
+      "Recurring cybersecurity, AI safety, phishing, deepfake/fraud, and secure data-handling training.",
+    icon: "grad",
+  },
 ];
 
 export const primaryServices = services.filter((s) => s.primary);
@@ -367,6 +430,7 @@ export const footerLinks = {
     { label: "Home", href: "/" },
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
+    { label: "Assessment", href: "/assessment" },
     { label: "Process", href: "#process" },
     { label: "Contact", href: "#contact" },
     { label: "Book a Consultation", href: "#consultation" },
