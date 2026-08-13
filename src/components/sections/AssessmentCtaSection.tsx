@@ -1,4 +1,5 @@
 import { BrandIcon } from "../BrandIcon";
+import { MagneticButton } from "../MagneticButton";
 import { SectionReveal } from "../SectionReveal";
 
 /**
@@ -31,12 +32,12 @@ export function AssessmentCtaSection() {
               </p>
             </div>
             <div className="flex shrink-0 flex-wrap items-center gap-3">
-              <a href="/assessment" className="btn-primary group">
+              <MagneticButton as="a" href="/assessment" className="btn-primary group">
                 Start Client Assessment
                 <span className="btn-icon" aria-hidden>
                   <BrandIcon name="arrowUpRight" className="h-4 w-4" />
                 </span>
-              </a>
+              </MagneticButton>
               <a href="/#consultation" className="btn-ghost">
                 Request Professional Assessment
               </a>

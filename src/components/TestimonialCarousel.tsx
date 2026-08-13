@@ -30,14 +30,23 @@ export function TestimonialCarousel() {
 
   return (
     <div
-      className="relative mx-auto max-w-3xl"
+      className="relative"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-roledescription="carousel"
       aria-label="Client testimonials"
     >
       <div className="bezel-shell">
-        <div className="bezel-core relative min-h-[260px] overflow-hidden p-8 md:min-h-[280px] md:p-12">
+        <div className="bezel-core relative min-h-[240px] overflow-hidden p-8 md:min-h-[260px] md:p-10">
+          {/* Ghost quote mark */}
+          <span
+            aria-hidden
+            className="heading-display pointer-events-none absolute right-6 top-4 select-none font-bold leading-none text-beige/[0.08]"
+            style={{ fontSize: "5.5rem" }}
+          >
+            &ldquo;
+          </span>
+
           <AnimatePresence mode="wait">
             <motion.blockquote
               key={index}
@@ -45,17 +54,20 @@ export function TestimonialCarousel() {
               animate={{ opacity: 1, y: 0 }}
               exit={reduce ? undefined : { opacity: 1, y: -8 }}
               transition={{ duration: 0.5, ease: EASE_ENTRANCE }}
-              className="text-center"
+              className="text-left"
             >
               <p className="heading-display mb-8 text-xl font-semibold leading-relaxed text-white md:text-2xl">
                 &ldquo;{item.quote}&rdquo;
               </p>
-              <footer>
+              <footer className="flex items-center gap-4">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-beige/[0.08] bg-black/30">
+                  <span className="block h-2.5 w-2.5 rounded-sm bg-purple-light/70" />
+                </span>
                 <cite className="not-italic">
                   <span className="block font-sans text-sm font-semibold text-beige">
                     {item.name}
                   </span>
-                  <span className="mt-1 block font-sans text-sm text-beige-muted">
+                  <span className="mt-0.5 block font-sans text-sm text-beige-muted">
                     {item.role}, {item.company}
                   </span>
                 </cite>
@@ -65,7 +77,7 @@ export function TestimonialCarousel() {
         </div>
       </div>
 
-      <div className="mt-8 flex items-center justify-center gap-4">
+      <div className="mt-8 flex items-center gap-4">
         <button
           type="button"
           onClick={() => go(-1)}
@@ -75,7 +87,7 @@ export function TestimonialCarousel() {
           <BrandIcon name="caretLeft" className="h-5 w-5" />
         </button>
 
-        <div className="flex gap-1" role="tablist" aria-label="Testimonial pages">
+        <div className="flex gap-1.5" role="tablist" aria-label="Testimonial pages">
           {testimonials.map((_, i) => (
             <button
               key={i}

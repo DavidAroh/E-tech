@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { EASE_ENTRANCE } from "@/lib/motion";
 import { BrandIcon } from "./BrandIcon";
 import { HeroIllustration } from "./HeroIllustration";
+import { MagneticButton } from "./MagneticButton";
 import { SectionEyebrow } from "./SectionEyebrow";
 
 export function HeroSection() {
@@ -15,6 +16,7 @@ export function HeroSection() {
       aria-labelledby="hero-heading"
       className="relative min-h-[100dvh] overflow-hidden bg-black"
     >
+      {/* Ambient warm/bronze depth — asymmetric, never neon */}
       <div
         className="pointer-events-none absolute inset-0"
         aria-hidden
@@ -25,7 +27,7 @@ export function HeroSection() {
       />
 
       {/* Editorial split: type left, asset right */}
-      <div className="container-content relative grid min-h-[100dvh] items-center gap-12 px-4 pb-20 pt-32 sm:px-6 md:px-8 lg:grid-cols-12 lg:gap-12 lg:pt-28 xl:px-16">
+      <div className="container-content relative grid min-h-[100dvh] items-center gap-12 px-4 pb-24 pt-32 sm:px-6 md:px-8 lg:grid-cols-12 lg:gap-12 lg:pt-28 xl:px-16">
         <div className="lg:col-span-6 xl:col-span-6">
           <motion.div
             initial={reduce ? false : { opacity: 1, y: 16 }}
@@ -62,12 +64,16 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: EASE_ENTRANCE, delay: 0.28 }}
           >
-            <a href="#consultation" className="btn-primary group">
+            <MagneticButton
+              as="a"
+              href="#consultation"
+              className="btn-primary group"
+            >
               Book a Consultation
               <span className="btn-icon">
                 <BrandIcon name="arrowUpRight" className="h-4 w-4" />
               </span>
-            </a>
+            </MagneticButton>
             <a href="#services" className="btn-ghost">
               View services
             </a>
@@ -85,6 +91,26 @@ export function HeroSection() {
               <HeroIllustration />
             </div>
           </div>
+        </motion.div>
+      </div>
+
+      {/* Scroll cue — bottom center, subtle */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-6 flex justify-center">
+        <motion.div
+          className="flex flex-col items-center gap-2 text-cocoa-light/70"
+          initial={reduce ? false : { opacity: 1 }}
+          animate={reduce ? undefined : { opacity: [1, 0.4, 1] }}
+          transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+          aria-hidden
+        >
+          <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em]">
+            Scroll
+          </span>
+          <motion.span
+            animate={reduce ? undefined : { y: [0, 6, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+            className="block h-8 w-px bg-gradient-to-b from-cocoa-light/70 to-cocoa/40"
+          />
         </motion.div>
       </div>
     </section>

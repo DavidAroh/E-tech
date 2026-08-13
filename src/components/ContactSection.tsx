@@ -1,6 +1,7 @@
 import { contactInfo } from "@/data/content";
 import type { IconName } from "@/data/content";
 import { BrandIcon } from "./BrandIcon";
+import { MagneticButton } from "./MagneticButton";
 import { SectionReveal } from "./SectionReveal";
 
 const socialIconPaths: Record<string, React.ReactNode> = {
@@ -140,12 +141,12 @@ export function ContactSection() {
               })}
             </div>
 
-            <a href="#consultation" className="btn-primary">
+            <MagneticButton as="a" href="#consultation" className="btn-primary group">
               Book a Consultation
               <span className="btn-icon">
                 <BrandIcon name="arrowUpRight" className="h-4 w-4" />
               </span>
-            </a>
+            </MagneticButton>
           </div>
         </div>
       </div>

@@ -10,29 +10,33 @@ export function SiteFooter() {
       role="contentinfo"
     >
       <div className="container-content section-padding !pb-12 !pt-20">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
-          <div className="lg:col-span-1">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+          {/* Brand — largest share */}
+          <div className="lg:col-span-5">
             <Logo className="mb-5" />
             <p className="mb-3 font-display text-sm italic text-beige/80">
               Rise. Defend. Overcome.
             </p>
-            <p className="max-w-xs text-sm leading-relaxed text-beige-muted">
+            <p className="max-w-sm text-sm leading-relaxed text-beige-muted">
               AI advisory and cybersecurity for organizations that need secure,
               responsible technology adoption.
             </p>
           </div>
 
-          <FooterColumn title="Quick Links" links={footerLinks.quick} />
-          <FooterColumn title="Services" links={footerLinks.services} />
-          <FooterColumn title="Company" links={footerLinks.company} />
+          <div className="lg:col-span-3">
+            <FooterColumn title="Navigate" links={footerLinks.quick} />
+          </div>
+          <div className="lg:col-span-4">
+            <FooterColumn title="Company" links={footerLinks.company} />
+          </div>
         </div>
 
-        <div className="mt-16 border-t border-cocoa-light/30 pt-12">
+        <div className="mt-14 border-t border-cocoa-light/30 pt-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <NewsletterForm />
           </div>
 
-          <p className="mt-12 font-sans text-xs text-beige-muted/70">
+          <p className="mt-10 font-sans text-xs text-beige-muted/70">
             &copy; 2026 Etela Technologies. All Rights Reserved.
           </p>
         </div>
