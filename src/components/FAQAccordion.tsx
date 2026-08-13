@@ -48,9 +48,9 @@ export function FAQAccordion() {
                   id={panelId}
                   role="region"
                   aria-labelledby={buttonId}
-                  initial={reduce ? false : { height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={reduce ? undefined : { height: 0, opacity: 0 }}
+                  initial={reduce ? false : { height: 0 }}
+                  animate={{ height: "auto" }}
+                  exit={reduce ? undefined : { height: 0 }}
                   transition={{ duration: 0.4, ease: EASE_ENTRANCE }}
                   className="overflow-hidden"
                 >

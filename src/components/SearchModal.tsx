@@ -69,9 +69,9 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
             aria-modal="true"
             aria-labelledby={titleId}
             className="relative w-full max-w-lg overflow-hidden rounded-card border border-beige/15 bg-black"
-            initial={reduce ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduce ? undefined : { opacity: 0, y: 6 }}
+            initial={reduce ? false : { y: 10 }}
+            animate={{ y: 0 }}
+            exit={reduce ? undefined : { y: 6 }}
             transition={{ duration: 0.3, ease: EASE_ENTRANCE }}
           >
             <p id={titleId} className="sr-only">

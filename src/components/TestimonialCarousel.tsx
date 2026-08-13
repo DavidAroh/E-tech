@@ -35,34 +35,32 @@ export function TestimonialCarousel() {
       aria-roledescription="carousel"
       aria-label="Client testimonials"
     >
-      <div className="border border-beige/25 p-8 md:p-10">
+      <div className="border-t border-beige/25">
         <AnimatePresence mode="wait">
           <motion.blockquote
             key={index}
-            initial={reduce ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduce ? undefined : { opacity: 0, y: -6 }}
-            transition={{ duration: 0.45, ease: EASE_ENTRANCE }}
-            className="text-left"
+            initial={reduce ? false : { y: 12 }}
+            animate={{ y: 0 }}
+            exit={reduce ? undefined : { y: -8 }}
+            transition={{ duration: 0.5, ease: EASE_ENTRANCE }}
+            className="pt-10"
           >
-            <p className="heading-display mb-10 min-h-[6.5rem] text-xl font-semibold leading-relaxed text-white md:min-h-[7rem] md:text-2xl">
+            <p className="heading-display max-w-4xl text-3xl font-semibold leading-[1.25] text-white md:text-4xl lg:text-5xl lg:leading-[1.2]">
               &ldquo;{item.quote}&rdquo;
             </p>
-            <footer className="flex items-baseline justify-between gap-4 border-t border-beige/25 pt-5">
-              <cite className="not-italic">
-                <span className="block font-sans text-sm font-semibold text-beige">
-                  {item.name}
-                </span>
-                <span className="mt-0.5 block font-sans text-sm text-beige-muted">
-                  {item.role}, {item.company}
-                </span>
-              </cite>
-            </footer>
+            <cite className="mt-8 flex items-baseline gap-3 not-italic">
+              <span className="font-sans text-sm font-semibold text-beige">
+                {item.name}
+              </span>
+              <span className="font-sans text-sm text-beige-muted">
+                {item.role}, {item.company}
+              </span>
+            </cite>
           </motion.blockquote>
         </AnimatePresence>
       </div>
 
-      <div className="mt-6 flex items-center justify-between">
+      <div className="mt-8 flex items-center justify-between border-t border-beige/25 pt-5">
         <p className="font-mono text-xs tracking-[0.16em] text-beige/70">
           {String(index + 1).padStart(2, "0")} /{" "}
           {String(total).padStart(2, "0")}

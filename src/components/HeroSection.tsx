@@ -5,6 +5,10 @@ import { EASE_ENTRANCE } from "@/lib/motion";
 import { BrandIcon } from "./BrandIcon";
 import { HeroIllustration } from "./HeroIllustration";
 
+/**
+ * Visible-first hero: content is always readable. Motion only adds a
+ * slight rise — never gates text behind opacity 0.
+ */
 export function HeroSection() {
   const reduce = useReducedMotion();
 
@@ -14,11 +18,11 @@ export function HeroSection() {
       aria-labelledby="hero-heading"
       className="relative flex min-h-[100dvh] flex-col bg-black"
     >
-      <div className="container-content grid flex-1 items-center gap-12 px-4 pb-16 pt-32 sm:px-6 md:px-8 lg:grid-cols-12 lg:gap-12 lg:pt-36 xl:px-16">
-        <div className="lg:col-span-6 xl:col-span-6">
+      <div className="container-content grid flex-1 items-center gap-8 px-4 pb-20 pt-28 sm:px-6 md:px-8 md:gap-12 lg:grid-cols-12 lg:gap-16 lg:pb-24 lg:pt-32 xl:px-16">
+        <div className="lg:col-span-7 xl:col-span-6">
           <motion.p
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={reduce ? false : { y: 12 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.5, ease: EASE_ENTRANCE, delay: 0.08 }}
             className="mb-6 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-beige/60"
           >
@@ -29,18 +33,18 @@ export function HeroSection() {
 
           <motion.h1
             id="hero-heading"
-            className="heading-display mb-6 max-w-xl text-5xl font-bold leading-[1.04] text-white sm:text-6xl lg:text-[4.75rem]"
-            initial={reduce ? false : { opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
+            className="heading-display mb-6 max-w-2xl text-5xl font-bold leading-[1.05] tracking-[-0.02em] text-white sm:text-6xl md:text-7xl lg:text-[4.25rem] lg:leading-[1.04]"
+            initial={reduce ? false : { y: 18 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.7, ease: EASE_ENTRANCE, delay: 0.14 }}
           >
             Adopt AI securely and responsibly.
           </motion.h1>
 
           <motion.p
-            className="mb-10 max-w-md text-base leading-relaxed text-beige-muted md:text-lg"
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
+            className="mb-10 max-w-lg text-lg leading-relaxed text-beige-muted md:text-xl"
+            initial={reduce ? false : { y: 12 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: EASE_ENTRANCE, delay: 0.22 }}
           >
             Boutique AI advisory and cybersecurity for organizations that need
@@ -49,8 +53,8 @@ export function HeroSection() {
 
           <motion.div
             className="flex flex-wrap items-center gap-3 sm:gap-4"
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={reduce ? false : { y: 12 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.55, ease: EASE_ENTRANCE, delay: 0.3 }}
           >
             <a href="#consultation" className="btn-primary group">
@@ -66,30 +70,15 @@ export function HeroSection() {
         </div>
 
         <motion.div
-          className="flex justify-center lg:col-span-6 lg:justify-end"
-          initial={reduce ? false : { opacity: 0, scale: 0.99, y: 10 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
+          className="flex justify-center lg:col-span-5 lg:justify-end xl:col-span-6"
+          initial={reduce ? false : { scale: 0.99, y: 10 }}
+          animate={{ scale: 1, y: 0 }}
           transition={{ duration: 0.75, ease: EASE_ENTRANCE, delay: 0.2 }}
         >
-          <div className="w-full max-w-lg">
-            <div className="overflow-hidden rounded-media border border-beige/[0.08]">
-              <HeroIllustration />
-            </div>
-            <p className="flex items-baseline justify-between gap-4 border-b border-beige/[0.08] py-3 font-mono text-[11px] tracking-[0.14em] text-beige/40">
-              <span>FIG. 01 — SECURE AI POSTURE</span>
-              <span aria-hidden>RISE · DEFEND · OVERCOME</span>
-            </p>
+          <div className="w-full max-w-md overflow-hidden rounded-media border border-beige/[0.08] lg:max-w-lg">
+            <HeroIllustration />
           </div>
         </motion.div>
-      </div>
-
-      {/* Bottom index rail — static, no decoration */}
-      <div className="container-content px-4 pb-8 sm:px-6 md:px-8 xl:px-16">
-        <div className="flex items-baseline justify-between border-t border-beige/[0.08] pt-4 font-mono text-[11px] tracking-[0.16em] text-beige/40">
-          <span>ETELA TECHNOLOGIES</span>
-          <span className="hidden sm:inline">AI ADVISORY / CYBERSECURITY</span>
-          <span aria-hidden>03 — SERVICES ↓</span>
-        </div>
       </div>
     </section>
   );

@@ -62,8 +62,8 @@ export function HeroIllustration() {
           strokeWidth="1.4"
           fill="rgba(61, 40, 25, 0.28)"
           opacity="0.9"
-          initial={reduce ? false : { pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.9 }}
+          initial={reduce ? false : { pathLength: 0 }}
+          animate={{ pathLength: 1 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
         />
 
@@ -97,8 +97,8 @@ export function HeroIllustration() {
             r={i === 10 ? 5 : 3.2}
             fill={i % 2 === 0 ? "#CFB093" : "#DEBFA2"}
             opacity={0.55}
-            initial={reduce ? false : { scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.55 }}
+            initial={reduce ? false : { scale: 0 }}
+            animate={{ scale: 1 }}
             transition={{
               duration: 0.5,
               delay: 0.35 + i * 0.04,

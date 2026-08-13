@@ -9,10 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        black: "#000000",
+        black: "#0C0A08",
+        ink: "#0C0A08",
+        charcoal: "#1A1614",
         cocoa: {
           DEFAULT: "#6E4B2D",
           light: "#745133",
+          deep: "#5A3D25",
         },
         beige: {
           DEFAULT: "#DEBFA2",

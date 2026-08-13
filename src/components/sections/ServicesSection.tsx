@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { primaryServices } from "@/data/content";
 import type { IconName } from "@/data/content";
 import { BrandIcon } from "../BrandIcon";
-import { MoreServices } from "../MoreServices";
+import { CapabilityMarquee } from "../CapabilityMarquee";
 import { SectionReveal } from "../SectionReveal";
 import { EASE_ENTRANCE } from "@/lib/motion";
 
@@ -24,8 +24,8 @@ function ServiceRow({
   return (
     <motion.article
       className="group grid cursor-default gap-2 border-t border-cocoa/15 py-7 transition-colors duration-300 hover:bg-white/60 sm:grid-cols-12 sm:gap-6 md:py-9"
-      initial={reduce ? false : { opacity: 0, y: 10 }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+      initial={reduce ? false : { y: 10 }}
+      whileInView={reduce ? undefined : { y: 0 }}
       viewport={{ once: true, margin: "-40px", amount: 0.2 }}
       transition={{ duration: 0.5, ease: EASE_ENTRANCE, delay: index * 0.04 }}
     >
@@ -61,21 +61,19 @@ export function ServicesSection() {
       className="section-padding content-auto bg-paper"
     >
       <div className="container-content">
-        <div className="mb-6 flex flex-col gap-4 border-b border-cocoa/15 pb-8 md:flex-row md:items-end md:justify-between md:pb-10">
-          <div className="max-w-2xl">
-            <p className="mb-4 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-cocoa/70">
-              <span aria-hidden>03</span>
-              <span className="h-px w-8 bg-cocoa/30" aria-hidden />
-              <span>Services</span>
-            </p>
-            <h2
-              id="services-heading"
-              className="heading-display text-3xl font-semibold text-cocoa md:text-4xl"
-            >
-              How we help
-            </h2>
-          </div>
-          <p className="max-w-sm text-sm leading-relaxed text-cocoa/75 md:text-right md:text-[15px]">
+        <div className="mb-12 max-w-3xl border-b border-cocoa/15 pb-8 md:pb-10">
+          <p className="mb-4 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-cocoa/70">
+            <span aria-hidden>03</span>
+            <span className="h-px w-8 bg-cocoa/30" aria-hidden />
+            <span>Services</span>
+          </p>
+          <h2
+            id="services-heading"
+            className="heading-display mb-4 text-4xl font-semibold text-cocoa md:text-5xl lg:text-6xl"
+          >
+            How we help
+          </h2>
+          <p className="max-w-2xl text-lg leading-relaxed text-cocoa/75 md:text-xl">
             Six core engagements at the intersection of AI strategy and
             cybersecurity. Additional capabilities available on request.
           </p>
@@ -93,7 +91,7 @@ export function ServicesSection() {
           ))}
         </div>
 
-        <MoreServices />
+        <CapabilityMarquee />
       </div>
     </SectionReveal>
   );

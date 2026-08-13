@@ -8,7 +8,7 @@ export function ConsultationSection() {
     <SectionReveal
       id="consultation"
       aria-labelledby="consultation-heading"
-      className="section-padding content-auto bg-cocoa"
+      className="section-padding content-auto bg-cocoa-deep"
     >
       <div className="container-content">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
@@ -22,7 +22,7 @@ export function ConsultationSection() {
               </p>
               <h2
                 id="consultation-heading"
-                className="heading-display mb-4 text-3xl font-semibold text-white md:text-4xl"
+                className="heading-display mb-4 text-4xl font-semibold text-white md:text-5xl lg:text-6xl"
               >
                 Book a consultation
               </h2>

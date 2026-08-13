@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --color-black: #000000;
+  --color-black: #0C0A08;
   --color-cocoa: #6e4b2d;
   --color-cocoa-light: #745133;
   --color-beige: #debfa2;
@@ -75,7 +75,7 @@ body {
 
   @media (prefers-reduced-transparency: reduce) {
     .glass-chrome {
-      background: #000;
+      background: #0C0A08;
     }
   }
 
@@ -162,4 +162,26 @@ body {
 /* Long strings / i18n expansion safety on flex children */
 .heading-display {
   overflow-wrap: anywhere;
+}
+
+/* Single capability ticker on the Services surface */
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.capability-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .capability-marquee-track {
+    animation: none;
+  }
 }

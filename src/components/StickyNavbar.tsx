@@ -60,7 +60,7 @@ export function StickyNavbar() {
     <>
       <motion.header className="glass-chrome fixed inset-x-0 top-0 z-sticky">
         <div className="mx-auto flex h-16 w-full max-w-content items-center justify-between gap-3 px-4 sm:px-6 md:px-8 lg:h-[4.5rem] xl:px-16">
-          <Logo compact />
+          <Logo />
 
           <nav
             className="hidden min-w-0 items-center gap-6 lg:flex"
@@ -153,9 +153,9 @@ export function StickyNavbar() {
               aria-modal="true"
               aria-labelledby={menuTitleId}
               className="absolute inset-x-0 top-16 max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-beige/10 bg-black p-6 sm:inset-x-0"
-              initial={reduce ? false : { y: -12, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={reduce ? undefined : { y: -8, opacity: 0 }}
+              initial={reduce ? false : { y: -12 }}
+              animate={{ y: 0 }}
+              exit={reduce ? undefined : { y: -8 }}
               transition={{ duration: 0.35, ease: EASE_PREMIUM }}
             >
               <p id={menuTitleId} className="sr-only">
@@ -165,8 +165,8 @@ export function StickyNavbar() {
                 {navLinks.map((link, i) => (
                   <motion.li
                     key={link.href}
-                    initial={reduce ? false : { opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={reduce ? false : { x: -8 }}
+                    animate={{ x: 0 }}
                     transition={{
                       delay: 0.04 + i * 0.04,
                       duration: 0.35,

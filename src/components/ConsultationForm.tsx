@@ -62,7 +62,7 @@ function validate(data: FormState): FieldErrors {
 
   if (!data.phone.trim()) errors.phone = "Phone is required.";
   else if (!isPhone(data.phone))
-    errors.phone = "Enter a valid phone number (7–15 digits).";
+    errors.phone = "Enter a valid phone number (7 to 15 digits).";
 
   if (!data.industry) errors.industry = "Select an industry.";
   if (!data.serviceNeeded) errors.serviceNeeded = "Select a service.";
@@ -481,7 +481,7 @@ export function ConsultationForm() {
               Submitting…
             </>
           ) : (
-            "Book Consultation"
+            "Book a Consultation"
           )}
         </button>
         <button

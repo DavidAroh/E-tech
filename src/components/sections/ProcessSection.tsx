@@ -6,23 +6,18 @@ export function ProcessSection() {
     <SectionReveal
       id="process"
       aria-labelledby="process-heading"
-      className="section-padding content-auto bg-cocoa"
+      className="section-padding content-auto bg-ink"
     >
       <div className="container-content">
-        <div className="mb-10 max-w-2xl border-b border-beige/25 pb-10">
-          <p className="mb-4 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-beige/60">
-            <span aria-hidden>04</span>
-            <span className="h-px w-8 bg-beige/25" aria-hidden />
-            <span>Method</span>
-          </p>
+        <div className="mb-12 max-w-3xl">
           <h2
             id="process-heading"
-            className="heading-display mb-3 text-3xl font-semibold text-white md:text-4xl"
+            className="heading-display mb-4 text-4xl font-semibold text-white md:text-5xl lg:text-6xl"
           >
             How we work
           </h2>
-          <p className="max-w-prose text-base leading-relaxed text-beige-muted">
-            Six steps from first conversation to sustained support.
+          <p className="max-w-2xl text-lg leading-relaxed text-beige-muted md:text-xl">
+            Six phases from first conversation to sustained support.
           </p>
         </div>
         <ProcessTimeline />

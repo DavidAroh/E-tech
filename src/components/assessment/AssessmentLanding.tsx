@@ -32,8 +32,8 @@ export function AssessmentLanding({
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-7">
             <motion.div
-              initial={reduce ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={reduce ? false : { y: 14 }}
+              animate={{ y: 0 }}
               transition={{ duration: 0.6, ease: EASE_ENTRANCE }}
             >
               <p className="mb-6 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-beige/60">

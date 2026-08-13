@@ -30,46 +30,39 @@ export function ContactSection() {
       className="section-padding content-auto bg-cocoa"
     >
       <div className="container-content">
-        <div className="mb-12 flex flex-col gap-4 border-b border-beige/25 pb-8 md:mb-14 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="mb-4 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-beige/60">
-              <span aria-hidden>09</span>
-              <span className="h-px w-8 bg-beige/25" aria-hidden />
-              <span>Contact</span>
-            </p>
-            <h2
-              id="contact-heading"
-              className="heading-display text-3xl font-semibold text-white md:text-4xl"
-            >
-              Contact
-            </h2>
-          </div>
-          <p className="max-w-sm text-sm leading-relaxed text-beige-muted md:text-right md:text-[15px]">
+        <div className="mb-12 max-w-3xl border-b border-beige/25 pb-8 md:mb-14 md:pb-10">
+          <h2
+            id="contact-heading"
+            className="heading-display mb-4 text-4xl font-semibold text-white md:text-5xl lg:text-6xl"
+          >
+            Contact
+          </h2>
+          <p className="max-w-2xl text-base leading-relaxed text-beige-muted md:text-lg">
             Call, email, or book a consultation. We respond during business
             hours.
           </p>
         </div>
 
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
-          <ul className="divide-y divide-beige/25 border-y border-beige/25">
-            <ContactRow
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-14">
+          <ul className="grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2">
+            <ContactItem
               icon="phone"
               label="Phone"
               value={contactInfo.phone}
               href={contactInfo.phoneHref}
             />
-            <ContactRow
+            <ContactItem
               icon="mail"
               label="Email"
               value={contactInfo.email}
               href={contactInfo.emailHref}
             />
-            <ContactRow
+            <ContactItem
               icon="clock"
               label="Business Hours"
               value={contactInfo.hours}
             />
-            <ContactRow
+            <ContactItem
               icon="map"
               label="Location"
               value="Nigeria · Virtual and in-person"
@@ -155,7 +148,7 @@ export function ContactSection() {
   );
 }
 
-function ContactRow({
+function ContactItem({
   icon,
   label,
   value,
@@ -168,7 +161,7 @@ function ContactRow({
 }) {
   const content = (
     <>
-      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-media border border-beige/25 bg-black/15">
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-media border border-beige/25 bg-black/15">
         <BrandIcon name={icon} className="h-5 w-5 text-purple-light" />
       </span>
       <span className="min-w-0">
@@ -187,7 +180,7 @@ function ContactRow({
       <li>
         <a
           href={href}
-          className="flex items-start gap-4 py-6 transition-colors duration-300 hover:text-white"
+          className="flex items-start gap-4 transition-colors duration-300 hover:text-white"
         >
           {content}
         </a>
@@ -195,7 +188,5 @@ function ContactRow({
     );
   }
 
-  return (
-    <li className="flex items-start gap-4 py-6">{content}</li>
-  );
+  return <li className="flex items-start gap-4">{content}</li>;
 }
