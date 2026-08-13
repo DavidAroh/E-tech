@@ -24,16 +24,16 @@ export function HeroIllustration() {
       >
         <defs>
           <radialGradient id="glow" cx="50%" cy="45%" r="55%">
-            <stop offset="0%" stopColor="#4B2E83" stopOpacity="0.32" />
-            <stop offset="100%" stopColor="#0B0B0D" stopOpacity="0" />
+            <stop offset="0%" stopColor="#745133" stopOpacity="0.32" />
+            <stop offset="100%" stopColor="#000000" stopOpacity="0" />
           </radialGradient>
           <linearGradient id="lineBeige" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#EFE6D3" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#9B7AE8" stopOpacity="0.22" />
+            <stop offset="0%" stopColor="#DEBFA2" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#CFB093" stopOpacity="0.22" />
           </linearGradient>
           <linearGradient id="linePurple" x1="1" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#9B7AE8" stopOpacity="0.55" />
-            <stop offset="100%" stopColor="#EFE6D3" stopOpacity="0.12" />
+            <stop offset="0%" stopColor="#CFB093" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="#DEBFA2" stopOpacity="0.12" />
           </linearGradient>
         </defs>
 
@@ -58,9 +58,9 @@ export function HeroIllustration() {
 
         <motion.path
           d="M240 100 L320 140 V230 C320 290 280 340 240 360 C200 340 160 290 160 230 V140 Z"
-          stroke="#9B7AE8"
+          stroke="#CFB093"
           strokeWidth="1.4"
-          fill="rgba(46, 27, 82, 0.28)"
+          fill="rgba(61, 40, 25, 0.28)"
           opacity="0.9"
           initial={reduce ? false : { pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 0.9 }}
@@ -69,7 +69,7 @@ export function HeroIllustration() {
 
         <path
           d="M240 150 L290 175 V230 C290 270 265 300 240 315 C215 300 190 270 190 230 V175 Z"
-          stroke="#EFE6D3"
+          stroke="#DEBFA2"
           strokeWidth="0.75"
           fill="none"
           opacity="0.32"
@@ -95,7 +95,7 @@ export function HeroIllustration() {
             cx={cx}
             cy={cy}
             r={i === 10 ? 5 : 3.2}
-            fill={i % 2 === 0 ? "#9B7AE8" : "#EFE6D3"}
+            fill={i % 2 === 0 ? "#CFB093" : "#DEBFA2"}
             opacity={0.55}
             initial={reduce ? false : { scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 0.55 }}
@@ -111,7 +111,7 @@ export function HeroIllustration() {
           cx="240"
           cy="240"
           r="170"
-          stroke="#EFE6D3"
+          stroke="#DEBFA2"
           strokeWidth="0.5"
           opacity="0.1"
           strokeDasharray="4 8"
@@ -122,7 +122,7 @@ export function HeroIllustration() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(circle at 50% 40%, transparent 38%, rgba(11,11,13,0.5) 100%)",
+            "radial-gradient(circle at 50% 40%, transparent 38%, rgba(0,0,0,0.5) 100%)",
         }}
       />
     </div>

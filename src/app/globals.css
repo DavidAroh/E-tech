@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --color-black: #0b0b0d;
-  --color-cocoa: #2e1f1a;
-  --color-cocoa-light: #4a362c;
-  --color-beige: #efe6d3;
-  --color-beige-muted: #c9bfa9;
+  --color-black: #000000;
+  --color-cocoa: #6e4b2d;
+  --color-cocoa-light: #745133;
+  --color-beige: #debfa2;
+  --color-beige-muted: #e0c1a4;
   --color-white: #fafaf8;
-  --color-purple: #4b2e83;
-  --color-purple-mid: #7c4fd1;
-  --color-purple-light: #9b7ae8;
-  --color-purple-dim: #2e1b52;
+  --color-purple: #745133;
+  --color-purple-mid: #6e4b2d;
+  --color-purple-light: #cfb093;
+  --color-purple-dim: #3d2819;
   --ease-premium: cubic-bezier(0.32, 0.72, 0, 1);
   --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-interactive: cubic-bezier(0.4, 0, 0.2, 1);
@@ -56,7 +56,7 @@ body {
 }
 
 ::selection {
-  background: rgba(155, 122, 232, 0.35);
+  background: rgba(207, 176, 147, 0.35);
   color: var(--color-white);
 }
 
@@ -80,17 +80,17 @@ body {
 @layer components {
   /* Glass ONLY for fixed/sticky chrome (nav, overlays) */
   .glass-chrome {
-    background: rgba(46, 31, 26, 0.72);
+    background: rgba(110, 75, 45, 0.72);
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border: 1px solid rgba(239, 230, 211, 0.1);
+    border: 1px solid rgba(222, 191, 162, 0.1);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35),
       inset 0 1px 0 rgba(255, 255, 255, 0.06);
   }
 
   @media (prefers-reduced-transparency: reduce) {
     .glass-chrome {
-      background: rgba(46, 31, 26, 0.96);
+      background: rgba(110, 75, 45, 0.96);
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
     }
@@ -132,13 +132,13 @@ body {
 
   /* Island CTAs — pill + optional nested icon */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-3 rounded-full bg-purple px-6 py-3.5
-      font-sans text-sm font-medium tracking-wide text-white transition-all duration-400 ease-premium
-      hover:bg-purple-mid active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-3 rounded-full bg-beige px-6 py-3.5
+      font-sans text-sm font-semibold tracking-wide text-cocoa transition-all duration-400 ease-premium
+      hover:bg-beige-muted active:scale-[0.98];
   }
 
   .btn-primary .btn-icon {
-    @apply flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition-transform
+    @apply flex h-8 w-8 items-center justify-center rounded-full bg-cocoa/10 transition-transform
       duration-400 ease-premium;
   }
 
@@ -161,8 +161,8 @@ body {
 
   .skip-link {
     @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100]
-      focus:rounded-full focus:bg-purple focus:px-4 focus:py-2 focus:text-sm focus:font-medium
-      focus:text-white;
+      focus:rounded-full focus:bg-beige focus:px-4 focus:py-2 focus:text-sm focus:font-medium
+      focus:text-cocoa;
   }
 }
 

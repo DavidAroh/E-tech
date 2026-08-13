@@ -9,21 +9,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        black: "#0B0B0D",
+        black: "#000000",
         cocoa: {
-          DEFAULT: "#2E1F1A",
-          light: "#4A362C",
+          DEFAULT: "#6E4B2D",
+          light: "#745133",
         },
         beige: {
-          DEFAULT: "#EFE6D3",
-          muted: "#C9BFA9",
+          DEFAULT: "#DEBFA2",
+          muted: "#E0C1A4",
         },
         white: "#FAFAF8",
         purple: {
-          DEFAULT: "#4B2E83",
-          light: "#9B7AE8", // AA-safe on black for small labels (~4.7:1)
-          mid: "#7C4FD1",
-          dim: "#2E1B52",
+          DEFAULT: "#745133",
+          light: "#CFB093",
+          mid: "#6E4B2D",
+          dim: "#3D2819",
         },
       },
       fontFamily: {

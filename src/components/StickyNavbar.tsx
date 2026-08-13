@@ -32,7 +32,7 @@ export function StickyNavbar() {
   const shellOpacity = useTransform(scrollY, [0, 48, 140], [0.55, 0.82, 0.92]);
   const shellBg = useTransform(
     shellOpacity,
-    (v) => `rgba(46, 31, 26, ${v})`
+    (v) => `rgba(110, 75, 45, ${v})`
   );
 
   const closeMobile = useCallback(() => {

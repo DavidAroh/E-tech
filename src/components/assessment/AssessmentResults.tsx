@@ -158,7 +158,7 @@ function OverallGauge({ result }: { result: AssessmentResult }) {
               cy="88"
               r={radius}
               fill="none"
-              stroke="rgba(239,230,211,0.08)"
+              stroke="rgba(222,191,162,0.08)"
               strokeWidth="14"
             />
             <motion.circle
@@ -176,8 +176,8 @@ function OverallGauge({ result }: { result: AssessmentResult }) {
             />
             <defs>
               <linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#9B7AE8" />
-                <stop offset="100%" stopColor="#7C4FD1" />
+                <stop offset="0%" stopColor="#CFB093" />
+                <stop offset="100%" stopColor="#6E4B2D" />
               </linearGradient>
             </defs>
           </svg>

@@ -89,11 +89,11 @@ export function LoadingScreen() {
               >
                 <path
                   d="M16 4 L24 8.5 V16.5 C24 21.5 20.5 25.5 16 27.5 C11.5 25.5 8 21.5 8 16.5 V8.5 Z"
-                  stroke="#EFE6D3"
+                  stroke="#DEBFA2"
                   strokeWidth="1.25"
-                  fill="rgba(75,46,131,0.35)"
+                  fill="rgba(116,81,51,0.35)"
                 />
-                <circle cx="16" cy="16" r="1.75" fill="#9B7AE8" />
+                <circle cx="16" cy="16" r="1.75" fill="#CFB093" />
               </svg>
             </div>
             <p className="font-display text-xl font-bold tracking-tight text-white">
