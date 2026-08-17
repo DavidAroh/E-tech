@@ -12,13 +12,9 @@ import { BrandIcon } from "../BrandIcon";
 
 type AssessmentLandingProps = {
   onStart: () => void;
-  onStartDemo: () => void;
 };
 
-export function AssessmentLanding({
-  onStart,
-  onStartDemo,
-}: AssessmentLandingProps) {
+export function AssessmentLanding({ onStart }: AssessmentLandingProps) {
   const reduce = useReducedMotion();
 
   return (
@@ -67,17 +63,6 @@ export function AssessmentLanding({
                 <a href="/#services" className="btn-ghost">
                   {ASSESSMENT_LANDING.secondaryCta}
                 </a>
-                <button
-                  type="button"
-                  onClick={onStartDemo}
-                  className="inline-flex items-center gap-2 rounded-control border border-beige/25 px-5 py-3 font-sans text-sm font-medium text-beige-muted transition-colors duration-300 hover:border-purple-light/40 hover:text-beige"
-                >
-                  <BrandIcon
-                    name="sparkle"
-                    className="h-4 w-4 text-purple-light"
-                  />
-                  Try Demo Assessment
-                </button>
               </div>
             </motion.div>
           </div>
@@ -86,9 +71,9 @@ export function AssessmentLanding({
           <div className="lg:col-span-5">
             <div className="flex h-full flex-col justify-center gap-0 border-y border-beige/25">
               <FactRow value={`${DOMAINS.length}`} label="Domains assessed" />
-              <FactRow value="36" label="Questions, ~5 minutes" />
+              <FactRow value="1" label="Secure form, ~5 minutes" />
               <FactRow value="9" label="Risk frameworks mapped" />
-              <FactRow value="1" label="Prioritized roadmap at the end" />
+              <FactRow value="1" label="Response goes straight to E-Tech" />
             </div>
           </div>
         </div>
@@ -150,7 +135,7 @@ export function AssessmentLanding({
         </div>
 
         <div className="mt-10 border-t border-beige/25 pt-5 font-mono text-xs text-beige-muted/70">
-          Powered by E-Tech · <span>{DOMAINS.length} domains · 36 questions · ~5 minutes</span>
+          Powered by E-Tech · <span>{DOMAINS.length} domains · Secure Google Form · ~5 minutes</span>
         </div>
       </div>
     </section>
