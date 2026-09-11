@@ -77,10 +77,10 @@ export function NewsletterForm() {
 
   return (
     <div className="max-w-md min-w-0">
-      <p className="mb-2 font-sans text-sm font-semibold text-beige">
+      <p className="mb-2 font-sans text-sm font-semibold text-white">
         Newsletter
       </p>
-      <p className="mb-4 text-sm text-beige-muted">
+      <p className="mb-4 text-sm font-medium text-white/85">
         Occasional briefings on AI governance and cyber risk. No noise.
       </p>
       <form

@@ -6,7 +6,7 @@ export function TestimonialsSection() {
     <SectionReveal
       id="testimonials"
       aria-labelledby="testimonials-heading"
-      className="section-padding content-auto bg-cocoa"
+      className="section-padding content-auto bg-caramel"
     >
       <div className="container-content">
         <div className="mb-12 max-w-3xl">
@@ -16,7 +16,7 @@ export function TestimonialsSection() {
           >
             Client perspective
           </h2>
-          <p className="max-w-2xl text-lg leading-relaxed text-beige-muted md:text-xl">
+          <p className="max-w-2xl text-lg font-medium leading-relaxed text-white md:text-xl">
             Measured accounts from leadership teams who needed governance as
             much as innovation.
           </p>

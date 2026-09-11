@@ -24,10 +24,9 @@ export function HeroSection() {
             initial={reduce ? false : { y: 12 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5, ease: EASE_ENTRANCE, delay: 0.08 }}
-            className="mb-6 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-beige/60"
+            className="mb-6 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-peach-bright"
           >
-            <span aria-hidden>01</span>
-            <span className="h-px w-8 bg-beige/25" aria-hidden />
+            <span className="h-px w-8 bg-peach-bright/50" aria-hidden />
             <span>AI Advisory &amp; Cybersecurity</span>
           </motion.p>
 

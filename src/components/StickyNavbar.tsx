@@ -70,7 +70,7 @@ export function StickyNavbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="font-sans text-[13px] font-medium text-beige-muted transition-colors duration-300 ease-premium hover:text-white"
+                className="font-sans text-[13px] font-semibold text-white transition-colors duration-300 ease-premium hover:text-peach-bright"
               >
                 {link.label}
               </a>
@@ -81,7 +81,7 @@ export function StickyNavbar() {
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="flex h-10 w-10 items-center justify-center text-beige transition-colors duration-300 hover:text-purple-light"
+              className="flex h-10 w-10 items-center justify-center text-white transition-colors duration-300 hover:text-peach-bright"
               aria-label="Open search"
             >
               <BrandIcon name="search" className="h-5 w-5" />
@@ -97,8 +97,7 @@ export function StickyNavbar() {
 
             <button
               ref={menuButtonRef}
-              type="button"
-              className="relative flex h-10 w-10 items-center justify-center text-beige lg:hidden"
+              type="button"                className="relative flex h-10 w-10 items-center justify-center text-white lg:hidden"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
               aria-controls="mobile-nav-panel"
@@ -161,7 +160,7 @@ export function StickyNavbar() {
               <p id={menuTitleId} className="sr-only">
                 Site navigation
               </p>
-              <ul className="flex flex-col divide-y divide-beige/[0.08]">
+              <ul className="flex flex-col divide-y divide-beige/[0.12]">
                 {navLinks.map((link, i) => (
                   <motion.li
                     key={link.href}
@@ -176,12 +175,9 @@ export function StickyNavbar() {
                     <a
                       href={link.href}
                       onClick={closeMobile}
-                      className="flex items-baseline justify-between py-5 font-display text-2xl font-semibold tracking-tight text-white transition-colors hover:text-purple-light"
+                      className="flex items-center justify-between py-5 font-display text-2xl font-semibold tracking-tight text-white transition-colors hover:text-peach-bright"
                     >
                       <span>{link.label}</span>
-                      <span className="font-mono text-xs text-beige/40">
-                        0{i + 1}
-                      </span>
                     </a>
                   </motion.li>
                 ))}

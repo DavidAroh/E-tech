@@ -8,6 +8,8 @@
   --color-cocoa-light: #745133;
   --color-beige: #debfa2;
   --color-beige-muted: #e0c1a4;
+  --color-caramel: #8b5e34;
+  --color-peach: #e0c1a4;
   --color-white: #fafaf8;
   --color-purple: #745133;
   --color-purple-mid: #6e4b2d;
@@ -117,7 +119,29 @@ body {
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-control bg-beige px-6 py-3.5
       font-sans text-sm font-semibold tracking-wide text-cocoa transition-all duration-300 ease-premium
-      hover:bg-beige-muted active:scale-[0.98];
+      hover:bg-peach-bright active:scale-[0.98];
+  }
+
+  /* White CTA on dark sections — maximum-contrast primary action */
+  .btn-white {
+    @apply inline-flex items-center justify-center gap-2 rounded-control bg-white px-6 py-3.5
+      font-sans text-sm font-bold tracking-wide text-ink transition-all duration-300 ease-premium
+      hover:bg-beige active:scale-[0.98];
+  }
+
+  .btn-white .btn-icon {
+    @apply flex h-4 w-4 items-center justify-center transition-transform duration-300 ease-premium;
+  }
+
+  .btn-white:hover .btn-icon {
+    transform: translateX(3px);
+  }
+
+  /* Maximum-contrast ghost for dark sections */
+  .btn-outline-white {
+    @apply inline-flex items-center justify-center gap-2 rounded-control border-2 border-white/85
+      bg-transparent px-6 py-3.5 font-sans text-sm font-semibold tracking-wide text-white
+      transition-all duration-300 ease-premium hover:border-white hover:bg-white/10 active:scale-[0.98];
   }
 
   .btn-primary .btn-icon {
@@ -139,6 +163,25 @@ body {
     @apply inline-flex items-center justify-center gap-2 rounded-control border border-cocoa/15
       bg-transparent px-6 py-3.5 font-sans text-sm font-medium text-cocoa transition-all
       duration-300 ease-premium hover:border-purple hover:text-purple active:scale-[0.98];
+  }
+
+  /* Readable, consistent control fields (assessment + light forms) */
+  .field-control {
+    @apply w-full min-w-0 rounded-media border px-4 py-3.5 font-sans text-base transition-all duration-300 ease-premium focus:outline-none focus:ring-2;
+  }
+
+  .field-control-dark {
+    @apply field-control border-beige/30 bg-black/40 text-white placeholder:text-beige-muted/70 focus:border-peach-bright focus:ring-purple/30;
+  }
+
+  .field-control-light {
+    @apply field-control border-cocoa/25 bg-white text-ink placeholder:text-cocoa/60 focus:border-purple focus:ring-purple/25;
+  }
+
+  /* Native dropdown options must be readable without hover (fixes invisible <option> text) */
+  select.field-control-dark option,
+  select.field-control-light option {
+    @apply bg-white font-sans text-base font-medium text-ink;
   }
 
   .skip-link {

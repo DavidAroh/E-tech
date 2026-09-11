@@ -22,6 +22,10 @@ const socialIconPaths: Record<string, React.ReactNode> = {
   ),
 };
 
+/**
+ * Contact Us — a visual feature panel carries the page's identity while the
+ * dark-brown strip below holds the actual contact details, socials and CTA.
+ */
 export function ContactSection() {
   return (
     <SectionReveal
@@ -30,21 +34,58 @@ export function ContactSection() {
       className="section-padding content-auto bg-cocoa"
     >
       <div className="container-content">
-        <div className="mb-12 max-w-3xl border-b border-beige/25 pb-8 md:mb-14 md:pb-10">
-          <h2
-            id="contact-heading"
-            className="heading-display mb-4 text-4xl font-semibold text-white md:text-5xl lg:text-6xl"
-          >
-            Contact
-          </h2>
-          <p className="max-w-2xl text-base leading-relaxed text-beige-muted md:text-lg">
-            Call, email, or book a consultation. We respond during business
-            hours.
-          </p>
+        {/* Visual feature: node-lattice motif echoing the hero illustration */}
+        <div
+          className="relative mb-12 overflow-hidden rounded-card border border-beige/25"
+          role="img"
+          aria-label="Abstract network of interconnected nodes symbolizing secure, connected operations"
+        >
+          <div className="relative flex aspect-[16/7] flex-col items-center justify-center gap-4 bg-ink px-6 text-center md:aspect-[16/6]">
+            <svg
+              viewBox="0 0 480 200"
+              className="pointer-events-none absolute inset-0 h-full w-full"
+              fill="none"
+              aria-hidden
+            >
+              <g stroke="rgba(222,191,162,0.28)" strokeWidth="0.8">
+                <line x1="40" y1="160" x2="150" y2="60" />
+                <line x1="150" y1="60" x2="270" y2="130" />
+                <line x1="270" y1="130" x2="390" y2="50" />
+                <line x1="90" y1="40" x2="150" y2="60" />
+                <line x1="270" y1="130" x2="340" y2="170" />
+                <line x1="340" y1="170" x2="440" y2="120" />
+              </g>
+              {[
+                [40, 160],
+                [90, 40],
+                [150, 60],
+                [270, 130],
+                [340, 170],
+                [390, 50],
+                [440, 120],
+              ].map(([cx, cy]) => (
+                <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="4" fill="rgba(207,176,147,0.75)" />
+              ))}
+              <circle cx="240" cy="100" r="80" stroke="rgba(222,191,162,0.12)" strokeDasharray="4 8" />
+            </svg>
+            <div className="relative">
+              <h2
+                id="contact-heading"
+                className="heading-display mb-3 text-4xl font-bold text-white md:text-5xl lg:text-6xl"
+              >
+                Contact Us
+              </h2>
+              <p className="mx-auto max-w-xl text-lg font-medium leading-relaxed text-white">
+                Call, email, or book a consultation. We respond during business
+                hours.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-14">
-          <ul className="grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2">
+        {/* Info strip: contact details on the dark-brown band */}
+        <div className="border-y-2 border-white/20 py-10 md:py-12">
+          <ul className="grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
             <ContactItem
               icon="phone"
               label="Phone"
@@ -68,80 +109,64 @@ export function ContactSection() {
               value="Nigeria · Virtual and in-person"
             />
           </ul>
+        </div>
 
-          <div>
-            <div
-              className="mb-8 flex aspect-[16/10] flex-col items-center justify-center gap-3 border border-beige/25 px-6 text-center"
-              role="img"
-              aria-label="Nigeria-based practice offering virtual and in-person engagements"
-            >
-              <BrandIcon name="map" className="h-8 w-8 text-purple-light" />
-              <div>
-                <p className="font-sans text-sm font-medium text-beige">
-                  Nigeria-based practice
-                </p>
-                <p className="mt-1 font-sans text-sm text-beige-muted">
-                  Virtual and in-person engagements nationwide
-                </p>
-              </div>
-            </div>
+        <div className="mt-10 flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-wrap gap-3">
+            {contactInfo.socials.map((social) => {
+              const isPlaceholder =
+                !social.href || social.href === "#" || social.href === "";
+              const className =
+                "flex h-11 w-11 items-center justify-center rounded-media border border-white/30 text-white transition-colors duration-300 hover:border-peach-bright hover:text-peach-bright";
+              const icon = (
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.35"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                >
+                  {socialIconPaths[social.label]}
+                </svg>
+              );
 
-            <div className="mb-8 flex flex-wrap gap-3">
-              {contactInfo.socials.map((social) => {
-                const isPlaceholder =
-                  !social.href || social.href === "#" || social.href === "";
-                const className =
-                  "flex h-11 w-11 items-center justify-center rounded-media border border-beige/25 text-beige transition-colors duration-300 hover:border-purple-light/40 hover:text-purple-light";
-                const icon = (
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-5 w-5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.35"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden
-                  >
-                    {socialIconPaths[social.label]}
-                  </svg>
-                );
-
-                if (isPlaceholder) {
-                  return (
-                    <span
-                      key={social.label}
-                      className={`${className} cursor-not-allowed opacity-45`}
-                      aria-label={`${social.label} (coming soon)`}
-                      title="Link coming soon"
-                    >
-                      {icon}
-                    </span>
-                  );
-                }
-
+              if (isPlaceholder) {
                 return (
-                  <a
+                  <span
                     key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className={className}
+                    className={`${className} cursor-not-allowed opacity-45`}
+                    aria-label={`${social.label} (coming soon)`}
+                    title="Link coming soon"
                   >
                     {icon}
-                  </a>
+                  </span>
                 );
-              })}
-            </div>
+              }
 
-            <a href="#consultation" className="btn-primary group">
-              Book a Consultation
-              <span className="btn-icon">
-                <BrandIcon name="arrowUpRight" className="h-4 w-4" />
-              </span>
-            </a>
+              return (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className={className}
+                >
+                  {icon}
+                </a>
+              );
+            })}
           </div>
+
+          <a href="#consultation" className="btn-white group">
+            Book a Consultation
+            <span className="btn-icon">
+              <BrandIcon name="arrowUpRight" className="h-4 w-4" />
+            </span>
+          </a>
         </div>
       </div>
     </SectionReveal>
@@ -161,14 +186,14 @@ function ContactItem({
 }) {
   const content = (
     <>
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-media border border-beige/25 bg-black/15">
-        <BrandIcon name={icon} className="h-5 w-5 text-purple-light" />
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-media border border-white/25 bg-black/25">
+        <BrandIcon name={icon} className="h-5 w-5 text-peach-bright" />
       </span>
       <span className="min-w-0">
-        <span className="block font-mono text-[10px] tracking-[0.16em] text-beige-muted">
+        <span className="block font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70">
           {label}
         </span>
-        <span className="mt-1 block font-sans text-base font-medium text-beige break-words">
+        <span className="mt-1 block font-sans text-base font-bold text-white break-words">
           {value}
         </span>
       </span>
@@ -180,7 +205,7 @@ function ContactItem({
       <li>
         <a
           href={href}
-          className="flex items-start gap-4 transition-colors duration-300 hover:text-white"
+          className="flex items-start gap-4 transition-colors duration-300 hover:text-peach-bright"
         >
           {content}
         </a>

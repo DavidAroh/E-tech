@@ -20,7 +20,7 @@ export function ProcessTimeline() {
               {step.title}
             </h3>
           </div>
-          <p className="text-sm leading-relaxed text-beige-muted sm:col-span-5 md:text-base">
+          <p className="text-sm font-medium leading-relaxed text-white/95 sm:col-span-5 md:text-base">
             {step.description}
           </p>
         </li>

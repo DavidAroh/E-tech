@@ -17,6 +17,15 @@ const config: Config = {
           light: "#745133",
           deep: "#5A3D25",
         },
+        /* Three-tone section rhythm: dark brown → caramel → peach */
+        caramel: {
+          DEFAULT: "#8B5E34",
+          deep: "#745133",
+        },
+        peach: {
+          DEFAULT: "#E0C1A4",
+          bright: "#CFB093",
+        },
         beige: {
           DEFAULT: "#DEBFA2",
           muted: "#E0C1A4",

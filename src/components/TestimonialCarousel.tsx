@@ -35,7 +35,7 @@ export function TestimonialCarousel() {
       aria-roledescription="carousel"
       aria-label="Client testimonials"
     >
-      <div className="border-t border-beige/25">
+      <div className="border-t-2 border-white/30">
         <AnimatePresence mode="wait">
           <motion.blockquote
             key={index}
@@ -49,10 +49,10 @@ export function TestimonialCarousel() {
               &ldquo;{item.quote}&rdquo;
             </p>
             <cite className="mt-8 flex items-baseline gap-3 not-italic">
-              <span className="font-sans text-sm font-semibold text-beige">
+              <span className="font-sans text-base font-bold text-white">
                 {item.name}
               </span>
-              <span className="font-sans text-sm text-beige-muted">
+              <span className="font-sans text-base font-medium text-white/90">
                 {item.role}, {item.company}
               </span>
             </cite>
@@ -60,8 +60,8 @@ export function TestimonialCarousel() {
         </AnimatePresence>
       </div>
 
-      <div className="mt-8 flex items-center justify-between border-t border-beige/25 pt-5">
-        <p className="font-mono text-xs tracking-[0.16em] text-beige/70">
+      <div className="mt-8 flex items-center justify-between border-t-2 border-white/30 pt-5">
+        <p className="font-mono text-xs font-semibold tracking-[0.16em] text-white">
           {String(index + 1).padStart(2, "0")} /{" "}
           {String(total).padStart(2, "0")}
         </p>
@@ -70,7 +70,7 @@ export function TestimonialCarousel() {
           <button
             type="button"
             onClick={() => go(-1)}
-            className="flex h-10 w-10 items-center justify-center border border-beige/25 text-beige transition-colors duration-300 hover:border-purple-light/50 hover:text-purple-light"
+            className="flex h-10 w-10 items-center justify-center border-2 border-white/40 text-white transition-colors duration-300 hover:border-white hover:bg-white/10"
             aria-label="Previous testimonial"
           >
             <BrandIcon name="caretLeft" className="h-4 w-4" />
@@ -78,7 +78,7 @@ export function TestimonialCarousel() {
           <button
             type="button"
             onClick={() => go(1)}
-            className="flex h-10 w-10 items-center justify-center border border-beige/25 text-beige transition-colors duration-300 hover:border-purple-light/50 hover:text-purple-light"
+            className="flex h-10 w-10 items-center justify-center border-2 border-white/40 text-white transition-colors duration-300 hover:border-white hover:bg-white/10"
             aria-label="Next testimonial"
           >
             <BrandIcon name="caretRight" className="h-4 w-4" />

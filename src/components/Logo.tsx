@@ -81,11 +81,14 @@ export function Logo({ className, onClick, compact = false }: LogoProps) {
 
       {!compact && (
         <span className="flex flex-col leading-none">
-          <span className="font-display text-[15px] font-bold tracking-[0.08em] text-white">
+          <span className="font-display text-[16px] font-extrabold tracking-[0.06em] text-white">
             E-TECH
           </span>
-          <span className="mt-0.5 font-mono text-[8px] font-medium uppercase tracking-[0.22em] text-beige-muted/70">
+          <span className="mt-1 font-sans text-[9.5px] font-bold uppercase tracking-[0.2em] text-white">
             Etela Technologies
+          </span>
+          <span className="mt-0.5 font-sans text-[8px] font-semibold uppercase tracking-[0.18em] text-peach-bright">
+            AI Advisory and Cybersecurity
           </span>
         </span>
       )}

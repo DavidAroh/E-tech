@@ -35,6 +35,14 @@ const STORAGE_KEY_PROFILE = "etech-assessment-profile";
 const STORAGE_KEY_ANSWERS = "etech-assessment-answers";
 const STORAGE_KEY_DOMAIN = "etech-assessment-domain";
 
+/** Four named steps the user always sees in the stepper. */
+const STEP_LABELS = [
+  "Organisation Profile",
+  "Current Capabilities",
+  "Challenges & Needs",
+  "Assessment Summary",
+] as const;
+
 const EMPTY_PROFILE: ProfileType = {
   organizationName: "",
   industry: "",
@@ -227,172 +235,172 @@ export function AssessmentFlow({
         ref={topRef}
         id="start"
         aria-labelledby="profile-heading"
-        className="section-padding content-auto bg-black"
+        className="section-padding content-auto bg-ink"
       >
         <div className="container-content mx-auto max-w-3xl">
-          <ProgressRail
-            domainIndex={-1}
-            totalAnswered={0}
-            stage="profile"
+          <AssessmentStepper
+            stepIndex={0}
+            currentLabel={STEP_LABELS[0]}
           />
-          <div className="bezel-shell mt-6">
-            <div className="bezel-core p-6 md:p-8">
-              <h2
-                id="profile-heading"
-                className="heading-display mb-2 text-2xl font-semibold text-white md:text-3xl"
+          <div className="mt-8 border border-beige/25 bg-black/60 p-6 md:p-10">
+            <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-peach-bright">
+              Step 1 of 4 — Organisation Profile
+            </p>
+            <h2
+              id="profile-heading"
+              className="heading-display mb-3 text-3xl font-bold text-white md:text-4xl"
+            >
+              Organization Profile
+            </h2>
+            <p className="mb-8 text-base leading-relaxed text-white md:text-lg">
+              Tell us a little about your organization so we can tailor your
+              risk profile. Fields marked * are required.
+            </p>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              <ProfileField
+                id="profile-organizationName"
+                label="Organization Name"
+                error={profileErrors.organizationName}
+                required
               >
-                Organization Profile
-              </h2>
-              <p className="mb-7 text-sm leading-relaxed text-beige-muted">
-                Tell us a little about your organization so we can tailor your
-                risk profile.
-              </p>
-
-              <div className="grid gap-5 md:grid-cols-2">
-                <ProfileField
+                <input
                   id="profile-organizationName"
-                  label="Organization Name"
-                  error={profileErrors.organizationName}
-                  required
-                >
-                  <input
-                    id="profile-organizationName"
-                    type="text"
-                    autoComplete="organization"
-                    maxLength={LIMITS.company}
-                    value={profile.organizationName ?? ""}
-                    onChange={(e) =>
-                      updateProfile("organizationName", e.target.value)
-                    }
-                    className={cn(profileInputClass, profileErrors.organizationName && "border-red-500/60")}
-                    placeholder="Your organization"
-                    aria-invalid={!!profileErrors.organizationName}
-                  />
-                </ProfileField>
+                  type="text"
+                  autoComplete="organization"
+                  maxLength={LIMITS.company}
+                  value={profile.organizationName ?? ""}
+                  onChange={(e) =>
+                    updateProfile("organizationName", e.target.value)
+                  }
+                  className={cn(fieldControlDark, profileErrors.organizationName && "border-red-400")}
+                  placeholder="Your organization"
+                  aria-invalid={!!profileErrors.organizationName}
+                />
+              </ProfileField>
 
-                <ProfileField
+              <ProfileField
+                id="profile-industry"
+                label="Industry"
+                error={profileErrors.industry}
+                required
+              >
+                <ChoiceSelect
                   id="profile-industry"
-                  label="Industry"
-                  error={profileErrors.industry}
+                  value={profile.industry ?? ""}
+                  onChange={(v) => updateProfile("industry", v)}
+                  options={INDUSTRY_OPTIONS as readonly string[]}
+                  placeholder="Select industry"
+                  aria-invalid={!!profileErrors.industry}
+                />
+              </ProfileField>
+
+              <ProfileField
+                id="profile-orgSize"
+                label="Organization Size"
+                error={profileErrors.orgSize}
+                required
+              >
+                <RadioGroup
+                  id="profile-orgSize"
+                  value={profile.orgSize ?? ""}
+                  onChange={(v) => updateProfile("orgSize", v)}
+                  options={ORG_SIZE_OPTIONS as readonly string[]}
+                  aria-label="Organization size"
+                  aria-invalid={!!profileErrors.orgSize}
+                />
+              </ProfileField>
+
+              <ProfileField
+                id="profile-employees"
+                label="Number of Employees"
+                hint="Optional"
+              >
+                <input
+                  id="profile-employees"
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={32}
+                  value={profile.employees ?? ""}
+                  onChange={(e) => updateProfile("employees", e.target.value)}
+                  className={fieldControlDark}
+                  placeholder="e.g. 50–200"
+                />
+              </ProfileField>
+
+              <ProfileField
+                id="profile-aiUsage"
+                label="Current AI Usage"
+                error={profileErrors.aiUsage}
+                required
+              >
+                <RadioGroup
+                  id="profile-aiUsage"
+                  value={profile.aiUsage ?? ""}
+                  onChange={(v) => updateProfile("aiUsage", v)}
+                  options={TRISTATE_OPTIONS as readonly string[]}
+                  aria-label="Current AI usage"
+                  aria-invalid={!!profileErrors.aiUsage}
+                />
+              </ProfileField>
+
+              <ProfileField
+                id="profile-cloudUsage"
+                label="Cloud Usage"
+                error={profileErrors.cloudUsage}
+                required
+              >
+                <RadioGroup
+                  id="profile-cloudUsage"
+                  value={profile.cloudUsage ?? ""}
+                  onChange={(v) => updateProfile("cloudUsage", v)}
+                  options={TRISTATE_OPTIONS as readonly string[]}
+                  aria-label="Cloud usage"
+                  aria-invalid={!!profileErrors.cloudUsage}
+                />
+              </ProfileField>
+
+              <div className="md:col-span-2">
+                <ProfileField
+                  id="profile-assessmentGoal"
+                  label="Primary Assessment Goal"
+                  error={profileErrors.assessmentGoal}
                   required
                 >
                   <ChoiceSelect
-                    id="profile-industry"
-                    value={profile.industry ?? ""}
-                    onChange={(v) => updateProfile("industry", v)}
-                    options={INDUSTRY_OPTIONS as readonly string[]}
-                    placeholder="Select industry"
-                    aria-invalid={!!profileErrors.industry}
-                  />
-                </ProfileField>
-
-                <ProfileField
-                  id="profile-orgSize"
-                  label="Organization Size"
-                  error={profileErrors.orgSize}
-                  required
-                >
-                  <RadioGroup
-                    id="profile-orgSize"
-                    value={profile.orgSize ?? ""}
-                    onChange={(v) => updateProfile("orgSize", v)}
-                    options={ORG_SIZE_OPTIONS as readonly string[]}
-                    aria-label="Organization size"
-                    aria-invalid={!!profileErrors.orgSize}
-                  />
-                </ProfileField>
-
-                <ProfileField
-                  id="profile-employees"
-                  label="Number of Employees"
-                  hint="Optional"
-                >
-                  <input
-                    id="profile-employees"
-                    type="text"
-                    inputMode="numeric"
-                    maxLength={32}
-                    value={profile.employees ?? ""}
-                    onChange={(e) => updateProfile("employees", e.target.value)}
-                    className={profileInputClass}
-                    placeholder="e.g. 50–200"
-                  />
-                </ProfileField>
-
-                <ProfileField
-                  id="profile-aiUsage"
-                  label="Current AI Usage"
-                  error={profileErrors.aiUsage}
-                  required
-                >
-                  <RadioGroup
-                    id="profile-aiUsage"
-                    value={profile.aiUsage ?? ""}
-                    onChange={(v) => updateProfile("aiUsage", v)}
-                    options={TRISTATE_OPTIONS as readonly string[]}
-                    aria-label="Current AI usage"
-                    aria-invalid={!!profileErrors.aiUsage}
-                  />
-                </ProfileField>
-
-                <ProfileField
-                  id="profile-cloudUsage"
-                  label="Cloud Usage"
-                  error={profileErrors.cloudUsage}
-                  required
-                >
-                  <RadioGroup
-                    id="profile-cloudUsage"
-                    value={profile.cloudUsage ?? ""}
-                    onChange={(v) => updateProfile("cloudUsage", v)}
-                    options={TRISTATE_OPTIONS as readonly string[]}
-                    aria-label="Cloud usage"
-                    aria-invalid={!!profileErrors.cloudUsage}
-                  />
-                </ProfileField>
-
-                <div className="md:col-span-2">
-                  <ProfileField
                     id="profile-assessmentGoal"
-                    label="Primary Assessment Goal"
-                    error={profileErrors.assessmentGoal}
-                    required
-                  >
-                    <ChoiceSelect
-                      id="profile-assessmentGoal"
-                      value={profile.assessmentGoal ?? ""}
-                      onChange={(v) => updateProfile("assessmentGoal", v)}
-                      options={ASSESSMENT_GOAL_OPTIONS as readonly string[]}
-                      placeholder="Select your primary goal"
-                      aria-invalid={!!profileErrors.assessmentGoal}
-                    />
-                  </ProfileField>
-                </div>
+                    value={profile.assessmentGoal ?? ""}
+                    onChange={(v) => updateProfile("assessmentGoal", v)}
+                    options={ASSESSMENT_GOAL_OPTIONS as readonly string[]}
+                    placeholder="Select your primary goal"
+                    aria-invalid={!!profileErrors.assessmentGoal}
+                  />
+                </ProfileField>
               </div>
+            </div>
 
-              <p className="mt-6 rounded-media border border-beige/[0.06] bg-black/30 px-4 py-3 text-xs leading-relaxed text-beige-muted/80">
-                {PRIVACY_NOTICE}
-              </p>
+            <p className="mt-7 rounded-media border border-beige/20 bg-black/50 px-4 py-3 text-sm leading-relaxed text-white/85">
+              {PRIVACY_NOTICE}
+            </p>
 
-              <div className="mt-7 flex items-center justify-between gap-3">
-                <button
-                  type="button"
-                  onClick={onRestart}
-                  className="text-sm font-medium text-beige-muted/70 underline-offset-4 transition-colors hover:text-beige hover:underline"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="button"
-                  onClick={handleProfileSubmit}
-                  className="btn-primary"
-                >
-                  Start Assessment
-                  <span className="btn-icon" aria-hidden>
-                    <BrandIcon name="arrowUpRight" className="h-4 w-4" />
-                  </span>
-                </button>
-              </div>
+            <div className="mt-8 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={onRestart}
+                className="text-sm font-semibold text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleProfileSubmit}
+                className="btn-white"
+              >
+                Continue to Step 2
+                <span className="btn-icon" aria-hidden>
+                  <BrandIcon name="arrowUpRight" className="h-4 w-4" />
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -405,21 +413,21 @@ export function AssessmentFlow({
       <section
         ref={topRef}
         aria-labelledby="scoring-heading"
-        className="section-padding content-auto bg-black"
+        className="section-padding content-auto bg-ink"
       >
         <div className="container-content mx-auto flex max-w-xl flex-col items-center py-20 text-center">
           <BrandIcon
             name="spinner"
-            className="mb-6 h-10 w-10 animate-spin text-purple-light"
+            className="mb-6 h-10 w-10 animate-spin text-peach-bright"
             aria-hidden
           />
           <h2
             id="scoring-heading"
-            className="heading-display text-2xl font-semibold text-white md:text-3xl"
+            className="heading-display text-3xl font-bold text-white md:text-4xl"
           >
             Analyzing your risk profile
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-beige-muted">
+          <p className="mt-3 text-base leading-relaxed text-white">
             Scoring nine domains, identifying key findings, and building your
             30/60/90-day roadmap.
           </p>
@@ -429,21 +437,25 @@ export function AssessmentFlow({
   }
 
   // Questions stage
-  const overallQuestion = questionStartIndex + answeredInDomain + (domainComplete ? 0 : 0);
   return (
     <section
       ref={topRef}
       aria-labelledby="questions-heading"
-      className="section-padding content-auto bg-black"
+      className="section-padding content-auto bg-ink"
     >
       <div className="container-content mx-auto max-w-3xl">
         <p className="sr-only" id="questions-heading">
           Assessment questions
         </p>
-        <ProgressRail
-          domainIndex={domainIndex}
-          totalAnswered={totalAnswered}
-          stage="questions"
+
+        <AssessmentStepper
+          stepIndex={domainIndex < 5 ? 1 : 2}
+          currentLabel={
+            domainIndex < 5 ? STEP_LABELS[1] : STEP_LABELS[2]
+          }
+          domainHint={`Domain ${currentDomain.order} of ${DOMAINS.length} · ${currentDomain.name}`}
+          answered={totalAnswered}
+          total={TOTAL_QUESTIONS}
         />
 
         <AnimatePresence mode="wait">
@@ -453,61 +465,72 @@ export function AssessmentFlow({
             animate={{ opacity: 1, y: 0 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
             transition={{ duration: 0.4, ease: EASE_ENTRANCE }}
-            className="bezel-shell mt-6"
+            className="mt-8 border border-beige/25 bg-black/60 p-6 md:p-10"
           >
-            <div className="bezel-core p-6 md:p-8">
-              <div className="mb-5 flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-media border border-beige/[0.08] bg-black/30">
-                  <BrandIcon
-                    name={currentDomain.icon}
-                    className="h-5 w-5 text-purple-light"
-                  />
-                </span>
-                <div>
-                  <p className="font-sans text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-purple-light">
-                    Domain {currentDomain.order} of {DOMAINS.length}
-                  </p>
-                  <h3 className="heading-display text-lg font-semibold text-white">
-                    {currentDomain.name}
-                  </h3>
-                </div>
+            <div className="mb-6 flex items-center gap-4">
+              <span className="flex h-12 w-12 items-center justify-center rounded-media border-2 border-peach-bright/50 bg-black/50">
+                <BrandIcon
+                  name={currentDomain.icon}
+                  className="h-6 w-6 text-peach-bright"
+                />
+              </span>
+              <div>
+                <p className="font-sans text-sm font-bold uppercase tracking-[0.14em] text-peach-bright">
+                  Domain {currentDomain.order} of {DOMAINS.length}
+                </p>
+                <h3 className="heading-display text-2xl font-bold text-white">
+                  {currentDomain.name}
+                </h3>
               </div>
-              <p className="mb-6 text-sm leading-relaxed text-beige-muted">
-                {currentDomain.measures}
-              </p>
+            </div>
+            <p className="mb-8 border-l-4 border-peach-bright/60 pl-4 text-base leading-relaxed text-white md:text-lg">
+              {currentDomain.measures}
+            </p>
 
-              <ol className="space-y-5">
-                {domainQuestions.map((q, i) => (
-                  <li key={q.id}>
-                    <QuestionRow
-                      q={q}
-                      index={questionStartIndex + i + 1}
-                      overallFirst={overallQuestion + 1}
-                      value={answers[q.id]}
-                      onChange={(v) => setAnswer(q.id, v)}
-                    />
-                  </li>
-                ))}
-              </ol>
+            <ol className="space-y-6">
+              {domainQuestions.map((q, i) => (
+                <li key={q.id}>
+                  <QuestionRow
+                    q={q}
+                    index={questionStartIndex + i + 1}
+                    overallFirst={questionStartIndex + i + 1}
+                    value={answers[q.id]}
+                    onChange={(v) => setAnswer(q.id, v)}
+                  />
+                </li>
+              ))}
+            </ol>
 
-              <div className="mt-8 flex items-center justify-between gap-3">
-                <button
-                  type="button"
-                  onClick={handlePreviousDomain}
-                  className="inline-flex items-center gap-2 rounded-control border border-beige/15 px-5 py-3 font-sans text-sm font-medium text-beige-muted transition-colors duration-300 hover:border-beige/40 hover:text-beige"
-                >
-                  <BrandIcon name="caretLeft" className="h-4 w-4" />
-                  {domainIndex === 0 ? "Profile" : "Previous"}
-                </button>
+            <div className="mt-10 flex flex-col gap-3 border-t-2 border-white/15 pt-7 sm:flex-row sm:items-center sm:justify-between">
+              <button
+                type="button"
+                onClick={handlePreviousDomain}
+                className="btn-outline-white justify-center"
+              >
+                <BrandIcon name="caretLeft" className="h-4 w-4" />
+                {domainIndex === 0 ? "Back to Profile" : "Previous"}
+              </button>
+              <div className="flex flex-col items-stretch gap-2 sm:items-end">
+                {!domainComplete ? (
+                  <p className="text-sm font-semibold text-peach">
+                    Answer all {domainQuestions.length} questions in this domain
+                    to continue ({answeredInDomain}/{domainQuestions.length})
+                  </p>
+                ) : (
+                  <p className="text-sm font-semibold text-emerald-300">
+                    Domain complete — {domainQuestions.length}/
+                    {domainQuestions.length} answered
+                  </p>
+                )}
                 <button
                   type="button"
                   onClick={handleNextDomain}
                   disabled={!domainComplete}
-                  className="btn-primary disabled:cursor-not-allowed disabled:opacity-50"
+                  className="btn-white justify-center disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {domainIndex === DOMAINS.length - 1
-                    ? "Get Results"
-                    : "Continue"}
+                    ? "Complete Assessment"
+                    : `Continue to Domain ${currentDomain.order + 1}`}
                   <span className="btn-icon" aria-hidden>
                     <BrandIcon name="arrowUpRight" className="h-4 w-4" />
                   </span>
@@ -523,8 +546,8 @@ export function AssessmentFlow({
 
 /* ----------------------------- Subcomponents ----------------------------- */
 
-const profileInputClass =
-  "w-full min-w-0 rounded-media border border-beige/[0.08] bg-black/30 px-4 py-3.5 font-sans text-sm text-beige placeholder:text-beige-muted/50 transition-all duration-300 ease-premium focus:border-purple-light focus:outline-none focus:ring-2 focus:ring-purple/25";
+const fieldControlDark =
+  "w-full min-w-0 rounded-media border border-beige/30 bg-black/50 px-4 py-3.5 font-sans text-base text-white placeholder:text-beige-muted/70 transition-all duration-300 ease-premium focus:border-peach-bright focus:outline-none focus:ring-2 focus:ring-purple/30";
 
 function ProfileField({
   id,
@@ -543,16 +566,16 @@ function ProfileField({
 }) {
   return (
     <div className="min-w-0">
-      <label htmlFor={id} className="mb-1.5 block font-sans text-sm font-semibold text-beige">
+      <label htmlFor={id} className="mb-2 block font-sans text-base font-bold text-white">
         {label}
-        {required ? <span className="text-purple-light" aria-hidden> *</span> : null}
+        {required ? <span className="text-peach-bright" aria-hidden> *</span> : null}
       </label>
       {children}
       {hint && !error ? (
-        <p className="mt-1.5 text-xs text-beige-muted/60">{hint}</p>
+        <p className="mt-1.5 text-sm text-white/70">{hint}</p>
       ) : null}
       {error ? (
-        <p id={`${id}-error`} role="alert" className="mt-1.5 text-xs text-red-300">
+        <p id={`${id}-error`} role="alert" className="mt-1.5 text-sm font-semibold text-red-300">
           {error}
         </p>
       ) : null}
@@ -581,11 +604,11 @@ function ChoiceSelect({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       aria-invalid={invalid}
-      className={cn(profileInputClass, invalid && "border-red-500/60")}
+      className={cn(fieldControlDark, invalid && "border-red-400")}
     >
       <option value="">{placeholder}</option>
       {options.map((opt) => (
-        <option key={opt} value={opt}>
+        <option key={opt} value={opt} className="bg-white text-base font-medium text-ink">
           {opt}
         </option>
       ))}
@@ -622,10 +645,10 @@ function RadioGroup({
           <label
             key={opt}
             className={cn(
-              "flex min-h-11 cursor-pointer items-center gap-2 rounded-media border px-4 py-2.5 text-sm font-medium transition-all duration-300 ease-premium",
+              "flex min-h-11 cursor-pointer items-center gap-2 rounded-media border-2 px-4 py-2.5 text-sm font-bold transition-all duration-300 ease-premium",
               selected
-                ? "border-purple-light/60 bg-purple/15 text-white"
-                : "border-beige/15 text-beige-muted hover:border-beige/35 hover:text-beige"
+                ? "border-peach-bright bg-purple/40 text-white"
+                : "border-white/30 bg-black/40 text-white hover:border-white/60"
             )}
           >
             <input
@@ -661,24 +684,24 @@ function QuestionRow({
     <fieldset
       id={`q-${q.id}`}
       className={cn(
-        "rounded-media border p-4 transition-colors duration-300 ease-premium md:p-5",
+        "rounded-media border-2 p-4 transition-colors duration-300 ease-premium md:p-5",
         value
-          ? "border-purple-light/25 bg-black/25"
-          : "border-beige/[0.06] bg-black/20"
+          ? "border-peach-bright/60 bg-black/50"
+          : "border-white/25 bg-black/40"
       )}
     >
       <legend className="px-1">
-        <span className="font-sans text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-beige-muted/70">
+        <span className="font-sans text-xs font-bold uppercase tracking-[0.14em] text-peach-bright">
           Question {overallFirst} of {TOTAL_QUESTIONS}
         </span>
-        <p className="mt-1 font-sans text-sm font-medium leading-relaxed text-beige md:text-base">
+        <p className="mt-1 font-sans text-base font-semibold leading-relaxed text-white md:text-lg">
           {q.question}
         </p>
       </legend>
       <div
         role="radiogroup"
         aria-label={`Answer question ${index}`}
-        className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4"
+        className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4"
       >
         {ANSWER_VALUES.map((v) => {
           const selected = value === v;
@@ -686,10 +709,10 @@ function QuestionRow({
             <label
               key={v}
               className={cn(
-                "flex cursor-pointer items-center justify-center gap-2 rounded-media border px-3 py-2.5 text-center text-xs font-medium tracking-wide transition-all duration-300 ease-premium sm:text-sm",
+                "flex cursor-pointer items-center justify-center gap-2 rounded-media border-2 px-3 py-3 text-center text-sm font-bold transition-all duration-300 ease-premium",
                 selected
-                  ? "border-purple-light/60 bg-purple/15 text-white"
-                  : "border-beige/15 text-beige-muted hover:border-beige/35 hover:text-beige"
+                  ? "border-peach-bright bg-purple/40 text-white"
+                  : "border-white/30 bg-black/40 text-white hover:border-white/60"
               )}
             >
               <input
@@ -709,67 +732,97 @@ function QuestionRow({
   );
 }
 
-/** Sticky progress rail at the top of profile + question stages. */
-function ProgressRail({
-  domainIndex,
-  totalAnswered,
-  stage,
+/**
+ * Always-visible step indicator. Shows the four named steps with a
+ * "Step N of 4" banner, an answered counter, and per-step states
+ * (done / current / upcoming) so the user always knows where they are.
+ */
+function AssessmentStepper({
+  stepIndex,
+  currentLabel,
+  domainHint,
+  answered,
+  total,
 }: {
-  domainIndex: number;
-  totalAnswered: number;
-  stage: Stage;
+  stepIndex: number;
+  currentLabel: string;
+  domainHint?: string;
+  answered?: number;
+  total?: number;
 }) {
   const pct =
-    stage === "profile"
-      ? 0
-      : Math.min(100, Math.round((totalAnswered / TOTAL_QUESTIONS) * 100));
+    answered != null && total ? Math.min(100, Math.round((answered / total) * 100)) : 0;
+
   return (
     <div className="sticky top-20 z-10" aria-hidden={false}>
-      <div className="border border-beige/[0.1] bg-black/60 px-4 py-3.5">
-        <div className="flex items-center gap-3">
-          <div className="min-w-0 flex-1">
-            <div className="mb-1.5 flex items-center justify-between gap-3">
-              <p className="font-mono text-[0.625rem] tracking-[0.18em] text-beige-muted/70">
-                {stage === "profile"
-                  ? "Step 1 · Profile"
-                  : `Step 2 · Domain ${domainIndex + 1} of ${DOMAINS.length}`}
-              </p>
-              <p className="font-mono text-[0.625rem] tracking-[0.18em] text-purple-light">
-                {pct}% complete
-              </p>
-            </div>
-            <div
-              className="h-1 w-full overflow-hidden bg-beige/10"
-              role="progressbar"
-              aria-valuenow={pct}
-              aria-valuemin={0}
-              aria-valuemax={100}
-            >
-              <motion.div
-                className="h-full bg-purple-light"
-                initial={false}
-                animate={{ width: `${pct}%` }}
-                transition={{ duration: 0.4, ease: EASE_PREMIUM }}
-              />
-            </div>
-          </div>
-          <ol className="hidden gap-1.5 sm:flex">
-            {DOMAINS.map((d, i) => (
-              <li
-                key={d.id}
-                className={cn(
-                  "h-2 w-6 transition-colors duration-300",
-                  i < domainIndex
-                    ? "bg-purple-light/70"
-                    : i === domainIndex
-                    ? "bg-purple"
-                    : "bg-beige/10"
-                )}
-                title={d.name}
-              />
-            ))}
-          </ol>
+      <div className="border-2 border-beige/25 bg-black/85 px-5 py-4 shadow-xl">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="font-sans text-base font-extrabold tracking-wide text-white sm:text-lg">
+            Step {stepIndex + 1} of 4 — {currentLabel}
+          </p>
+          {answered != null && total ? (
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-peach-bright">
+              {answered}/{total} answered · {pct}%
+            </p>
+          ) : null}
         </div>
+        {domainHint ? (
+          <p className="mt-0.5 text-sm font-medium text-white/80">{domainHint}</p>
+        ) : (
+          <p className="mt-0.5 text-sm font-medium text-white/70">
+            You can move back and forth between steps at any time.
+          </p>
+        )}
+
+        <ol className="mt-3.5 grid grid-cols-2 gap-2 sm:grid-cols-4" aria-label="Assessment steps">
+          {STEP_LABELS.map((label, i) => {
+            const done = i < stepIndex;
+            const current = i === stepIndex;
+            return (
+              <li
+                key={label}
+                aria-current={current ? "step" : undefined}
+                className={cn(
+                  "flex items-center gap-2 border-2 px-2.5 py-2 text-xs font-bold transition-colors duration-300",
+                  done && "border-emerald-400/60 bg-emerald-500/10 text-emerald-200",
+                  current && "border-peach-bright bg-purple/30 text-white",
+                  !done && !current && "border-white/20 bg-black/40 text-white/60"
+                )}
+              >
+                <span
+                  className={cn(
+                    "flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-[10px] leading-none",
+                    done && "border-emerald-300 bg-emerald-400 text-black",
+                    current && "border-peach-bright bg-peach-bright text-black",
+                    !done && !current && "border-white/40 text-white/60"
+                  )}
+                  aria-hidden
+                >
+                  {done ? "✓" : i + 1}
+                </span>
+                <span className="min-w-0 truncate">{label}</span>
+              </li>
+            );
+          })}
+        </ol>
+
+        {answered != null && total ? (
+          <div
+            className="mt-3.5 h-1.5 w-full overflow-hidden bg-white/15"
+            role="progressbar"
+            aria-valuenow={pct}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label={`${pct}% of questions answered`}
+          >
+            <motion.div
+              className="h-full bg-peach-bright"
+              initial={false}
+              animate={{ width: `${pct}%` }}
+              transition={{ duration: 0.4, ease: EASE_PREMIUM }}
+            />
+          </div>
+        ) : null}
       </div>
     </div>
   );

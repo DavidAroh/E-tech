@@ -7,6 +7,10 @@ import { HeroSection } from "@/components/HeroSection";
  * Flat index-rail structure; sections separated by hairlines.
  */
 
+const CapabilityMarquee = dynamic(
+  () => import("@/components/CapabilityMarquee").then((m) => m.CapabilityMarquee),
+  { loading: () => <SectionSkeleton /> }
+);
 const ServicesSection = dynamic(
   () =>
     import("@/components/sections/ServicesSection").then(
@@ -43,7 +47,7 @@ const TestimonialsSection = dynamic(
   { loading: () => <SectionSkeleton /> }
 );
 const FAQSection = dynamic(
-  () => import("@/components/sections/FAQSection").then((m) => m.FAQSection),
+  () => import("@/components/sections/QuickCheck").then((m) => m.FAQSection),
   { loading: () => <SectionSkeleton /> }
 );
 const ConsultationSection = dynamic(
@@ -76,6 +80,7 @@ export default function HomePage() {
       <HeroSection />
       <AboutSection />
       <ServicesSection />
+      <CapabilityMarquee />
       <ProcessSection />
       <IndustriesSection />
       <AssessmentCtaSection />

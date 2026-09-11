@@ -87,7 +87,7 @@ export function AssessmentResults({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE_ENTRANCE }}
         >
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-purple-light">
+          <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-peach-bright">
             Your E-Tech Assessment Results
           </p>
           <h2
@@ -118,13 +118,13 @@ export function AssessmentResults({
         />
 
         <div className="mt-12 flex flex-wrap items-center justify-between gap-4">
-          <p className="max-w-xl text-xs leading-relaxed text-beige-muted/70">
+          <p className="max-w-xl text-xs font-medium leading-relaxed text-white/70">
             {ASSESSMENT_DISCLAIMER}
           </p>
           <button
             type="button"
             onClick={onRestart}
-            className="inline-flex items-center gap-2 rounded-control border border-beige/15 px-5 py-3 font-sans text-sm font-medium text-beige-muted transition-colors duration-300 hover:border-beige/40 hover:text-beige"
+            className="inline-flex items-center gap-2 rounded-control border-2 border-white/40 px-5 py-3 font-sans text-sm font-semibold text-white transition-colors duration-300 hover:border-white hover:bg-white/10"
           >
             <BrandIcon name="refresh" className="h-4 w-4" />
             Start new assessment
@@ -185,7 +185,7 @@ function OverallGauge({ result }: { result: AssessmentResult }) {
             <span className="heading-display text-3xl font-bold text-white">
               {result.overallPercentage}%
             </span>
-            <span className="mt-1 font-sans text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-beige-muted/70">
+            <span className="mt-1 font-sans text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-white/85">
               overall risk
             </span>
           </div>
@@ -197,17 +197,17 @@ function OverallGauge({ result }: { result: AssessmentResult }) {
               level={result.overallRiskLevel}
               label={result.overallRiskLabel}
             />
-            <span className="font-sans text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-beige-muted/60">
+            <span className="font-sans text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-white/80">
               {result.answeredCount}/{result.totalQuestions} questions answered
             </span>
           </div>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-beige-muted">
+          <p className="mt-3 max-w-xl text-base leading-relaxed text-white">
             {result.overallRiskInterpretation}
           </p>
           {result.profile.organizationName ? (
-            <p className="mt-4 text-xs text-beige-muted/70">
+            <p className="mt-4 text-sm font-medium text-white/85">
               Prepared for{" "}
-              <span className="text-beige">
+              <span className="text-peach-bright">
                 {result.profile.organizationName}
               </span>
               {result.profile.industry ? ` · ${result.profile.industry}` : ""}
@@ -220,14 +220,14 @@ function OverallGauge({ result }: { result: AssessmentResult }) {
               <div
                 key={r.level}
                 className={cn(
-                  "rounded-media border px-3 py-2 text-[0.625rem] font-medium",
+                  "rounded-media border px-3 py-2 text-[0.75rem] font-medium",
                   result.overallRiskLevel === r.level
                     ? RISK_STYLES[r.level]
-                    : "border-beige/10 text-beige-muted/60"
+                    : "border-beige/10 text-white/70"
                 )}
               >
                 <p className="font-semibold">{r.label}</p>
-                <p className="mt-0.5 text-beige-muted/50">
+                <p className="mt-0.5 text-white/75">
                   {r.min}–{r.max}%
                 </p>
               </div>
@@ -262,7 +262,7 @@ function CategoryGrid({ result }: { result: AssessmentResult }) {
                       className="h-4 w-4 text-purple-light"
                     />
                   </span>
-                  <p className="font-sans text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-beige-muted/70">
+                  <p className="font-sans text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-white/85">
                     Domain {d.domain.order}
                   </p>
                 </div>
@@ -278,7 +278,7 @@ function CategoryGrid({ result }: { result: AssessmentResult }) {
               <h4 className="heading-display mt-2 text-base font-semibold text-white">
                 {d.domain.name}
               </h4>
-              <p className="mt-1 text-xs leading-relaxed text-beige-muted">
+              <p className="mt-1 text-xs font-medium leading-relaxed text-white">
                 {d.finding}
               </p>
 
@@ -290,7 +290,7 @@ function CategoryGrid({ result }: { result: AssessmentResult }) {
                   />
                 </div>
                 <div className="mt-1.5 flex items-center justify-between">
-                  <span className="font-sans text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-beige-muted/60">
+                  <span className="font-sans text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-white/80">
                     {d.points}/{d.maxPoints} pts
                   </span>
                   <span className="font-sans text-sm font-semibold text-white">
@@ -299,8 +299,8 @@ function CategoryGrid({ result }: { result: AssessmentResult }) {
                 </div>
               </div>
 
-              <p className="mt-4 rounded-media border border-beige/[0.06] bg-black/25 px-3 py-2.5 text-xs leading-relaxed text-beige-muted">
-                <span className="font-semibold text-beige">Next step: </span>
+              <p className="mt-4 rounded-media border border-beige/[0.06] bg-black/25 px-3 py-2.5 text-xs font-medium leading-relaxed text-white">
+                <span className="font-bold text-peach-bright">Next step: </span>
                 {d.recommendation}
               </p>
             </div>
@@ -336,19 +336,19 @@ function TopPriorities({ result }: { result: AssessmentResult }) {
               <h4 className="heading-display mt-3 text-base font-semibold text-white">
                 {d.domain.name}
               </h4>
-              <p className="mt-1 text-xs text-beige-muted">
+              <p className="mt-1 text-xs font-medium leading-relaxed text-white">
                 {d.percentage}% risk
               </p>
-              <p className="mt-3 text-xs leading-relaxed text-beige-muted">
-                <span className="font-semibold text-beige">Why it matters: </span>
+              <p className="mt-3 text-xs font-medium leading-relaxed text-white">
+                <span className="font-bold text-peach-bright">Why it matters: </span>
                 {d.domain.measures}
               </p>
-              <p className="mt-2 text-xs leading-relaxed text-beige-muted">
-                <span className="font-semibold text-beige">Action: </span>
+              <p className="mt-2 text-xs font-medium leading-relaxed text-white">
+                <span className="font-bold text-peach-bright">Action: </span>
                 {d.recommendation}
               </p>
-              <p className="mt-3 rounded-media border border-beige/[0.06] bg-black/25 px-3 py-2 text-xs text-beige-muted">
-                <span className="font-semibold text-beige">E-Tech service: </span>
+              <p className="mt-3 rounded-media border border-beige/[0.06] bg-black/25 px-3 py-2 text-xs font-medium text-white">
+                <span className="font-bold text-peach-bright">E-Tech service: </span>
                 {d.domain.service}
               </p>
             </div>
@@ -368,7 +368,7 @@ function KeyFindings({ result }: { result: AssessmentResult }) {
         <h3 className="heading-display mb-3 text-xl font-semibold text-white md:text-2xl">
           Key findings
         </h3>
-        <div className="rounded-card border border-emerald-500/20 bg-emerald-500/5 px-4 py-3 text-sm text-beige-muted">
+        <div className="rounded-card border border-emerald-500/20 bg-emerald-500/5 px-4 py-3 text-sm font-medium text-white">
           No high-priority findings triggered by full “No” answers. Continue
           monitoring and formalize partial controls.
         </div>
@@ -389,14 +389,14 @@ function KeyFindings({ result }: { result: AssessmentResult }) {
             <p className="font-sans text-sm font-semibold text-white">
               {f.domainName}
             </p>
-            <p className="mt-1 text-xs leading-relaxed text-beige-muted">
+            <p className="mt-1 text-xs font-medium leading-relaxed text-white">
               {f.finding}
             </p>
-            <p className="mt-2 text-xs leading-relaxed text-beige-muted">
-              <span className="font-semibold text-beige">Recommendation: </span>
+            <p className="mt-2 text-xs font-medium leading-relaxed text-white">
+              <span className="font-bold text-peach-bright">Recommendation: </span>
               {f.recommendation}
             </p>
-            <p className="mt-2 text-xs text-purple-light">
+            <p className="mt-2 text-xs font-semibold text-peach-bright">
               <span className="font-semibold">E-Tech service: </span>
               {f.serviceName}
             </p>
@@ -429,7 +429,7 @@ function RecommendedServices({ result }: { result: AssessmentResult }) {
               <p className="font-display text-sm font-semibold text-white">
                 {s.name}
               </p>
-              <p className="mt-0.5 text-xs leading-relaxed text-beige-muted">
+              <p className="mt-0.5 text-xs font-medium leading-relaxed text-white">
                 {s.reason}
               </p>
             </div>
@@ -463,7 +463,7 @@ function Roadmap({ result }: { result: AssessmentResult }) {
               </h4>
               <ul className="mt-3 space-y-2">
                 {phase.actions.map((a) => (
-                  <li key={a} className="flex items-start gap-2 text-xs leading-relaxed text-beige-muted">
+                  <li key={a} className="flex items-start gap-2 text-xs font-medium leading-relaxed text-white">
                     <BrandIcon
                       name="check"
                       className="mt-0.5 h-3.5 w-3.5 shrink-0 text-purple-light"

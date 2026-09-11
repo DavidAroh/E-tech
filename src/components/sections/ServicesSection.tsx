@@ -4,7 +4,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import { primaryServices } from "@/data/content";
 import type { IconName } from "@/data/content";
 import { BrandIcon } from "../BrandIcon";
-import { CapabilityMarquee } from "../CapabilityMarquee";
 import { SectionReveal } from "../SectionReveal";
 import { EASE_ENTRANCE } from "@/lib/motion";
 
@@ -23,31 +22,26 @@ function ServiceRow({
 
   return (
     <motion.article
-      className="group grid cursor-default gap-2 border-t border-cocoa/15 py-7 transition-colors duration-300 hover:bg-white/60 sm:grid-cols-12 sm:gap-6 md:py-9"
+      className="group grid cursor-default gap-3 border-t border-cocoa/20 py-8 transition-colors duration-300 hover:bg-white/60 sm:grid-cols-12 sm:gap-6 md:py-10"
       initial={reduce ? false : { y: 10 }}
       whileInView={reduce ? undefined : { y: 0 }}
       viewport={{ once: true, margin: "-40px", amount: 0.2 }}
       transition={{ duration: 0.5, ease: EASE_ENTRANCE, delay: index * 0.04 }}
     >
-      <p className="font-mono text-xs tracking-[0.14em] text-cocoa/50 sm:col-span-2">
-        {String(index + 1).padStart(2, "0")}
-      </p>
-      <div className="flex items-start gap-4 sm:col-span-6">
-        <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-media border border-cocoa/15 bg-white/70">
+      <div className="flex flex-col items-start gap-4 sm:col-span-5">
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-media border-2 border-cocoa/25 bg-white shadow-sm transition-colors duration-300 group-hover:border-purple/60">
           <BrandIcon
             name={icon}
-            className="h-4 w-4 text-purple transition-colors duration-300 group-hover:text-cocoa"
+            weight="bold"
+            className="h-7 w-7 text-cocoa transition-colors duration-300 group-hover:text-purple"
           />
         </span>
-        <h3 className="heading-display text-xl font-semibold text-cocoa transition-colors duration-300 group-hover:text-purple md:text-2xl">
+        <h3 className="heading-display text-2xl font-bold text-ink transition-colors duration-300 group-hover:text-purple md:text-[1.7rem]">
           {title}
         </h3>
       </div>
-      <p className="text-sm leading-relaxed text-cocoa/75 sm:col-span-3 md:text-[15px]">
+      <p className="text-base leading-relaxed text-cocoa sm:col-span-7 md:text-lg">
         {description}
-      </p>
-      <p className="hidden items-start justify-end font-mono text-xs text-cocoa/0 transition-colors duration-300 group-hover:text-cocoa/50 sm:col-span-1 sm:flex">
-        →
       </p>
     </motion.article>
   );
@@ -58,22 +52,21 @@ export function ServicesSection() {
     <SectionReveal
       id="services"
       aria-labelledby="services-heading"
-      className="section-padding content-auto bg-paper"
+      className="section-padding content-auto bg-peach"
     >
       <div className="container-content">
-        <div className="mb-12 max-w-3xl border-b border-cocoa/15 pb-8 md:pb-10">
-          <p className="mb-4 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-cocoa/70">
-            <span aria-hidden>03</span>
-            <span className="h-px w-8 bg-cocoa/30" aria-hidden />
+        <div className="mb-12 max-w-3xl border-b border-cocoa/20 pb-8 md:pb-10">
+          <p className="mb-4 flex items-center gap-3 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-cocoa">
+            <span className="h-px w-8 bg-cocoa/40" aria-hidden />
             <span>Services</span>
           </p>
           <h2
             id="services-heading"
-            className="heading-display mb-4 text-4xl font-semibold text-cocoa md:text-5xl lg:text-6xl"
+            className="heading-display mb-4 text-4xl font-bold text-ink md:text-5xl lg:text-6xl"
           >
             How we help
           </h2>
-          <p className="max-w-2xl text-lg leading-relaxed text-cocoa/75 md:text-xl">
+          <p className="max-w-2xl text-lg leading-relaxed text-cocoa md:text-xl">
             Six core engagements at the intersection of AI strategy and
             cybersecurity. Additional capabilities available on request.
           </p>
@@ -90,8 +83,6 @@ export function ServicesSection() {
             />
           ))}
         </div>
-
-        <CapabilityMarquee />
       </div>
     </SectionReveal>
   );
