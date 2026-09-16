@@ -1,6 +1,6 @@
-# Etela Technologies (E-Tech)
+# Etela Technology (E-Tech)
 
-Premium dark-first marketing site for **Etela Technologies**, an AI Advisory & Cybersecurity consulting firm.
+Premium dark-first marketing site for **Etela Technology**, an AI Advisory & Cybersecurity consulting firm.
 
 **Tagline:** Rise. Defend. Overcome.
 

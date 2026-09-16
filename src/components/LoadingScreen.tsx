@@ -72,7 +72,7 @@ export function LoadingScreen() {
             transition: { duration: reduce ? 0.15 : 0.55, ease: EASE_ENTRANCE },
           }}
           role="status"
-          aria-label="Loading Etela Technologies"
+          aria-label="Loading Etela Technology"
         >
           <motion.div
             className="mb-8 flex flex-col items-center"
@@ -97,7 +97,7 @@ export function LoadingScreen() {
               </svg>
             </div>
             <p className="font-display text-xl font-bold tracking-tight text-white">
-              Etela Technologies
+              Etela Technology
             </p>
             <p className="mt-1.5 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-beige-muted">
               Rise. Defend. Overcome.

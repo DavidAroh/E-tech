@@ -3,7 +3,7 @@ import { PlaceholderPage } from "@/components/PlaceholderPage";
 
 export const metadata: Metadata = {
   title: "Careers",
-  description: "Join Etela Technologies. Careers page coming soon.",
+  description: "Join Etela Technology. Careers page coming soon.",
 };
 
 export default function CareersPage() {

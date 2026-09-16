@@ -17,7 +17,7 @@ export function Logo({ className, onClick, compact = false }: LogoProps) {
       href="/"
       onClick={onClick}
       className={cn("group inline-flex items-center gap-1.5", className)}
-      aria-label="Etela Technologies home"
+      aria-label="Etela Technology home"
     >
       <span className="relative flex h-9 w-9 items-center justify-center" aria-hidden>
         <svg viewBox="0 0 36 40" className="h-full w-full" fill="none">
@@ -65,7 +65,7 @@ export function Logo({ className, onClick, compact = false }: LogoProps) {
             E-TECH
           </span>
           <span className="mt-1 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-white">
-            Etela Technologies
+            Etela Technology
           </span>
           <span className="mt-0.5 font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-peach-bright">
             AI Advisory and Cybersecurity

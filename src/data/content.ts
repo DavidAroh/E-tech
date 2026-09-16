@@ -388,8 +388,8 @@ export const consultationTypes = [
 export const contactInfo = {
   phone: "+234 902 122 7822",
   phoneHref: "tel:+2349021227822",
-  email: "etelatechnologies9@gmail.com",
-  emailHref: "mailto:etelatechnologies9@gmail.com",
+  email: "etelatechnology9@gmail.com",
+  emailHref: "mailto:etelatechnology9@gmail.com",
   hours: "Monday - Friday, 9:00 AM - 5:00 PM",
   socials: [
     { label: "LinkedIn", href: "#" },

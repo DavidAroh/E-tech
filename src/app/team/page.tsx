@@ -3,7 +3,7 @@ import { PlaceholderPage } from "@/components/PlaceholderPage";
 
 export const metadata: Metadata = {
   title: "Team",
-  description: "Meet the Etela Technologies team. Profile pages coming soon.",
+  description: "Meet the Etela Technology team. Profile pages coming soon.",
 };
 
 export default function TeamPage() {

@@ -10,7 +10,7 @@ Mid-market and enterprise decision-makers (CROs, CTOs, digital transformation le
 
 ## Product Purpose
 
-Etela Technologies (E-Tech) is a boutique AI Advisory & Cybersecurity consulting firm. The primary surface is a marketing site that positions E-Tech as the bridge between AI adoption and security/governance, converts visitors into consultation bookings, and supports future content routes (insights, careers, team). Success is qualified consultation requests and brand trust, not signup freemium metrics.
+Etela Technology (E-Tech) is a boutique AI Advisory & Cybersecurity consulting firm. The primary surface is a marketing site that positions E-Tech as the bridge between AI adoption and security/governance, converts visitors into consultation bookings, and supports future content routes (insights, careers, team). Success is qualified consultation requests and brand trust, not signup freemium metrics.
 
 ## Brand Personality
 

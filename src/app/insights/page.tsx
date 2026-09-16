@@ -4,7 +4,7 @@ import { PlaceholderPage } from "@/components/PlaceholderPage";
 export const metadata: Metadata = {
   title: "Insights",
   description:
-    "Thought leadership on AI governance, cybersecurity, and responsible technology adoption from Etela Technologies.",
+    "Thought leadership on AI governance, cybersecurity, and responsible technology adoption from Etela Technology.",
 };
 
 export default function InsightsPage() {

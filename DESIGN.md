@@ -1,5 +1,5 @@
 ---
-name: Etela Technologies
+name: Etela Technology
 description: "Boutique AI Advisory & Cybersecurity. Rise. Defend. Overcome."
 colors:
   ink: "#070B14"

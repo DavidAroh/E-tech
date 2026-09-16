@@ -41,35 +41,35 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://etelatechnologies.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://etelatechnology.com"
   ),
   title: {
-    default: "Etela Technologies | AI Advisory & Cybersecurity",
-    template: "%s | Etela Technologies",
+    default: "Etela Technology | AI Advisory & Cybersecurity",
+    template: "%s | Etela Technology",
   },
   description:
-    "Etela Technologies helps businesses adopt AI securely and responsibly. Boutique AI advisory and cybersecurity consulting. Rise. Defend. Overcome.",
+    "Etela Technology helps businesses adopt AI securely and responsibly. Boutique AI advisory and cybersecurity consulting. Rise. Defend. Overcome.",
   keywords: [
     "AI advisory",
     "cybersecurity consulting",
     "responsible AI",
     "AI governance",
     "Nigeria cybersecurity",
-    "Etela Technologies",
+    "Etela Technology",
   ],
-  authors: [{ name: "Etela Technologies" }],
+  authors: [{ name: "Etela Technology" }],
   openGraph: {
     type: "website",
     locale: "en_NG",
     url: "/",
-    siteName: "Etela Technologies",
-    title: "Etela Technologies | AI Advisory & Cybersecurity",
+    siteName: "Etela Technology",
+    title: "Etela Technology | AI Advisory & Cybersecurity",
     description:
       "Helping businesses adopt AI securely and responsibly. Boutique consulting at the intersection of AI strategy and cybersecurity.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Etela Technologies | AI Advisory & Cybersecurity",
+    title: "Etela Technology | AI Advisory & Cybersecurity",
     description:
       "Helping businesses adopt AI securely and responsibly. Rise. Defend. Overcome.",
   },

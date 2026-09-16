@@ -58,7 +58,7 @@ export function SiteFooter() {
           </div>
 
           <p className="mt-10 font-mono text-xs font-medium text-white/80">
-            &copy; 2026 Etela Technologies. All Rights Reserved.
+            &copy; 2026 Etela Technology. All Rights Reserved.
           </p>
         </div>
       </div>
