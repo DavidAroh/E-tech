@@ -386,11 +386,10 @@ export const consultationTypes = [
 ];
 
 export const contactInfo = {
-  phone: "091-20-63-99-64",
-  phoneHref: "tel:+2349120639964",
-  // REPLACEABLE: update when production inbox is confirmed
-  email: "info@etelatechnologies.com",
-  emailHref: "mailto:info@etelatechnologies.com",
+  phone: "+234 902 122 7822",
+  phoneHref: "tel:+2349021227822",
+  email: "etelatechnologies9@gmail.com",
+  emailHref: "mailto:etelatechnologies9@gmail.com",
   hours: "Monday - Friday, 9:00 AM - 5:00 PM",
   socials: [
     { label: "LinkedIn", href: "#" },

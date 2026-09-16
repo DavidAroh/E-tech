@@ -10,7 +10,7 @@ export default function PrivacyPage() {
   return (
     <PlaceholderPage
       title="Privacy Policy"
-      description="Full privacy policy content will be published here. For data requests in the meantime, email info@etelatechnologies.com."
+      description="Full privacy policy content will be published here. For data requests in the meantime, email etelatechnologies9@gmail.com."
     />
   );
 }
