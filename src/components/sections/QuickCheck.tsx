@@ -126,10 +126,7 @@ function QuickCheck() {
   }, [answers]);
 
   return (
-    <div className="border-2 border-ink/15 bg-white/50 p-6 md:p-10">
-      <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cocoa">
-        60-second self-check
-      </p>
+    <div className="border border-ink/15 bg-white/50 p-6 md:p-10">
       <h3 className="heading-display text-2xl font-bold text-ink md:text-3xl">
         How exposed is your organization today?
       </h3>
@@ -154,9 +151,9 @@ function QuickCheck() {
                     <label
                       key={opt.value}
                       className={cn(
-                        "flex min-h-11 cursor-pointer items-center rounded-media border px-4 py-2.5 text-sm font-semibold transition-all duration-300 ease-premium",
+                        "flex min-h-11 cursor-pointer items-center rounded-media border px-4 py-2.5 text-sm font-semibold transition-colors duration-200 ease-premium active:scale-[0.97]",
                         selected
-                          ? "border-cocoa bg-cocoa text-white"
+                          ? "border-brass-deep bg-cocoa text-white"
                           : "border-cocoa/25 bg-white text-ink hover:border-cocoa/50"
                       )}
                     >
@@ -190,7 +187,7 @@ function QuickCheck() {
         >
           See preliminary result
           <span className="btn-icon" aria-hidden>
-            <BrandIcon name="arrowUpRight" className="h-4 w-4" />
+            <BrandIcon name="arrowUpRight" weight="regular" className="h-4 w-4" />
           </span>
         </button>
         <p className="text-sm font-medium text-cocoa">
@@ -205,7 +202,7 @@ function QuickCheck() {
           initial={reduce ? false : { y: 12 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.5, ease: EASE_ENTRANCE }}
-          className="mt-8 border-t-2 border-ink/15 pt-8"
+          className="mt-8 border-t border-ink/15 pt-8"
           role="status"
         >
           <div className="flex flex-wrap items-center gap-4">
@@ -235,7 +232,7 @@ function QuickCheck() {
             <a href="/assessment" className="btn-primary group">
               Complete Your Assessment
               <span className="btn-icon" aria-hidden>
-                <BrandIcon name="arrowUpRight" className="h-4 w-4" />
+                <BrandIcon name="arrowUpRight" weight="regular" className="h-4 w-4" />
               </span>
             </a>
           </div>

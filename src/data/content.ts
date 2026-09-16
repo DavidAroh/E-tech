@@ -354,31 +354,6 @@ export const processSteps = [
   },
 ];
 
-// PLACEHOLDER: Replace with real client testimonials when available.
-export const testimonials = [
-  {
-    quote:
-      "E-Tech helped us introduce AI tools without creating blind spots our regulators would later question.",
-    name: "Adaeze Okonkwo",
-    role: "Chief Risk Officer",
-    company: "Lagos commercial bank",
-  },
-  {
-    quote:
-      "Their assessments were rigorous and practical. We left with a roadmap the board could actually fund.",
-    name: "Chinedu Adebayo",
-    role: "CTO",
-    company: "Regional logistics group",
-  },
-  {
-    quote:
-      "Few advisors understand both model governance and cyber controls. That dual lens changed our program.",
-    name: "Fatima Bello",
-    role: "Head of Digital Transformation",
-    company: "Healthcare network",
-  },
-];
-
 export const faqs = [
   {
     question: "Who do you typically work with?",

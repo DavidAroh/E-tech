@@ -1,26 +1,28 @@
 import { processSteps } from "@/data/content";
 
 /**
- * Six-phase rail: oversized index numerals with generous spacing.
- * A single hairline frames the whole block; no per-row rules.
+ * Six-phase journey as an airy numbered grid: generous whitespace,
+ * oversized ghost numerals, one idea per cell. Premium calm over
+ * dense-rail scanning.
  */
 export function ProcessTimeline() {
   return (
-    <ol className="border-y border-beige/20">
+    <ol className="grid gap-px overflow-hidden rounded-card border border-beige/20 bg-beige/20 sm:grid-cols-2 lg:grid-cols-3">
       {processSteps.map((step, index) => (
         <li
           key={step.title}
-          className="group grid gap-3 py-10 transition-colors duration-300 hover:bg-white/5 sm:grid-cols-12 sm:gap-6 md:py-14"
+          className="group flex flex-col gap-4 bg-cocoa p-8 transition-colors duration-200 hover:bg-caramel md:p-10"
         >
-          <p className="font-mono text-5xl font-medium leading-none text-beige/25 transition-colors duration-300 group-hover:text-beige/50 sm:col-span-3 md:text-7xl">
+          <span
+            aria-hidden
+            className="heading-display text-5xl font-bold leading-none text-beige/25 transition-colors duration-200 group-hover:text-brass md:text-6xl"
+          >
             {String(index + 1).padStart(2, "0")}
-          </p>
-          <div className="sm:col-span-4">
-            <h3 className="heading-display text-2xl font-semibold text-white md:text-3xl">
-              {step.title}
-            </h3>
-          </div>
-          <p className="text-sm font-medium leading-relaxed text-white/95 sm:col-span-5 md:text-base">
+          </span>
+          <h3 className="heading-display text-xl font-bold text-white md:text-2xl">
+            {step.title}
+          </h3>
+          <p className="text-sm font-medium leading-relaxed text-white/85 md:text-base">
             {step.description}
           </p>
         </li>

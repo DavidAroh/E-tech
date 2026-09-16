@@ -9,50 +9,56 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        black: "#0C0A08",
-        ink: "#0C0A08",
-        charcoal: "#1A1614",
+        black: "#070B14",
+        ink: "#070B14",
+        inksoft: "#3D4A61",
+        charcoal: "#0B1220",
         cocoa: {
-          DEFAULT: "#6E4B2D",
-          light: "#745133",
-          deep: "#5A3D25",
+          DEFAULT: "#0B1220",
+          light: "#334155",
+          deep: "#070B14",
         },
-        /* Three-tone section rhythm: dark brown → caramel → peach */
+        /* Deep-navy rhythm: navy → slate → light */
         caramel: {
-          DEFAULT: "#8B5E34",
-          deep: "#745133",
+          DEFAULT: "#101D33",
+          deep: "#1A2B4A",
         },
         peach: {
-          DEFAULT: "#E0C1A4",
-          bright: "#CFB093",
+          DEFAULT: "#DDF2FF",
+          bright: "#00B8FF",
         },
         beige: {
-          DEFAULT: "#DEBFA2",
-          muted: "#E0C1A4",
+          DEFAULT: "#D7E0EC",
+          muted: "#9AA4B8",
         },
-        white: "#FAFAF8",
-        paper: "#F1E9DA",
+        white: "#F4F7FB",
+        paper: "#F7FAFC",
+        brass: {
+          DEFAULT: "#00B8FF",
+          bright: "#33CCFF",
+          deep: "#0077B6",
+        },
         purple: {
-          DEFAULT: "#745133",
-          light: "#CFB093",
-          mid: "#6E4B2D",
-          dim: "#3D2819",
+          DEFAULT: "#6C63FF",
+          light: "#8B85FF",
+          mid: "#5A52D6",
+          dim: "#23224F",
         },
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "Georgia", "serif"],
-        sans: ["var(--font-jakarta)", "system-ui", "sans-serif"],
+        display: ["var(--font-manrope)", "system-ui", "sans-serif"],
+        sans: ["var(--font-manrope)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       maxWidth: {
         content: "1280px",
       },
       borderRadius: {
-        shell: "1.5rem",
-        core: "1.25rem",
-        card: "0.75rem",
-        media: "0.5rem",
-        control: "0.375rem",
+        shell: "0.75rem",
+        core: "0.5rem",
+        card: "0.375rem",
+        media: "0.25rem",
+        control: "0.125rem",
       },
       transitionTimingFunction: {
         entrance: "cubic-bezier(0.16, 1, 0.3, 1)",
@@ -68,7 +74,7 @@ const config: Config = {
         bezel:
           "inset 0 1px 1px rgba(255,255,255,0.08), 0 24px 48px -24px rgba(0,0,0,0.55)",
         "bezel-light":
-          "inset 0 1px 1px rgba(255,255,255,0.55), 0 20px 40px -20px rgba(46,31,26,0.18)",
+          "inset 0 1px 1px rgba(255,255,255,0.55), 0 20px 40px -20px rgba(7,11,20,0.18)",
         island:
           "0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06)",
       },

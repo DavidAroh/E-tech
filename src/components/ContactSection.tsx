@@ -35,11 +35,7 @@ export function ContactSection() {
     >
       <div className="container-content">
         {/* Visual feature: node-lattice motif echoing the hero illustration */}
-        <div
-          className="relative mb-12 overflow-hidden rounded-card border border-beige/25"
-          role="img"
-          aria-label="Abstract network of interconnected nodes symbolizing secure, connected operations"
-        >
+        <div className="relative mb-12 overflow-hidden rounded-card border border-beige/25">
           <div className="relative flex aspect-[16/7] flex-col items-center justify-center gap-4 bg-ink px-6 text-center md:aspect-[16/6]">
             <svg
               viewBox="0 0 480 200"
@@ -47,7 +43,7 @@ export function ContactSection() {
               fill="none"
               aria-hidden
             >
-              <g stroke="rgba(222,191,162,0.28)" strokeWidth="0.8">
+              <g stroke="rgba(0,184,255,0.30)" strokeWidth="0.8">
                 <line x1="40" y1="160" x2="150" y2="60" />
                 <line x1="150" y1="60" x2="270" y2="130" />
                 <line x1="270" y1="130" x2="390" y2="50" />
@@ -64,9 +60,9 @@ export function ContactSection() {
                 [390, 50],
                 [440, 120],
               ].map(([cx, cy]) => (
-                <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="4" fill="rgba(207,176,147,0.75)" />
+                <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="4" fill="rgba(0,184,255,0.75)" />
               ))}
-              <circle cx="240" cy="100" r="80" stroke="rgba(222,191,162,0.12)" strokeDasharray="4 8" />
+              <circle cx="240" cy="100" r="80" stroke="rgba(0,184,255,0.14)" strokeDasharray="4 8" />
             </svg>
             <div className="relative">
               <h2
@@ -84,7 +80,7 @@ export function ContactSection() {
         </div>
 
         {/* Info strip: contact details on the dark-brown band */}
-        <div className="border-y-2 border-white/20 py-10 md:py-12">
+        <div className="border-y border-white/20 py-10 md:py-12">
           <ul className="grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
             <ContactItem
               icon="phone"
@@ -117,7 +113,7 @@ export function ContactSection() {
               const isPlaceholder =
                 !social.href || social.href === "#" || social.href === "";
               const className =
-                "flex h-11 w-11 items-center justify-center rounded-media border border-white/30 text-white transition-colors duration-300 hover:border-peach-bright hover:text-peach-bright";
+                "flex h-11 w-11 items-center justify-center rounded-media border border-white/30 text-white transition-colors duration-200 hover:border-peach-bright hover:text-peach-bright active:scale-[0.97]";
               const icon = (
                 <svg
                   viewBox="0 0 24 24"
@@ -164,7 +160,7 @@ export function ContactSection() {
           <a href="#consultation" className="btn-white group">
             Book a Consultation
             <span className="btn-icon">
-              <BrandIcon name="arrowUpRight" className="h-4 w-4" />
+              <BrandIcon name="arrowUpRight" weight="regular" className="h-4 w-4" />
             </span>
           </a>
         </div>
@@ -205,7 +201,7 @@ function ContactItem({
       <li>
         <a
           href={href}
-          className="flex items-start gap-4 transition-colors duration-300 hover:text-peach-bright"
+          className="flex items-start gap-4 transition-colors duration-200 hover:text-peach-bright"
         >
           {content}
         </a>

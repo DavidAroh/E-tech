@@ -11,7 +11,7 @@ export function FAQAccordion() {
   const reduce = useReducedMotion();
 
   return (
-    <div className="divide-y-2 divide-ink/10 border-y-2 border-ink/15">
+    <div className="divide-y divide-ink/10 border-y border-ink/15">
       {faqs.map((faq, index) => {
         const isOpen = openIndex === index;
         const panelId = `faq-panel-${index}`;
@@ -26,7 +26,7 @@ export function FAQAccordion() {
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="group flex w-full items-center justify-between gap-4 py-6 text-left transition-colors duration-300 hover:text-purple"
+                className="group flex w-full items-center justify-between gap-4 py-6 text-left transition-colors duration-200 hover:text-brass-deep active:scale-[0.99]"
               >
                 <span className="font-sans text-base font-semibold text-ink md:text-lg">
                   {faq.question}
@@ -34,7 +34,7 @@ export function FAQAccordion() {
                 <span
                   aria-hidden
                   className={cn(
-                    "flex h-7 w-7 shrink-0 items-center justify-center border-2 border-cocoa/40 font-mono text-base font-bold leading-none text-cocoa transition-transform duration-300",
+                    "flex h-7 w-7 shrink-0 items-center justify-center border border-ink/25 font-mono text-base font-bold leading-none text-ink transition-colors duration-200 group-hover:border-brass-deep group-hover:text-brass-deep",
                     isOpen && "rotate-45"
                   )}
                 >
@@ -50,11 +50,11 @@ export function FAQAccordion() {
                   aria-labelledby={buttonId}
                   initial={reduce ? false : { height: 0 }}
                   animate={{ height: "auto" }}
-                  exit={reduce ? undefined : { height: 0 }}
+                  exit={reduce ? undefined : { height: 0, transition: { duration: 0.25, ease: EASE_ENTRANCE } }}
                   transition={{ duration: 0.4, ease: EASE_ENTRANCE }}
                   className="overflow-hidden"
                 >
-                  <p className="max-w-prose pb-6 pr-12 text-base font-medium leading-relaxed text-cocoa md:text-lg">
+                  <p className="max-w-prose pb-6 pr-12 text-base font-medium leading-relaxed text-inksoft md:text-lg">
                     {faq.answer}
                   </p>
                 </motion.div>

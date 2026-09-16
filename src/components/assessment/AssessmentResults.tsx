@@ -87,12 +87,9 @@ export function AssessmentResults({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE_ENTRANCE }}
         >
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-peach-bright">
-            Your E-Tech Assessment Results
-          </p>
           <h2
             id="results-heading"
-            className="heading-display mt-2 text-3xl font-bold text-white md:text-4xl"
+            className="heading-display text-3xl font-bold text-white md:text-4xl"
           >
             Overall risk profile
           </h2>
@@ -124,7 +121,7 @@ export function AssessmentResults({
           <button
             type="button"
             onClick={onRestart}
-            className="inline-flex items-center gap-2 rounded-control border-2 border-white/40 px-5 py-3 font-sans text-sm font-semibold text-white transition-colors duration-300 hover:border-white hover:bg-white/10"
+            className="inline-flex items-center gap-2 rounded-control border border-white/40 px-5 py-3 font-sans text-sm font-semibold text-white transition-colors duration-200 hover:border-white hover:bg-white/10 active:scale-[0.97]"
           >
             <BrandIcon name="refresh" className="h-4 w-4" />
             Start new assessment
@@ -158,7 +155,7 @@ function OverallGauge({ result }: { result: AssessmentResult }) {
               cy="88"
               r={radius}
               fill="none"
-              stroke="rgba(222,191,162,0.08)"
+              stroke="rgba(0,184,255,0.12)"
               strokeWidth="14"
             />
             <motion.circle
@@ -166,7 +163,7 @@ function OverallGauge({ result }: { result: AssessmentResult }) {
               cy="88"
               r={radius}
               fill="none"
-              stroke="url(#gaugeGrad)"
+              stroke="#00B8FF"
               strokeWidth="14"
               strokeLinecap="round"
               strokeDasharray={circumference}
@@ -174,12 +171,6 @@ function OverallGauge({ result }: { result: AssessmentResult }) {
               animate={{ strokeDashoffset: dash }}
               transition={{ duration: 0.9, ease: EASE_ENTRANCE }}
             />
-            <defs>
-              <linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#CFB093" />
-                <stop offset="100%" stopColor="#6E4B2D" />
-              </linearGradient>
-            </defs>
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
             <span className="heading-display text-3xl font-bold text-white">
@@ -282,13 +273,13 @@ function CategoryGrid({ result }: { result: AssessmentResult }) {
                 {d.finding}
               </p>
 
-              <div className="mt-4">
-                <div className="h-1.5 w-full overflow-hidden rounded-full bg-black/40">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-purple-light to-purple-mid"
-                    style={{ width: `${d.percentage}%` }}
-                  />
-                </div>
+                <div className="mt-4">
+                  <div className="h-1.5 w-full overflow-hidden rounded-full bg-black/40">
+                    <div
+                      className="h-full rounded-full bg-brass"
+                      style={{ width: `${d.percentage}%` }}
+                    />
+                  </div>
                 <div className="mt-1.5 flex items-center justify-between">
                   <span className="font-sans text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-white/80">
                     {d.points}/{d.maxPoints} pts
@@ -810,7 +801,7 @@ function ProfessionalCTA({
                         <>
                           Request Professional Assessment
                           <span className="btn-icon" aria-hidden>
-                            <BrandIcon name="arrowUpRight" className="h-4 w-4" />
+                            <BrandIcon name="arrowUpRight" weight="regular" className="h-4 w-4" />
                           </span>
                         </>
                       )}
@@ -833,7 +824,7 @@ function ProfessionalCTA({
 }
 
 const leadInputClass =
-  "w-full min-w-0 rounded-media border border-cocoa/12 bg-white px-4 py-3.5 font-sans text-sm text-cocoa placeholder:text-cocoa/70 transition-all duration-300 ease-premium focus:border-purple focus:outline-none focus:ring-2 focus:ring-purple/20";
+  "w-full min-w-0 rounded-media border border-cocoa/12 bg-white px-4 py-3.5 font-sans text-sm text-cocoa placeholder:text-cocoa/70 transition-colors duration-200 ease-premium focus:border-purple focus:outline-none focus:ring-2 focus:ring-purple/20";
 
 function LeadField({
   id,
@@ -858,7 +849,7 @@ function LeadField({
       </label>
       {children}
       {hint && !error ? (
-        <p id={`${id}-hint`} className="mt-1.5 text-xs text-cocoa/50">{hint}</p>
+        <p id={`${id}-hint`} className="mt-1.5 text-xs text-cocoa/70">{hint}</p>
       ) : null}
       {error ? (
         <p id={`${id}-error`} className="mt-1.5 text-xs text-red-700" role="alert">

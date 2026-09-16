@@ -10,7 +10,7 @@ import { NewsletterForm } from "./NewsletterForm";
 export function SiteFooter() {
   return (
     <footer
-      className="border-t-2 border-peach-bright/30 bg-ink"
+      className="border-t border-brass/40 bg-ink"
       role="contentinfo"
     >
       <div className="container-content !pb-12 !pt-20">
@@ -36,7 +36,24 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-14 border-t border-white/15 pt-10">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-card border border-white/15 bg-white/15 sm:grid-cols-4">
+            {[
+              ["Drawn", "E-Tech Studio"],
+              ["Checked", "Assurance"],
+              ["Scale", "—"],
+              ["Sheet", "ET—Z901 · Rev C"],
+            ].map(([term, value]) => (
+              <div key={term} className="bg-ink px-4 py-3">
+                <dt className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-beige-muted">
+                  {term}
+                </dt>
+                <dd className="tnum mt-1 font-sans text-xs font-semibold text-white">
+                  {value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <div className="mt-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <NewsletterForm />
           </div>
 

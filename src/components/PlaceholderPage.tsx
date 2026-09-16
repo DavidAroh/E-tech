@@ -9,9 +9,8 @@ export function PlaceholderPage({ title, description }: PlaceholderPageProps) {
   return (
     <section className="section-padding min-h-[70dvh] bg-black pt-36">
       <div className="container-content max-w-2xl">
-        <p className="mb-6 flex items-center gap-3 font-mono text-xs tracking-[0.18em] text-beige/60">
-          <span aria-hidden>●</span>
-          <span>Coming soon</span>
+        <p className="mb-6 font-mono text-xs tracking-[0.18em] text-brass">
+          ● Coming soon
         </p>
         <h1 className="heading-display mb-4 text-4xl font-bold text-white md:text-5xl">
           {title}

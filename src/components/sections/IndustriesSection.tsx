@@ -27,13 +27,13 @@ export function IndustriesSection() {
           </p>
         </div>
 
-        <ul className="grid grid-cols-1 gap-x-12 gap-y-6 border-y-2 border-white/25 py-10 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-x-12 gap-y-6 border-y border-white/25 py-10 sm:grid-cols-2 lg:grid-cols-3">
           {industries.map((industry) => (
             <li
               key={industry.name}
-              className="group flex items-center gap-4 transition-colors duration-300"
+              className="group flex items-center gap-4 transition-colors duration-200"
             >
-              <span className="font-sans text-lg font-bold text-white underline-offset-8 transition-colors duration-300 group-hover:text-peach-bright group-hover:underline group-hover:decoration-white/50 md:text-xl">
+              <span className="font-sans text-lg font-bold text-white underline-offset-8 transition-colors duration-200 group-hover:text-peach-bright group-hover:underline group-hover:decoration-white/50 md:text-xl">
                 {industry.name}
               </span>
             </li>

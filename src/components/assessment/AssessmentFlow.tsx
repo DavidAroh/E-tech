@@ -160,7 +160,11 @@ export function AssessmentFlow({
     setProfileErrors(errors);
     if (Object.keys(errors).length > 0) {
       const first = Object.keys(errors)[0];
-      document.getElementById(`profile-${first}`)?.focus();
+      const container = document.getElementById(`profile-${first}`);
+      const target = container?.querySelector(
+        "input, select, textarea"
+      ) as HTMLElement | null;
+      (target ?? container)?.focus?.();
       return false;
     }
     return true;
@@ -202,9 +206,12 @@ export function AssessmentFlow({
 
   function handleNextDomain() {
     if (!domainComplete) {
-      document
-        .getElementById(`q-${domainQuestions.find((q) => !answers[q.id])?.id}`)
-        ?.focus();
+      const missingId = `q-${domainQuestions.find((q) => !answers[q.id])?.id}`;
+      const container = document.getElementById(missingId);
+      const target = container?.querySelector(
+        "input, select, textarea, button"
+      ) as HTMLElement | null;
+      (target ?? container)?.focus?.();
       return;
     }
     if (domainIndex < DOMAINS.length - 1) {
@@ -235,7 +242,7 @@ export function AssessmentFlow({
         ref={topRef}
         id="start"
         aria-labelledby="profile-heading"
-        className="section-padding content-auto bg-ink"
+        className="section-padding content-auto scroll-mt-32 bg-ink"
       >
         <div className="container-content mx-auto max-w-3xl">
           <AssessmentStepper
@@ -398,7 +405,7 @@ export function AssessmentFlow({
               >
                 Continue to Step 2
                 <span className="btn-icon" aria-hidden>
-                  <BrandIcon name="arrowUpRight" className="h-4 w-4" />
+                  <BrandIcon name="arrowUpRight" weight="regular" className="h-4 w-4" />
                 </span>
               </button>
             </div>
@@ -413,7 +420,7 @@ export function AssessmentFlow({
       <section
         ref={topRef}
         aria-labelledby="scoring-heading"
-        className="section-padding content-auto bg-ink"
+        className="section-padding content-auto scroll-mt-32 bg-ink"
       >
         <div className="container-content mx-auto flex max-w-xl flex-col items-center py-20 text-center">
           <BrandIcon
@@ -468,7 +475,7 @@ export function AssessmentFlow({
             className="mt-8 border border-beige/25 bg-black/60 p-6 md:p-10"
           >
             <div className="mb-6 flex items-center gap-4">
-              <span className="flex h-12 w-12 items-center justify-center rounded-media border-2 border-peach-bright/50 bg-black/50">
+              <span className="flex h-12 w-12 items-center justify-center rounded-media border border-brass/50 bg-black/50">
                 <BrandIcon
                   name={currentDomain.icon}
                   className="h-6 w-6 text-peach-bright"
@@ -483,7 +490,7 @@ export function AssessmentFlow({
                 </h3>
               </div>
             </div>
-            <p className="mb-8 border-l-4 border-peach-bright/60 pl-4 text-base leading-relaxed text-white md:text-lg">
+            <p className="mb-8 border-l border-brass/60 pl-4 text-base leading-relaxed text-white md:text-lg">
               {currentDomain.measures}
             </p>
 
@@ -501,7 +508,7 @@ export function AssessmentFlow({
               ))}
             </ol>
 
-            <div className="mt-10 flex flex-col gap-3 border-t-2 border-white/15 pt-7 sm:flex-row sm:items-center sm:justify-between">
+            <div className="mt-10 flex flex-col gap-3 border-t border-white/15 pt-7 sm:flex-row sm:items-center sm:justify-between">
               <button
                 type="button"
                 onClick={handlePreviousDomain}
@@ -532,7 +539,7 @@ export function AssessmentFlow({
                     ? "Complete Assessment"
                     : `Continue to Domain ${currentDomain.order + 1}`}
                   <span className="btn-icon" aria-hidden>
-                    <BrandIcon name="arrowUpRight" className="h-4 w-4" />
+                    <BrandIcon name="arrowUpRight" weight="regular" className="h-4 w-4" />
                   </span>
                 </button>
               </div>
@@ -547,7 +554,7 @@ export function AssessmentFlow({
 /* ----------------------------- Subcomponents ----------------------------- */
 
 const fieldControlDark =
-  "w-full min-w-0 rounded-media border border-beige/30 bg-black/50 px-4 py-3.5 font-sans text-base text-white placeholder:text-beige-muted/70 transition-all duration-300 ease-premium focus:border-peach-bright focus:outline-none focus:ring-2 focus:ring-purple/30";
+  "w-full min-w-0 rounded-media border border-beige/30 bg-black/50 px-4 py-3.5 font-sans text-base text-white placeholder:text-beige-muted/70 transition-colors duration-200 ease-premium focus:border-peach-bright focus:outline-none focus:ring-2 focus:ring-purple/30";
 
 function ProfileField({
   id,
@@ -637,6 +644,7 @@ function RadioGroup({
       role="radiogroup"
       aria-label={ariaLabel}
       aria-invalid={invalid}
+      tabIndex={-1}
       className="flex flex-wrap gap-2"
     >
       {options.map((opt) => {
@@ -645,7 +653,7 @@ function RadioGroup({
           <label
             key={opt}
             className={cn(
-              "flex min-h-11 cursor-pointer items-center gap-2 rounded-media border-2 px-4 py-2.5 text-sm font-bold transition-all duration-300 ease-premium",
+              "flex min-h-11 cursor-pointer items-center gap-2 rounded-media border-2 px-4 py-2.5 text-sm font-bold transition-colors duration-200 ease-premium focus-within:border-peach-bright focus-within:outline-none focus-within:ring-2 focus-within:ring-peach-bright/50 active:scale-[0.97]",
               selected
                 ? "border-peach-bright bg-purple/40 text-white"
                 : "border-white/30 bg-black/40 text-white hover:border-white/60"
@@ -683,10 +691,11 @@ function QuestionRow({
   return (
     <fieldset
       id={`q-${q.id}`}
+      tabIndex={-1}
       className={cn(
-        "rounded-media border-2 p-4 transition-colors duration-300 ease-premium md:p-5",
+        "scroll-mt-32 rounded-media border p-4 transition-colors duration-200 ease-premium md:p-5",
         value
-          ? "border-peach-bright/60 bg-black/50"
+          ? "border-brass/60 bg-black/50"
           : "border-white/25 bg-black/40"
       )}
     >
@@ -709,7 +718,7 @@ function QuestionRow({
             <label
               key={v}
               className={cn(
-                "flex cursor-pointer items-center justify-center gap-2 rounded-media border-2 px-3 py-3 text-center text-sm font-bold transition-all duration-300 ease-premium",
+                "flex cursor-pointer items-center justify-center gap-2 rounded-media border-2 px-3 py-3 text-center text-sm font-bold transition-colors duration-200 ease-premium focus-within:border-peach-bright focus-within:outline-none focus-within:ring-2 focus-within:ring-peach-bright/50 active:scale-[0.97]",
                 selected
                   ? "border-peach-bright bg-purple/40 text-white"
                   : "border-white/30 bg-black/40 text-white hover:border-white/60"
@@ -755,7 +764,7 @@ function AssessmentStepper({
 
   return (
     <div className="sticky top-20 z-10" aria-hidden={false}>
-      <div className="border-2 border-beige/25 bg-black/85 px-5 py-4 shadow-xl">
+      <div className="border border-beige/25 bg-black/85 px-5 py-4 shadow-xl">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="font-sans text-base font-extrabold tracking-wide text-white sm:text-lg">
             Step {stepIndex + 1} of 4 — {currentLabel}
@@ -783,7 +792,7 @@ function AssessmentStepper({
                 key={label}
                 aria-current={current ? "step" : undefined}
                 className={cn(
-                  "flex items-center gap-2 border-2 px-2.5 py-2 text-xs font-bold transition-colors duration-300",
+                  "flex items-center gap-2 border-2 px-2.5 py-2 text-xs font-bold transition-colors duration-200",
                   done && "border-emerald-400/60 bg-emerald-500/10 text-emerald-200",
                   current && "border-peach-bright bg-purple/30 text-white",
                   !done && !current && "border-white/20 bg-black/40 text-white/60"

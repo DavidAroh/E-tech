@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { Fraunces, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { JetBrains_Mono, Manrope } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyNavbar } from "@/components/StickyNavbar";
 import "./globals.css";
@@ -25,18 +25,11 @@ const SmoothScroll = dynamic(
   { ssr: false }
 );
 
-const fraunces = Fraunces({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-manrope",
   display: "swap",
-  weight: ["600", "700"],
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
-  display: "swap",
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const mono = JetBrains_Mono({
@@ -92,7 +85,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${jakarta.variable} ${mono.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${mono.variable}`}>
       <body className="relative min-h-[100dvh] bg-black font-sans text-beige-muted antialiased">
         <a href="#main-content" className="skip-link">
           Skip to main content

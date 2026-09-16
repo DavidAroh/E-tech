@@ -31,10 +31,11 @@ export function BackToTopButton() {
           type="button"
           aria-label="Back to top"
           onClick={goTop}
-          className="fixed bottom-6 right-6 z-toast flex h-12 w-12 items-center justify-center rounded-media border border-beige/10 bg-black text-beige transition-colors duration-300 hover:border-purple-light/40 hover:text-purple-light md:bottom-8 md:right-8"
+          className="fixed bottom-6 right-6 z-toast flex h-12 w-12 items-center justify-center rounded-media border border-beige/10 bg-black text-beige transition-colors duration-200 hover:border-purple-light/40 hover:text-purple-light active:scale-[0.97] md:bottom-8 md:right-8"
           initial={reduce ? false : { opacity: 0, y: 16, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={reduce ? undefined : { opacity: 0, y: 12, scale: 0.9 }}
+          whileTap={reduce ? undefined : { scale: 0.97 }}
           transition={
             reduce
               ? { duration: 0 }

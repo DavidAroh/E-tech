@@ -20,10 +20,6 @@ export function ConsultationSection() {
           {/* Left: heading + reassurance rail */}
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
-              <p className="mb-4 flex items-center gap-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-peach-bright">
-                <span className="h-px w-8 bg-peach-bright/60" aria-hidden />
-                Engage
-              </p>
               <h2
                 id="consultation-heading"
                 className="heading-display mb-4 text-4xl font-bold text-white md:text-5xl lg:text-6xl"
@@ -35,7 +31,7 @@ export function ConsultationSection() {
                 confidence.
               </p>
 
-              <ul className="space-y-5 border-t-2 border-white/20 pt-8">
+              <ul className="space-y-5 border-t border-white/20 pt-8">
                 <li className="flex items-start gap-4">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-media border border-white/25 bg-white/5">
                     <BrandIcon name="clock" className="h-5 w-5 text-peach-bright" />
@@ -80,10 +76,16 @@ export function ConsultationSection() {
             </div>
           </div>
 
-          {/* Right: paper form on black — single light surface on the site */}
+          {/* Right: paper spec sheet on ink — the single light surface on the site */}
           <div className="lg:col-span-7">
-            <div className="border border-white/15 bg-white p-6 shadow-2xl md:p-10 lg:p-12">
-              <ConsultationForm />
+            <div className="rounded-card border border-white/15 bg-white shadow-2xl">
+              <div className="flex items-center justify-between gap-3 border-b border-ink/10 px-6 py-3 font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-inksoft md:px-10">
+                <span>Form ET—F201</span>
+                <span>Confidential</span>
+              </div>
+              <div className="p-6 md:p-10 lg:p-12">
+                <ConsultationForm />
+              </div>
             </div>
           </div>
         </div>

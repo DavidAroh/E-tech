@@ -2,258 +2,257 @@
 name: Etela Technologies
 description: "Boutique AI Advisory & Cybersecurity. Rise. Defend. Overcome."
 colors:
-  black: "#000000"
-  cocoa: "#6E4B2D"
-  cocoa-light: "#745133"
-  beige: "#DEBFA2"
-  beige-muted: "#E0C1A4"
-  white: "#FAFAF8"
-  purple: "#745133"
-  purple-mid: "#6E4B2D"
-  purple-light: "#CFB093"
-  purple-dim: "#3D2819"
+  ink: "#070B14"
+  sheet: "#0B1220"
+  slate: "#101D33"
+  slate-line: "#1A2B4A"
+  paper: "#F7FAFC"
+  paper-white: "#F4F7FB"
+  brass: "#00B8FF"
+  brass-bright: "#33CCFF"
+  brass-deep: "#0077B6"
+  body-dark: "#9AA4B8"
+  body-paper: "#0B1220"
+  ai-accent: "#6C63FF"
+  ai-accent-light: "#635BFF"
 typography:
   display:
-    fontFamily: "Fraunces, Georgia, serif"
-    fontSize: "clamp(2.35rem, 5vw, 3.15rem)"
+    fontFamily: "Manrope, system-ui, sans-serif"
+    fontSize: "clamp(2.35rem, 5vw, 4.25rem)"
     fontWeight: 700
-    lineHeight: 1.08
+    lineHeight: 1.06
     letterSpacing: "-0.02em"
   headline:
-    fontFamily: "Fraunces, Georgia, serif"
-    fontSize: "clamp(1.875rem, 3vw, 2.5rem)"
-    fontWeight: 600
-    lineHeight: 1.15
+    fontFamily: "Manrope, system-ui, sans-serif"
+    fontSize: "clamp(1.875rem, 3vw, 3rem)"
+    fontWeight: 700
+    lineHeight: 1.1
     letterSpacing: "-0.02em"
   title:
-    fontFamily: "Fraunces, Georgia, serif"
-    fontSize: "1.125rem"
-    fontWeight: 600
-    lineHeight: 1.3
+    fontFamily: "Manrope, system-ui, sans-serif"
+    fontSize: "1.5rem"
+    fontWeight: 700
+    lineHeight: 1.25
     letterSpacing: "-0.02em"
   body:
-    fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
+    fontFamily: "Manrope, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.65
     letterSpacing: "normal"
   label:
-    fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
-    fontSize: "0.625rem"
-    fontWeight: 600
+    fontFamily: "JetBrains Mono, ui-monospace, monospace"
+    fontSize: "0.6875rem"
+    fontWeight: 500
     lineHeight: 1.4
-    letterSpacing: "0.2em"
+    letterSpacing: "0.14em"
 rounded:
-  shell: "2rem"
-  core: "1.625rem"
-  card: "1.25rem"
-  media: "1.75rem"
-  control: "9999px"
+  shell: "0.75rem"
+  core: "0.5rem"
+  card: "0.375rem"
+  media: "0.25rem"
+  control: "0.125rem"
 spacing:
   section-y: "6rem"
   section-y-lg: "10rem"
-  gutter: "1rem"
-  gutter-lg: "2rem"
   content-max: "1280px"
 components:
   button-primary:
-    backgroundColor: "{colors.beige}"
-    textColor: "{colors.cocoa}"
+    backgroundColor: "{colors.brass}"
+    textColor: "{colors.ink}"
     rounded: "{rounded.control}"
     padding: "14px 24px"
     typography: "{typography.body}"
   button-primary-hover:
-    backgroundColor: "{colors.beige-muted}"
-    textColor: "{colors.cocoa}"
+    backgroundColor: "{colors.brass-bright}"
+    textColor: "{colors.ink}"
   button-ghost:
     backgroundColor: "transparent"
-    textColor: "{colors.beige}"
+    textColor: "{colors.paper}"
     rounded: "{rounded.control}"
     padding: "14px 24px"
-  button-secondary-light:
-    backgroundColor: "transparent"
-    textColor: "{colors.cocoa}"
+  button-paper:
+    backgroundColor: "{colors.paper-white}"
+    textColor: "{colors.ink}"
     rounded: "{rounded.control}"
     padding: "14px 24px"
-  card-bezel:
-    backgroundColor: "{colors.cocoa}"
-    textColor: "{colors.beige-muted}"
-    rounded: "{rounded.shell}"
-    padding: "6px"
+  input-dark:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper-white}"
+    rounded: "{rounded.media}"
+    border: "1px solid {colors.slate-line}"
   input-light:
-    backgroundColor: "{colors.white}"
-    textColor: "{colors.cocoa}"
-    rounded: "1rem"
-    padding: "14px 16px"
-  chip-industry:
-    backgroundColor: "rgba(110, 75, 45, 0.4)"
-    textColor: "{colors.beige}"
-    rounded: "{rounded.control}"
-    padding: "12px 20px"
-  nav-island:
-    backgroundColor: "rgba(110, 75, 45, 0.72)"
-    textColor: "{colors.beige-muted}"
-    rounded: "{rounded.control}"
-    height: "56px"
+    backgroundColor: "{colors.paper-white}"
+    textColor: "{colors.body-paper}"
+    rounded: "{rounded.media}"
+    border: "1px solid rgba(11,18,32,0.2)"
+dark-theme:
+  background: "#070B14"
+  primary: "#00B8FF"
+  secondary: "#6C63FF"
+  text: "#F4F7FB"
+light-theme:
+  background: "#F7FAFC"
+  primary: "#0077B6"
+  secondary: "#635BFF"
+  text: "#0B1220"
 ---
 
-# Design System: Etela Technologies
+## Overview
 
-## 1. Overview
+**Creative North Star: "Modern intelligence, human trust"**
 
-**Creative North Star: "The Boardroom Briefing"**
+E-Tech reads as a modern technology partner, not a hacker cliché and not a luxury-brown corporate. Deep-navy sheets carry hairline grids and blue control traces; light paperwork surfaces hold the reading and signing moments (services index, self-check, consultation form); Electric Blue is the one recognizable brand color marking decisions, approvals, and the primary action. Violet appears sparingly for AI-related accents and gradients only — never as the dominant color.
 
-This is a dark-first marketing system for a boutique AI Advisory & Cybersecurity firm. Surfaces should feel safe to open in a C-suite meeting: measured, discreet, and executive-ready. Depth comes from alternating pure black (`#000000`) and dark bronze (`#6E4B2D`) panels, not from neon glow or mesh gradients. Champagne is the seal of decision: warm, deliberate, never the wallpaper.
+The pairing is Manrope throughout: Bold headings, Regular body, Medium buttons — professional, elegant, friendly, modern. JetBrains Mono is reserved for control IDs, sheet tags, and measured data. The visitor should think: "These people understand technology, but they actually understand businesses and people too."
 
-The system pairs Fraunces (editorial serif display) with Plus Jakarta Sans (calm UI body). Motion is choreographed but **visible-first**: content is always readable; entrances only add a slight rise. Glass and blur belong exclusively to sticky chrome (floating nav, overlays). Content cards use double-bezel solid surfaces, not frosted glass walls.
-
-The homepage is distilled to one conversion goal: book a consultation. Secondary complexity is progressive disclosure, not a wall of identical cards.
+Motion is a single authored gesture per surface over visible-first content that never waits on animation. Depth is tonal and layered-flat: sheets stack by overlap and hairline, never by glow or blur. The homepage converts to one goal, book a consultation, with the assessment as the second instrument.
 
 **Key Characteristics:**
-- Dark chamber + warm bronze depth; one intentional light form panel
-- Serif display / sans body; optical sizing on headlines
-- Double-bezel cards; floating island nav; pill CTAs with nested icon
-- Champagne accent ≤ ~10% of any screen; warm text hierarchy on dark
-- Fixed film grain at low opacity; no edge-to-edge sticky bars
+- Deep-navy sheet + blue hairline grid ground; light paperwork sheets
+- Manrope Bold display / Manrope Regular body / Manrope Medium buttons / JetBrains Mono control IDs
+- Square plates (2–6px radii) with title-block captions (sheet · scale · rev)
+- Electric Blue primary; violet only for AI accents; status dots always paired with words
+- One trace-draw motion moment; visible-first, reduced-motion-honored
+- Flat layered construction: overlap and 1px hairlines, no halos
 
-## 2. Colors
+## Colors
 
-Warm champagne and bronze neutrals with a restrained bronze accent: boardroom ink, dark bronze depth, champagne glow, and a single decision seal.
+Deep-navy neutrals with one Electric Blue signature: dark sheets, light paperwork, and a decision blue that stays recognizable on dark and deepens for text on light. Violet is the AI whisper, not the voice.
 
 ### Primary
-- **Decision Bronze** (`#745133`): Primary CTAs, form accents, selected radio states. The only saturated action color on light panels.
-- **Decision Bronze Dark** (`#6E4B2D`): Hover for primary buttons; large decorative linework. Do not use for small body text on black (fails AA).
-- **Decision Warm Beige** (`#CFB093`): Labels, eyebrows, focus rings, icons on dark. AA-safe on black for small text (~8:1).
-- **Decision Bronze Dim** (`#3D2819`): Icon wells, soft accent backgrounds.
+- **Signal Blue** (#00B8FF): Primary CTAs, seal ring, control-ID ink, approval cells. The only saturated accent on dark sheets.
+- **Signal Blue Bright** (#33CCFF): CTA hover, seal check, focus rings on dark.
+- **Signal Blue Deep** (#0077B6): Text and borders on light where AA is owed; focus borders on light fields. Light-theme primary.
+
+### AI accent (sparing)
+- **AI Violet** (#6C63FF dark / #635BFF light): AI-related accents and gradients only — gauge gradients, AI callouts, selected AI states. Never the dominant color, never body text, never the primary CTA.
 
 ### Neutral
-- **Chamber Black** (`#000000`): Base page background.
-- **Dark Bronze Panel** (`#6E4B2D`): Alternating sections, footer, card cores.
-- **Bronze Hairline** (`#745133`): Borders and dividers on dark panels.
-- **Champagne** (`#DEBFA2`): High-emphasis text, ghost button labels, selection text, primary CTA background.
-- **Light Champagne** (`#E0C1A4`): Default body text on dark (~10:1 on black).
-- **Paper White** (`#FAFAF8`): Headings when pure white would be harsh; the consultation form surface only.
+- **Deep Navy** (#070B14): Base page ground and fixed chrome (dark theme background).
+- **Sheet Navy** (#0B1220): Plates, drawing boards, dialog surfaces. Light-theme text.
+- **Control Slate** (#101D33): Alternating section panels, ledger rows.
+- **Hairline Slate** (#1A2B4A): Grid lines, scrollbar, secondary borders.
+- **Paper Light** (#F7FAFC): Paper sections (services, self-check) and the consultation sheet (light theme background).
+- **Paper White** (#F4F7FB): Headings on dark; the consultation form surface (dark theme text).
+- **Sheet Body** (#9AA4B8): Default body text on dark.
+- **Paper Body** (#0B1220): Secondary text on paper.
 
 ### Named Rules
-**The One Seal Rule.** Bronze occupies ≤ ~10% of any viewport. If a section feels "bronze-heavy," desaturate backgrounds and keep bronze on CTAs, focus, and micro-labels only.
+**The One Blue Rule.** Electric Blue holds the viewport's attention: CTAs, seals, control IDs, approvals. If a screen feels blue everywhere, desaturate to hairlines.
 
-**The Paperwork Rule.** Exactly one light surface on the marketing site: the consultation form panel. No light/dark toggle; the site *is* dark.
+**The Violet-Whisper Rule.** Violet appears only where the content is explicitly about AI (gauge gradient, AI badges, AI-selected states). One violet moment per viewport maximum.
 
-**The Alternating Chamber Rule.** Adjacent full-width sections alternate `black` and `dark-bronze`. Never stack pure black on pure black without a bronze (or intentional light form) break.
+**The Paperwork Rule.** Light surfaces appear only where the visitor reads or signs: services index, self-check, consultation form. The site is dark-first; there is no theme toggle.
 
-## 3. Typography
+**The Paired-State Rule.** Status is never color alone: every dot ships beside its word (Mapped, Governed, Assured; Low/Moderate/High/Critical Risk).
 
-**Display Font:** Fraunces (Georgia fallback)
-**Body Font:** Plus Jakarta Sans (system-ui fallback)
+## Typography
 
-**Character:** Editorial authority meets quiet UI clarity. Serif carries the brief; sans runs the instruments. Never mix a second display serif or a second geometric UI sans.
+**Display Font:** Manrope Bold (system-ui fallback)
+**Body Font:** Manrope Regular (system-ui fallback)
+**Button Font:** Manrope Medium
+**Control Font:** JetBrains Mono (measurement, IDs, sheet tags only)
+
+**Character:** Professional, elegant, friendly, modern. Manrope Bold headings carry confident statements; Regular body stays readable and human; Medium buttons feel approachable, never shouty; mono speaks only where something is measured, identified, or revisioned.
 
 ### Hierarchy
-- **Display** (700, clamp ~2.35–3.15rem, lh ~1.08, tracking −0.02em): Hero H1 only. Class: `.heading-display`.
-- **Headline** (600, clamp ~1.875–2.5rem, lh ~1.15, tracking −0.02em): Section H2s.
-- **Title** (600, ~1.125rem, lh ~1.3): Card titles, mission pull-quotes.
-- **Body** (400, 1rem / 1.125rem large, lh ~1.65, max ~65ch): Paragraphs, form helper text.
-- **Label** (600, 10px / 0.625rem, tracking 0.15–0.2em, uppercase): Eyebrow pills, footer column titles, contact row labels. Use sparingly (≤1 eyebrow per ~3 sections).
-
-Weights loaded: Fraunces 600/700; Jakarta 400/500/600.
+- **Display** (700/800, clamp ~2.35–4.25rem, lh ~1.06, tracking −0.02em): Hero H1 and page H1s. Class: `.heading-display`.
+- **Headline** (700, clamp ~1.875–3rem, lh ~1.1): Section H2s, alone with no kicker.
+- **Title** (700, ~1.5rem, lh ~1.25): Card titles, quote display, domain names.
+- **Body** (400/500, 1rem / 1.125rem large, lh ~1.65, max ~65ch): Paragraphs, answers, helper text. Tabular numerals on data.
+- **Label** (500, 11px mono, tracking 0.14em, uppercase): Control IDs (CTL-01), sheet tags (ET—A101 · Rev C), title-block cells, step counters. Never a kicker above a heading.
 
 ### Named Rules
-**The Visible-Type Rule.** Never gate text behind opacity 0 or blur. Motion may translate; type must paint readable on first frame.
+**The Heading-Stands-Alone Rule.** No eyebrow, kicker, or rule-and-label above any heading. Frame metadata lives in title blocks and captions, never over H1–H3.
 
-**The Eyebrow Ration Rule.** Tiny uppercase tracked labels are a brand tool, not section scaffolding. Prefer a strong H2 alone.
+**The Mono-Measures Rule.** Mono is functional — IDs, revisions, counts, sheet tags — never a costume for "technical flavor" on prose.
 
-## 4. Elevation
+## Layout
 
-Depth is mostly **tonal** (black ↔ dark bronze) and **machined** (double-bezel shells). Shadows are soft, dark-room ambient, never harsh Material-style drops. Glass is reserved for chrome, not scrolling content.
+A 12-column grid on a 1280px container; sections breathe at 6rem (10rem on large). The hero is a spec sheet: statement and control index left, drawing plate with title-block caption right, collapsing to one column on small screens. Dense passages (control tables, domain grids, title blocks) deliberately collide with quiet statement faces inside one grammar. Rhythm is one spacing scale throughout, with more space above a heading than below it. Small screens keep the plate and its caption; grids fold to one column and mono tags hold their scale.
+
+## Elevation & Depth
+
+Flat by construction. Depth comes from tonal layering (navy → sheet → slate → paper) and physical overlap of flat sheets, never from colored halos or blur. Content cards carry no backdrop-filter; translucency is reserved for fixed chrome (nav bar) as flat navy at 96% with a hairline.
 
 ### Shadow Vocabulary
-- **Bezel dark** (`inset 0 1px 1px rgba(255,255,255,0.08), 0 24px 48px -24px rgba(0,0,0,0.55)`): Card cores on dark sections.
-- **Bezel light** (`inset 0 1px 1px rgba(255,255,255,0.55), 0 20px 40px -20px rgba(110,75,45,0.18)`): Consultation form paper panel.
-- **Island** (`0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06)`): Floating nav pill, toast/back-to-top.
+- **Bezel dark** (`inset 0 1px 1px rgba(255,255,255,0.08), 0 24px 48px -24px rgba(0,0,0,0.55)`): Plates on dark sheets.
+- **Island** (`0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06)`): Floating chrome (back-to-top, toasts).
 
 ### Named Rules
-**The Chrome-Only Glass Rule.** `backdrop-filter` / blur only on fixed or sticky chrome (nav, modal overlays). Content cards use solid dark-bronze/black fills with hairline beige borders (`beige` at 5–8% opacity).
+**The Flat-Sheet Rule.** No zero-offset colored halo, no decorative blur, no hard offset block shadow. A plate reads by its hairline and its overlap order.
 
-**The Double-Bezel Rule.** Premium containers are shell + core: outer `rounded-shell` (2rem) + padding 6px + inner `rounded-core` with distinct fill. Flat single-border cards are the exception for dense lists, not the default.
+## Shapes
 
-## 5. Components
+Engineered square: near-right angles everywhere (control 2px, media 4px, card 6px, core 8px, shell 12px). Borders are 1px hairlines in light at 8–15% on dark, navy at 10–25% on paper; 2px weights are banned outside focus rings. Corners never clip content art; the drawing plate keeps its frame, corner ticks, and title block as one figure. Status dots are the only routine circles; node markers on drawings are squares.
 
-Character: refined and restrained; tactile on press (`active:scale-[0.98]`), never bounce.
+## Components
+
+Character: modern and decisive; tactile on press (`active:scale-[0.98]`), exponential ease-out, never bounce.
 
 ### Buttons
-- **Shape:** Full pill (`border-radius: 9999px`).
-- **Primary:** Champagne fill, dark bronze label, padding ~14×24px; nested circular icon well (32px) that translates on hover.
-- **Hover:** Fill → light champagne; duration 400ms, ease `cubic-bezier(0.32, 0.72, 0, 1)`.
-- **Ghost:** Transparent, champagne border ~25%, champagne text; border strengthens on hover.
-- **Secondary (on light form):** Dark bronze text, dark bronze/15 border; hover bronze stroke/text.
-- **Focus:** Global `:focus-visible` outline 2px warm-beige, offset 3px.
+- **Shape:** Near-square (border-radius: 0.125rem).
+- **Primary:** Electric Blue fill, navy label, Manrope Medium ~14×24px; plain arrow that nudges on hover.
+- **Hover:** Fill → signal-bright; duration 300ms, ease `cubic-bezier(0.32, 0.72, 0, 1)`.
+- **Ghost:** Transparent, light/25 hairline, light text; border warms toward blue on hover.
+- **Paper (on dark):** Paper-white fill, navy label for maximum-contrast conversion bands.
+- **Secondary (on paper):** Navy text, navy/20 border; hover deepens to signal-deep.
+- **Focus:** Global `:focus-visible` outline 2px signal-bright, offset 3px.
 
-### Chips / Industry pills
-- **Style:** Rounded-full, dark-bronze/40 fill, bronze border, champagne label, optional Phosphor light icon in warm-beige.
-- **Hover:** Border shifts toward warm-beige at ~35% opacity.
+### Control index table
+- **Style:** 1px light/14 hairline frame; mono blue IDs, medium light items, dot-plus-word states right-aligned. The dense strip against a quiet face is the signature collision.
 
 ### Cards / Containers
-- **Corner Style:** Shell 2rem outer; core ~1.625rem inner.
-- **Background:** Dark bronze or black/40 soft core; outer shell champagne/3% wash.
-- **Border:** 1px champagne at 5–8% opacity (never 1px solid gray).
-- **Internal Padding:** ~24–28px on card content.
-- **Hover:** Scale ~1.015; border may warm toward warm-beige/40.
-- **Service cards:** Icon well, title, short description; no "Learn More" clutter on the distilled homepage.
+- **Corner Style:** Card 6px; plates may carry a title-block caption row beneath.
+- **Background:** Sheet/slate navy on dark; white/paper on light sections.
+- **Border:** 1px hairline (never 2px+ on resting surfaces).
+- **Internal Padding:** ~24–28px on card content; 14–16px on fields.
+- **Service rows:** Ledger rows with hairline rules and square icon wells — never a wall of identical icon cards.
 
-### Inputs / Fields (light form only)
-- **Style:** Paper white fill, dark bronze text, rounded-2xl (~16px), padding 14×16px, dark-bronze/12 border.
-- **Placeholder:** dark-bronze at ≥70% opacity for AA.
-- **Focus:** Bronze border + bronze/20 ring.
-- **Error:** Red-600 border + alert text below field; `aria-invalid` + `aria-describedby`.
-- **Constraints:** Shared max lengths; past dates blocked; phone 7–15 digits.
+### Inputs / Fields
+- **Style:** Square (4px), hairline border, 14×16px padding; dark fields on navy, paper-white on the form sheet.
+- **Focus:** Signal(-deep on paper) border + 25–30% ring.
+- **Error:** Red-600 border with named recovery text; `aria-invalid` + `aria-describedby`.
 
 ### Navigation
-- **Style:** Floating glass island, centered, max-width ~56rem, height 56–64px, detached from top (~16–24px).
-- **Typography:** 13px medium sans, beige-muted → white on hover.
-- **Mobile:** Hamburger morphs to X; full-width dialog panel with focus trap; display-size link list.
+- **Style:** Flat navy frame bar with bottom hairline; sheet tag (ET—A101 · Rev C) at wide widths; 13px semibold links warming to blue.
+- **Mobile:** Hamburger morphs to X; full-width sheet dialog with focus trap; display-size link list.
 - **Search:** Command-palette modal (Ctrl/Cmd+K); focus trap; Esc closes.
 
-### Signature: Hero illustration
-- Abstract node lattice + shield path in low-opacity bronze/champagne linework.
-- Framed in double-bezel media shell; `role="img"` with descriptive alt/aria-label.
-- Never robots, brains, or stock hands.
+### Signature: Assurance control-map
+- Six square engagement nodes traced in flat hairlines to one blue seal ring with check; grid-snapped, corner-ticked frame, ET—A101 / REV C tags.
+- Framed as a figure with a three-cell title block; `role="img"` with descriptive label.
+- The trace draw-in is the surface's one authored motion moment.
 
-### Signature: Process timeline
-- Numbered 1–6 steps; horizontal connector on desktop, vertical on mobile.
-- Draw-in line via scroll-linked scale (transform only).
+### Signature: Title block
+- Three-to-four mono cells (Drawn / Checked / Scale / Sheet, or title / scale-rev / state) divided by hairlines; used under plates, forms, and the footer approvals strip.
 
-### Motion (fold into component behavior)
-- **Entrance ease:** `cubic-bezier(0.16, 1, 0.3, 1)` (~0.7s).
-- **Interactive ease:** `cubic-bezier(0.32, 0.72, 0, 1)` or `0.4, 0, 0.2, 1`.
-- **Stagger:** 0.08s per child in grids.
-- **Reduced motion:** Instant or static; no theatrical loading curtain.
-- **Loading screen:** Optional first-visit only; never empty black overlay; hard unmount ≤2s.
+### Motion
+- **Entrance ease:** `cubic-bezier(0.16, 1, 0.3, 1)` (~0.5–0.7s), rise-only from visible defaults.
+- **Interactive ease:** `cubic-bezier(0.32, 0.72, 0, 1)` (300ms).
+- **Reduced motion:** Static; the seal renders complete, the ticker stops.
+- **Browser surfaces:** Blue selection and caret, themed scrollbar, blue focus, tabular data numerals.
 
-### Z-index scale
-- Grain: 1 (under UI) · Sticky: 50 · Overlay: 60 · Modal: 70 · Toast: 80 · Loader: 90
-
-## 6. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do:
-- **Do** alternate chamber black and dark bronze panels for section rhythm.
-- **Do** reserve bronze for CTAs, focus, and micro-labels (The One Seal Rule).
-- **Do** use double-bezel shells for featured containers and solid fills for content cards.
-- **Do** keep the consultation form as the single light paper surface.
-- **Do** use Fraunces for display/headlines and Plus Jakarta Sans for body/UI only.
-- **Do** keep motion visible-first; honor `prefers-reduced-motion`.
-- **Do** expose secondary services via progressive disclosure, not a 16-card wall.
-- **Do** maintain WCAG AA contrast (light-champagne on black; warm-beige for small labels on dark).
-- **Do** trap focus in search and mobile menu; restore focus on close.
-- **Do** leave room in nav for future routes (insights, careers, team, portal) without redesigning the shell.
+- **Do** let every H2 stand alone; put metadata in title blocks and captions.
+- **Do** pair every status dot with its word, on dark and on paper.
+- **Do** keep Electric Blue recognizable: CTAs, seals, IDs, approvals, focus.
+- **Do** keep violet rare and AI-only: gauge gradients, AI badges.
+- **Do** build depth from flat overlap plus 1px hairlines.
+- **Do** use mono only for IDs, revisions, counts, and sheet tags.
+- **Do** keep the consultation form the single paper-white surface with its Form ET—F201 strip.
+- **Do** honor `prefers-reduced-motion` with complete static states.
+- **Do** keep AA or better at rest.
 
 ### Don't:
-- **Don't** ship generic AI-startup landing patterns: glowing brains, robot hands, mesh gradients, neon glows (PRODUCT.md anti-references).
-- **Don't** use playful SaaS energy: bounce easing, emoji decoration, cartoon illustrations.
-- **Don't** build identical three-column feature card walls with thick icons as the default layout.
-- **Don't** use cream/agency light mode or loud gradient-text heroes.
-- **Don't** apply glassmorphism or backdrop-blur to scrolling content cards.
-- **Don't** glue an edge-to-edge sticky bar to the top; use the floating island.
-- **Don't** put an uppercase tracked eyebrow above every section.
-- **Don't** use Inter, Lucide thick defaults, or pure black/white `#000`/`#fff` as brand surfaces.
-- **Don't** gate content on opacity 0 or filter blur for "premium" entrances.
-- **Don't** invent a second accent color family (no teal/cyan companion "tech" palette).
+- **Don't** ship generic AI-startup patterns: glowing brains, mesh gradients, neon glows, gradient text.
+- **Don't** put a kicker or eyebrow above any heading, on any surface.
+- **Don't** use 2px+ borders on resting cards, rows, or callouts.
+- **Don't** apply blur or glow to content; reserve translucency for fixed chrome.
+- **Don't** build identical icon-card walls; use ledger rows and index tables.
+- **Don't** set prose or UI labels in mono for flavor.
+- **Don't** let violet dominate; blue is the brand, violet is the AI whisper.
+- **Don't** gate content behind opacity-0 or blur entrances.

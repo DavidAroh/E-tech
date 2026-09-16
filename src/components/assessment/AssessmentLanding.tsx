@@ -36,10 +36,6 @@ export function AssessmentLanding({
               animate={{ y: 0 }}
               transition={{ duration: 0.6, ease: EASE_ENTRANCE }}
             >
-              <p className="mb-6 flex items-center gap-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-peach-bright">
-                <span className="h-px w-8 bg-peach-bright/60" aria-hidden />
-                <span>{ASSESSMENT_LANDING.subheading}</span>
-              </p>
               <h1
                 id="assessment-heading"
                 className="heading-display mb-6 max-w-2xl text-4xl font-bold leading-[1.06] text-white sm:text-5xl lg:text-[3.5rem]"
@@ -60,7 +56,7 @@ export function AssessmentLanding({
                 <button type="button" onClick={onStart} className="btn-white group">
                   {ASSESSMENT_LANDING.primaryCta}
                   <span className="btn-icon" aria-hidden>
-                    <BrandIcon name="arrowUpRight" className="h-4 w-4" />
+                    <BrandIcon name="arrowUpRight" weight="regular" className="h-4 w-4" />
                   </span>
                 </button>
                 <a href="/#services" className="btn-outline-white">
@@ -69,7 +65,7 @@ export function AssessmentLanding({
                 <button
                   type="button"
                   onClick={onStartDemo}
-                  className="inline-flex items-center gap-2 rounded-control border-2 border-white/60 px-5 py-3 font-sans text-sm font-semibold text-white transition-colors duration-300 hover:border-white hover:bg-white/10"
+                   className="inline-flex items-center gap-2 rounded-control border border-white/60 px-5 py-3 font-sans text-sm font-semibold text-white transition-colors duration-300 hover:border-white hover:bg-white/10"
                 >
                   <BrandIcon
                     name="sparkle"
@@ -83,7 +79,7 @@ export function AssessmentLanding({
 
           {/* Right rail: quick facts — ledger */}
           <div className="lg:col-span-5">
-            <div className="flex h-full flex-col justify-center gap-0 border-y-2 border-white/30">
+            <div className="flex h-full flex-col justify-center gap-0 border-y border-white/30">
               <FactRow value={`${DOMAINS.length}`} label="Domains assessed" />
               <FactRow value="36" label="Questions, ~5 minutes" />
               <FactRow value="9" label="Risk frameworks mapped" />
@@ -94,7 +90,7 @@ export function AssessmentLanding({
 
         {/* Domain index — flat grid, sharp tiles */}
         <div
-          className="mt-16 grid grid-cols-1 gap-px border-2 border-white/25 bg-white/25 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-16 grid grid-cols-1 gap-px border border-white/25 bg-white/25 sm:grid-cols-2 lg:grid-cols-3"
           aria-label="Assessment domains"
         >
           {DOMAINS.map((domain) => (
@@ -103,7 +99,7 @@ export function AssessmentLanding({
               className="group bg-cocoa p-5 transition-colors duration-300 hover:bg-white/10 md:p-6"
             >
               <div className="flex items-start gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-media border-2 border-white/30 bg-black/25">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-media border border-white/30 bg-black/25">
                   <BrandIcon
                     name={domain.icon}
                     className="h-5 w-5 text-peach-bright"
@@ -124,7 +120,7 @@ export function AssessmentLanding({
 
         {/* Privacy + scope — horizontal split, left aligned */}
         <div className="mt-12 grid gap-4 lg:grid-cols-2">
-          <div className="border-t-2 border-white/25 pt-6">
+          <div className="border-t border-white/25 pt-6">
             <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-peach-bright">
               Privacy
             </p>
@@ -132,7 +128,7 @@ export function AssessmentLanding({
               {PRIVACY_NOTICE}
             </p>
           </div>
-          <div className="border-t-2 border-white/25 pt-6 lg:pl-8">
+          <div className="border-t border-white/25 pt-6 lg:pl-8">
             <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-peach-bright">
               Scope
             </p>
@@ -142,7 +138,7 @@ export function AssessmentLanding({
           </div>
         </div>
 
-        <div className="mt-10 border-t-2 border-white/25 pt-5 font-mono text-xs font-semibold text-white">
+        <div className="mt-10 border-t border-white/25 pt-5 font-mono text-xs font-semibold text-white">
           Powered by E-Tech · <span>{DOMAINS.length} domains · 36 questions · ~5 minutes</span>
         </div>
       </div>
@@ -152,7 +148,7 @@ export function AssessmentLanding({
 
 function FactRow({ value, label }: { value: string; label: string }) {
   return (
-    <div className="flex items-baseline gap-4 border-b-2 border-white/25 py-4 last:border-b-0">
+    <div className="flex items-baseline gap-4 border-b border-white/25 py-4 last:border-b-0">
       <span className="heading-display text-3xl font-bold tabular-nums text-white">
         {value}
       </span>

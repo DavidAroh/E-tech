@@ -12,9 +12,10 @@ export function CapabilityMarquee() {
   return (
     <div className="border-y border-white/10 bg-ink py-10">
       <div className="container-content">
-        <p className="mb-6 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-white">
-          Additional capabilities
-        </p>
+        <div className="mb-6 flex items-center justify-between gap-4 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-beige-muted">
+          <span>Additional capabilities</span>
+          <span className="tnum">ET—IDX</span>
+        </div>
       </div>
       <div className="overflow-hidden" aria-hidden="true">
         <div className="capability-marquee-track pointer-events-none whitespace-nowrap">

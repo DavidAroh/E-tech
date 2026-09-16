@@ -80,7 +80,7 @@ function validate(data: FormState): FieldErrors {
 }
 
 const inputClass =
-  "w-full min-w-0 rounded-media border border-cocoa/12 bg-white px-4 py-3.5 font-sans text-sm text-cocoa placeholder:text-cocoa/70 transition-all duration-300 ease-premium focus:border-purple focus:outline-none focus:ring-2 focus:ring-purple/20";
+  "w-full min-w-0 rounded-media border border-cocoa/12 bg-white px-4 py-3.5 font-sans text-sm text-cocoa placeholder:text-cocoa/70 transition-colors duration-200 ease-premium focus:border-purple focus:outline-none focus:ring-2 focus:ring-purple/20";
 
 const labelClass = "mb-1.5 block font-sans text-sm font-semibold text-cocoa";
 
@@ -404,7 +404,7 @@ export function ConsultationForm() {
             <label
               key={type.value}
               className={cn(
-                "flex min-h-11 cursor-pointer items-center gap-2 rounded-media border px-5 py-3 text-sm font-medium transition-all duration-300 ease-premium",
+                "flex min-h-11 cursor-pointer items-center gap-2 rounded-media border px-5 py-3 text-sm font-medium transition-colors duration-200 ease-premium focus-within:border-purple focus-within:outline-none focus-within:ring-2 focus-within:ring-purple/25 active:scale-[0.97]",
                 form.consultationType === type.value
                   ? "border-purple bg-purple/5 text-purple"
                   : "border-cocoa/12 text-cocoa hover:border-cocoa/25"
@@ -525,7 +525,7 @@ function Field({
       </label>
       {children}
       {hint && !error ? (
-        <p id={`${id}-hint`} className="mt-1.5 text-xs text-cocoa/50">
+        <p id={`${id}-hint`} className="mt-1.5 text-xs text-cocoa/70">
           {hint}
         </p>
       ) : null}

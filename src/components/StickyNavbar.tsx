@@ -77,11 +77,20 @@ export function StickyNavbar() {
             ))}
           </nav>
 
+          <div className="hidden shrink-0 items-center gap-2 border-l border-beige/15 pl-6 xl:flex" aria-hidden>
+            <span className="tnum font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-beige-muted">
+              ET—A101
+            </span>
+            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-brass">
+              Rev C
+            </span>
+          </div>
+
           <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="flex h-10 w-10 items-center justify-center text-white transition-colors duration-300 hover:text-peach-bright"
+              className="flex h-11 w-11 items-center justify-center text-white transition-colors duration-200 hover:text-peach-bright active:scale-[0.97]"
               aria-label="Open search"
             >
               <BrandIcon name="search" className="h-5 w-5" />
@@ -89,7 +98,7 @@ export function StickyNavbar() {
 
             <a
               href="#consultation"
-              className="btn-primary !gap-2 !px-4 !py-2.5 text-xs sm:!px-5 sm:text-sm"
+              className="btn-primary min-h-11 !gap-2 !px-4 !py-2.5 text-xs sm:!px-5 sm:text-sm"
             >
               <span className="hidden sm:inline">Book a Consultation</span>
               <span className="sm:hidden">Book</span>
@@ -97,7 +106,7 @@ export function StickyNavbar() {
 
             <button
               ref={menuButtonRef}
-              type="button"                className="relative flex h-10 w-10 items-center justify-center text-white lg:hidden"
+              type="button"                className="relative flex h-11 w-11 items-center justify-center text-white transition-transform duration-200 active:scale-[0.97] lg:hidden"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
               aria-controls="mobile-nav-panel"

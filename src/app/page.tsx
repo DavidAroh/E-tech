@@ -39,13 +39,6 @@ const AssessmentCtaSection = dynamic(
     ),
   { loading: () => <SectionSkeleton /> }
 );
-const TestimonialsSection = dynamic(
-  () =>
-    import("@/components/sections/TestimonialsSection").then(
-      (m) => m.TestimonialsSection
-    ),
-  { loading: () => <SectionSkeleton /> }
-);
 const FAQSection = dynamic(
   () => import("@/components/sections/QuickCheck").then((m) => m.FAQSection),
   { loading: () => <SectionSkeleton /> }
@@ -84,7 +77,6 @@ export default function HomePage() {
       <ProcessSection />
       <IndustriesSection />
       <AssessmentCtaSection />
-      <TestimonialsSection />
       <FAQSection />
       <ConsultationSection />
       <ContactSection />

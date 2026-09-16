@@ -3,18 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --color-black: #0C0A08;
-  --color-cocoa: #6e4b2d;
-  --color-cocoa-light: #745133;
-  --color-beige: #debfa2;
-  --color-beige-muted: #e0c1a4;
-  --color-caramel: #8b5e34;
-  --color-peach: #e0c1a4;
-  --color-white: #fafaf8;
-  --color-purple: #745133;
-  --color-purple-mid: #6e4b2d;
-  --color-purple-light: #cfb093;
-  --color-purple-dim: #3d2819;
+  --color-ink: #070b14;
+  --color-sheet: #0b1220;
+  --color-slate: #101d33;
+  --color-slate-line: #1a2b4a;
+  --color-paper: #f7fafc;
+  --color-paper-white: #f4f7fb;
+  --color-brass: #00b8ff;
+  --color-brass-bright: #33ccff;
+  --color-brass-deep: #0077b6;
+  --color-body-dark: #9aa4b8;
+  --color-body-paper: #0b1220;
   --ease-premium: cubic-bezier(0.32, 0.72, 0, 1);
   --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-interactive: cubic-bezier(0.4, 0, 0.2, 1);
@@ -28,32 +27,46 @@ html {
   html {
     scroll-behavior: auto;
   }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
 }
 
 body {
-  color: var(--color-beige-muted);
-  background: var(--color-black);
-  font-family: var(--font-jakarta), system-ui, sans-serif;
+  color: var(--color-body-dark);
+  background: var(--color-ink);
+  font-family: var(--font-manrope), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: tabular-nums;
 }
 
 ::selection {
-  background: rgba(207, 176, 147, 0.35);
-  color: var(--color-white);
+  background: rgba(0, 184, 255, 0.85);
+  color: #070b14;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-purple-light);
+  outline: 2px solid var(--color-brass-bright);
   outline-offset: 3px;
+}
+
+/* Themed scrollbar: the parts nobody drew still carry the design */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #070b14;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a2b4a;
+  border: 3px solid #070b14;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0077b6;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1a2b4a #070b14;
 }
 
 @layer base {
@@ -66,19 +79,23 @@ body {
   p {
     text-wrap: pretty;
   }
+
+  a {
+    text-underline-offset: 4px;
+  }
+
+  input,
+  textarea,
+  select {
+    caret-color: var(--color-brass);
+  }
 }
 
 @layer components {
-  /* Solid chrome for fixed chrome (nav, overlays) — no blur, no glass */
+  /* Drawing-frame chrome for fixed bars — flat navy, one hairline, no blur */
   .glass-chrome {
-    background: rgba(0, 0, 0, 0.92);
-    border-bottom: 1px solid rgba(222, 191, 162, 0.12);
-  }
-
-  @media (prefers-reduced-transparency: reduce) {
-    .glass-chrome {
-      background: #0C0A08;
-    }
+    background: rgba(7, 11, 20, 0.96);
+    border-bottom: 1px solid rgba(215, 224, 236, 0.14);
   }
 
   .section-padding {
@@ -96,15 +113,16 @@ body {
   }
 
   .heading-display {
-    font-family: var(--font-fraunces), Georgia, serif;
+    font-family: var(--font-manrope), system-ui, sans-serif;
+    font-weight: 700;
     font-optical-sizing: auto;
-    letter-spacing: -0.03em;
-    color: var(--color-white);
+    letter-spacing: -0.02em;
+    color: var(--color-paper-white);
   }
 
-  /* Flat panels — single hairline, no nesting illusion */
+  /* Sheet plates — flat layered construction, hairline only, never glow */
   .bezel-shell {
-    @apply rounded-card border border-beige/[0.08] bg-cocoa/[0.06];
+    @apply rounded-card border border-beige/[0.12] bg-charcoal;
   }
 
   .bezel-core {
@@ -115,37 +133,36 @@ body {
     @apply rounded-card border border-transparent bg-transparent;
   }
 
-  /* Sharp CTAs — no pills, no nested icon wells */
+  /* Electric-blue decision accent — the single recognizable action color */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-control bg-beige px-6 py-3.5
-      font-sans text-sm font-semibold tracking-wide text-cocoa transition-all duration-300 ease-premium
-      hover:bg-peach-bright active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-control bg-brass px-6 py-3.5
+      font-sans text-sm font-medium tracking-wide text-ink transition-colors duration-200 ease-premium
+      hover:bg-brass-bright active:scale-[0.97];
   }
 
-  /* White CTA on dark sections — maximum-contrast primary action */
+  /* Paper CTA on dark sheets */
   .btn-white {
     @apply inline-flex items-center justify-center gap-2 rounded-control bg-white px-6 py-3.5
-      font-sans text-sm font-bold tracking-wide text-ink transition-all duration-300 ease-premium
-      hover:bg-beige active:scale-[0.98];
+      font-sans text-sm font-medium tracking-wide text-ink transition-colors duration-200 ease-premium
+      hover:bg-paper active:scale-[0.97];
   }
 
   .btn-white .btn-icon {
-    @apply flex h-4 w-4 items-center justify-center transition-transform duration-300 ease-premium;
+    @apply flex h-4 w-4 items-center justify-center transition-transform duration-200 ease-premium;
   }
 
   .btn-white:hover .btn-icon {
     transform: translateX(3px);
   }
 
-  /* Maximum-contrast ghost for dark sections */
   .btn-outline-white {
-    @apply inline-flex items-center justify-center gap-2 rounded-control border-2 border-white/85
-      bg-transparent px-6 py-3.5 font-sans text-sm font-semibold tracking-wide text-white
-      transition-all duration-300 ease-premium hover:border-white hover:bg-white/10 active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-control border border-white/50
+      bg-transparent px-6 py-3.5 font-sans text-sm font-medium tracking-wide text-white
+      transition-colors duration-200 ease-premium hover:border-white hover:bg-white/10 active:scale-[0.97];
   }
 
   .btn-primary .btn-icon {
-    @apply flex h-4 w-4 items-center justify-center transition-transform duration-300 ease-premium;
+    @apply flex h-4 w-4 items-center justify-center transition-transform duration-200 ease-premium;
   }
 
   .btn-primary:hover .btn-icon {
@@ -155,30 +172,30 @@ body {
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 rounded-control border border-beige/25
       bg-transparent px-6 py-3.5 font-sans text-sm font-medium tracking-wide text-beige
-      transition-all duration-300 ease-premium hover:border-beige/50 hover:bg-beige/[0.04]
-      active:scale-[0.98];
+      transition-colors duration-200 ease-premium hover:border-brass/60 hover:text-brass-bright
+      active:scale-[0.97];
   }
 
   .btn-secondary-light {
-    @apply inline-flex items-center justify-center gap-2 rounded-control border border-cocoa/15
-      bg-transparent px-6 py-3.5 font-sans text-sm font-medium text-cocoa transition-all
-      duration-300 ease-premium hover:border-purple hover:text-purple active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-control border border-ink/20
+      bg-transparent px-6 py-3.5 font-sans text-sm font-medium text-ink transition-colors
+      duration-200 ease-premium hover:border-brass-deep hover:text-brass-deep active:scale-[0.97];
   }
 
-  /* Readable, consistent control fields (assessment + light forms) */
+  /* Spec control fields — square, hairline, mono hint */
   .field-control {
-    @apply w-full min-w-0 rounded-media border px-4 py-3.5 font-sans text-base transition-all duration-300 ease-premium focus:outline-none focus:ring-2;
+    @apply w-full min-w-0 rounded-media border px-4 py-3.5 font-sans text-base transition-colors duration-200 ease-premium focus:outline-none focus:ring-2;
   }
 
   .field-control-dark {
-    @apply field-control border-beige/30 bg-black/40 text-white placeholder:text-beige-muted/70 focus:border-peach-bright focus:ring-purple/30;
+    @apply field-control border-beige/25 bg-ink/60 text-white placeholder:text-beige-muted/70 focus:border-brass focus:ring-brass/25;
   }
 
   .field-control-light {
-    @apply field-control border-cocoa/25 bg-white text-ink placeholder:text-cocoa/60 focus:border-purple focus:ring-purple/25;
+    @apply field-control border-ink/20 bg-white text-ink placeholder:text-ink/50 focus:border-brass-deep focus:ring-brass/30;
   }
 
-  /* Native dropdown options must be readable without hover (fixes invisible <option> text) */
+  /* Native dropdown options must be readable without hover */
   select.field-control-dark option,
   select.field-control-light option {
     @apply bg-white font-sans text-base font-medium text-ink;
@@ -186,8 +203,8 @@ body {
 
   .skip-link {
     @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100]
-      focus:rounded-control focus:bg-beige focus:px-4 focus:py-2 focus:text-sm focus:font-medium
-      focus:text-cocoa;
+      focus:rounded-control focus:bg-brass focus:px-4 focus:py-2 focus:text-sm focus:font-bold
+      focus:text-ink;
   }
 }
 
@@ -199,6 +216,10 @@ body {
   .break-words {
     overflow-wrap: anywhere;
     word-break: break-word;
+  }
+
+  .tnum {
+    font-variant-numeric: tabular-nums;
   }
 }
 
@@ -220,7 +241,7 @@ body {
 .capability-marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-x 40s linear infinite;
+  animation: marquee-x 90s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,53 +1,34 @@
 "use client";
 
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { primaryServices } from "@/data/content";
-import type { IconName } from "@/data/content";
 import { BrandIcon } from "../BrandIcon";
 import { SectionReveal } from "../SectionReveal";
+import { Badge } from "../ui/badge";
+import { Separator } from "../ui/separator";
+import { cn } from "@/lib/cn";
 import { EASE_ENTRANCE } from "@/lib/motion";
 
-function ServiceRow({
-  title,
-  description,
-  icon,
-  index,
-}: {
-  title: string;
-  description: string;
-  icon: IconName;
-  index: number;
-}) {
-  const reduce = useReducedMotion();
+const AI_SLUGS = new Set([
+  "ai-strategy-advisory",
+  "ai-risk-governance",
+  "secure-ai-implementation",
+  "responsible-ai-audit",
+]);
 
-  return (
-    <motion.article
-      className="group grid cursor-default gap-3 border-t border-cocoa/20 py-8 transition-colors duration-300 hover:bg-white/60 sm:grid-cols-12 sm:gap-6 md:py-10"
-      initial={reduce ? false : { y: 10 }}
-      whileInView={reduce ? undefined : { y: 0 }}
-      viewport={{ once: true, margin: "-40px", amount: 0.2 }}
-      transition={{ duration: 0.5, ease: EASE_ENTRANCE, delay: index * 0.04 }}
-    >
-      <div className="flex flex-col items-start gap-4 sm:col-span-5">
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-media border-2 border-cocoa/25 bg-white shadow-sm transition-colors duration-300 group-hover:border-purple/60">
-          <BrandIcon
-            name={icon}
-            weight="bold"
-            className="h-7 w-7 text-cocoa transition-colors duration-300 group-hover:text-purple"
-          />
-        </span>
-        <h3 className="heading-display text-2xl font-bold text-ink transition-colors duration-300 group-hover:text-purple md:text-[1.7rem]">
-          {title}
-        </h3>
-      </div>
-      <p className="text-base leading-relaxed text-cocoa sm:col-span-7 md:text-lg">
-        {description}
-      </p>
-    </motion.article>
-  );
-}
-
+/**
+ * How we help — tabbed disclosure. Six engagements read as one calm
+ * tab row; selecting a tab reveals a single detail panel with its
+ * evidence and next step. Depth on demand, never a wall.
+ */
 export function ServicesSection() {
+  const [tab, setTab] = useState(primaryServices[0].slug);
+  const reduce = useReducedMotion();
+  const active =
+    primaryServices.find((s) => s.slug === tab) ?? primaryServices[0];
+  const activeIndex = primaryServices.findIndex((s) => s.slug === active.slug);
+
   return (
     <SectionReveal
       id="services"
@@ -55,33 +36,130 @@ export function ServicesSection() {
       className="section-padding content-auto bg-peach"
     >
       <div className="container-content">
-        <div className="mb-12 max-w-3xl border-b border-cocoa/20 pb-8 md:pb-10">
-          <p className="mb-4 flex items-center gap-3 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-cocoa">
-            <span className="h-px w-8 bg-cocoa/40" aria-hidden />
-            <span>Services</span>
-          </p>
+        <div className="mb-10 max-w-3xl md:mb-12">
+          <Badge
+            variant="outline"
+            className="mb-5 font-mono font-medium tracking-[0.14em]"
+          >
+            06 CORE ENGAGEMENTS
+          </Badge>
           <h2
             id="services-heading"
             className="heading-display mb-4 text-4xl font-bold text-ink md:text-5xl lg:text-6xl"
           >
             How we help
           </h2>
-          <p className="max-w-2xl text-lg leading-relaxed text-cocoa md:text-xl">
+          <p className="max-w-2xl text-lg leading-relaxed text-inksoft md:text-xl">
             Six core engagements at the intersection of AI strategy and
-            cybersecurity. Additional capabilities available on request.
+            cybersecurity. Pick one to see what it covers.
           </p>
         </div>
 
-        <div>
-          {primaryServices.map((service, i) => (
-            <ServiceRow
-              key={service.slug}
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
-              index={i}
-            />
+        <div
+          role="tablist"
+          aria-label="Service engagements"
+          className="flex gap-2 overflow-x-auto pb-2"
+        >
+          {primaryServices.map((s, i) => (
+            <button
+              key={s.slug}
+              role="tab"
+              aria-selected={tab === s.slug}
+              aria-controls="service-panel"
+              id={`service-tab-${s.slug}`}
+              onClick={() => setTab(s.slug)}
+              className={cn(
+                "flex min-h-11 shrink-0 items-center gap-2.5 rounded-media border px-4 py-2.5 font-sans text-sm font-medium transition-colors duration-200 ease-premium active:scale-[0.97]",
+                tab === s.slug
+                  ? "border-ink bg-ink text-white"
+                  : "border-ink/20 bg-white/60 text-inksoft hover:border-ink/50 hover:text-ink"
+              )}
+            >
+              <span
+                className={cn(
+                  "font-mono text-[11px] font-medium tracking-[0.1em]",
+                  tab === s.slug ? "text-brass-bright" : "text-inksoft/70"
+                )}
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              {s.title}
+            </button>
           ))}
+        </div>
+
+        <motion.div
+          key={active.slug}
+          role="tabpanel"
+          id="service-panel"
+          aria-labelledby={`service-tab-${active.slug}`}
+          initial={reduce ? false : { y: 10 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.4, ease: EASE_ENTRANCE }}
+          className="mt-4 rounded-card border border-ink/15 bg-white p-6 md:mt-5 md:p-10"
+        >
+          <div className="grid gap-8 md:grid-cols-12 md:gap-10">
+            <div className="md:col-span-7">
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge
+                  variant="outline"
+                  className="font-mono font-medium tracking-[0.12em]"
+                >
+                  {String(activeIndex + 1).padStart(2, "0")} / 06
+                </Badge>
+                {AI_SLUGS.has(active.slug) ? (
+                  <Badge variant="secondary">AI engagement</Badge>
+                ) : null}
+              </div>
+              <h3 className="heading-display mt-4 text-2xl font-bold text-ink md:text-4xl">
+                {active.title}
+              </h3>
+              <p className="mt-3 max-w-xl text-base leading-relaxed text-inksoft md:text-lg">
+                {active.description}
+              </p>
+              <div className="mt-7 flex flex-wrap items-center gap-3">
+                <a href="#consultation" className="btn-secondary-light">
+                  Discuss this engagement
+                  <BrandIcon
+                    name="arrowUpRight"
+                    weight="regular"
+                    className="h-4 w-4"
+                  />
+                </a>
+                <a
+                  href="/assessment"
+                  className="font-sans text-sm font-medium text-inksoft underline-offset-4 transition-colors duration-200 hover:text-brass-deep hover:underline"
+                >
+                  Or self-check first
+                </a>
+              </div>
+            </div>
+            <div className="flex items-start justify-start md:col-span-5 md:justify-end">
+              <span className="flex size-20 items-center justify-center rounded-card border border-ink/15 bg-paper md:size-24">
+                <BrandIcon
+                  name={active.icon}
+                  weight="bold"
+                  className="h-10 w-10 text-brass-deep md:h-12 md:w-12"
+                />
+              </span>
+            </div>
+          </div>
+        </motion.div>
+
+        <Separator className="mb-6 mt-10 bg-ink/10 md:mb-8 md:mt-12" />
+
+        <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+          <a href="/assessment" className="btn-secondary-light">
+            Start with the assessment
+            <BrandIcon
+              name="arrowUpRight"
+              weight="regular"
+              className="h-4 w-4"
+            />
+          </a>
+          <p className="font-sans text-sm text-inksoft">
+            Not sure where you stand? The 10-minute check maps your exposure first.
+          </p>
         </div>
       </div>
     </SectionReveal>

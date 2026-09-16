@@ -24,58 +24,38 @@ export function Logo({ className, onClick, compact = false }: LogoProps) {
           {/* Shield outline */}
           <path
             d="M18 2 L32 9 V22 C32 30 26 36 18 39 C10 36 4 30 4 22 V9 Z"
-            stroke="url(#shieldGrad)"
+            stroke="#00B8FF"
             strokeWidth="1.5"
             fill="none"
           />
           {/* Inner shield fill */}
           <path
             d="M18 5 L29 11 V22 C29 28.5 24 34 18 36.5 C12 34 7 28.5 7 22 V11 Z"
-            fill="url(#shieldFill)"
+            fill="#0077B6"
             opacity="0.35"
           />
           {/* Central blade / sword */}
           <path
             d="M18 6 L20 14 L18 34 L16 14 Z"
-            fill="url(#bladeGrad)"
+            fill="#00B8FF"
             opacity="0.9"
           />
           {/* Blade tip highlight */}
           <path
             d="M18 6 L19 10 L18 14 L17 10 Z"
-            fill="#FAFAF8"
+            fill="#F4F7FB"
             opacity="0.6"
           />
           {/* Horizontal guard */}
           <path
             d="M12 14 L24 14"
-            stroke="url(#guardGrad)"
+            stroke="#F4F7FB"
             strokeWidth="1.2"
             strokeLinecap="round"
           />
           {/* Guard diamond accents */}
-          <path d="M11 14 L12 13 L13 14 L12 15 Z" fill="#CFB093" opacity="0.7" />
-          <path d="M23 14 L24 13 L25 14 L24 15 Z" fill="#CFB093" opacity="0.7" />
-          <defs>
-            <linearGradient id="shieldGrad" x1="4" y1="2" x2="32" y2="39">
-              <stop offset="0%" stopColor="#CFB093" />
-              <stop offset="100%" stopColor="#6E4B2D" />
-            </linearGradient>
-            <linearGradient id="shieldFill" x1="18" y1="5" x2="18" y2="36.5">
-              <stop offset="0%" stopColor="#745133" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#3D2819" stopOpacity="0.2" />
-            </linearGradient>
-            <linearGradient id="bladeGrad" x1="18" y1="6" x2="18" y2="34">
-              <stop offset="0%" stopColor="#DEBFA2" />
-              <stop offset="40%" stopColor="#CFB093" />
-              <stop offset="100%" stopColor="#6E4B2D" />
-            </linearGradient>
-            <linearGradient id="guardGrad" x1="12" y1="14" x2="24" y2="14">
-              <stop offset="0%" stopColor="#6E4B2D" />
-              <stop offset="50%" stopColor="#DEBFA2" />
-              <stop offset="100%" stopColor="#6E4B2D" />
-            </linearGradient>
-          </defs>
+          <path d="M11 14 L12 13 L13 14 L12 15 Z" fill="#00B8FF" opacity="0.9" />
+          <path d="M23 14 L24 13 L25 14 L24 15 Z" fill="#00B8FF" opacity="0.9" />
         </svg>
       </span>
 
@@ -84,10 +64,10 @@ export function Logo({ className, onClick, compact = false }: LogoProps) {
           <span className="font-display text-[16px] font-extrabold tracking-[0.06em] text-white">
             E-TECH
           </span>
-          <span className="mt-1 font-sans text-[9.5px] font-bold uppercase tracking-[0.2em] text-white">
+          <span className="mt-1 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-white">
             Etela Technologies
           </span>
-          <span className="mt-0.5 font-sans text-[8px] font-semibold uppercase tracking-[0.18em] text-peach-bright">
+          <span className="mt-0.5 font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-peach-bright">
             AI Advisory and Cybersecurity
           </span>
         </span>

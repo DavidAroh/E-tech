@@ -31,7 +31,7 @@ export function AboutSection() {
           {mission}
         </motion.h2>
 
-        <div className="grid grid-cols-1 gap-10 border-t-2 border-ink/15 pt-10 md:grid-cols-2 md:gap-14">
+        <div className="grid grid-cols-1 gap-10 border-t border-white/20 pt-10 md:grid-cols-2 md:gap-14">
           {aboutParagraphs.map((p, i) => (
             <motion.p
               key={p.slice(0, 40)}
@@ -51,7 +51,7 @@ export function AboutSection() {
         </div>
 
         <motion.ul
-          className="mt-14 flex flex-wrap items-center gap-x-12 gap-y-5 border-t-2 border-ink/15 pt-9"
+          className="mt-14 flex flex-wrap items-center gap-x-12 gap-y-5 border-t border-white/20 pt-9"
           initial={reduce ? false : {}}
           whileInView={reduce ? undefined : {}}
           viewport={{ once: true, margin: "-40px" }}
@@ -60,7 +60,7 @@ export function AboutSection() {
           {homepageValues.map((value, i) => (
             <motion.li
               key={value}
-              className="flex items-baseline gap-3 border-l-4 border-white pl-5 font-sans text-xl font-extrabold tracking-wide text-white md:text-2xl"
+              className="flex items-baseline gap-3 border-l border-brass pl-5 font-sans text-xl font-extrabold tracking-wide text-white md:text-2xl"
               initial={reduce ? false : { x: -10 }}
               whileInView={reduce ? undefined : { x: 0 }}
               viewport={{ once: true }}

@@ -89,13 +89,12 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
                 autoComplete="off"
                 autoCorrect="off"
                 spellCheck={false}
-                aria-controls={listId}
-                aria-autocomplete="list"
+                aria-label="Search pages and services"
               />
               <button
                 type="button"
                 onClick={handleClose}
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-media border border-beige/10 text-beige-muted transition-colors hover:text-white"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-media border border-beige/10 text-beige-muted transition-colors duration-200 hover:text-white active:scale-[0.97]"
                 aria-label="Close search"
               >
                 <BrandIcon name="x" className="h-4 w-4" />
@@ -104,11 +103,11 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
             <ul
               id={listId}
               className="max-h-72 overflow-y-auto py-2"
-              role="listbox"
+              role="list"
               aria-label="Search results"
             >
               {results.length === 0 ? (
-                <li className="px-4 py-6 text-center text-sm text-beige-muted" role="option" aria-selected={false}>
+                <li className="px-4 py-6 text-center text-sm text-beige-muted">
                   No matches for &ldquo;
                   <span className="break-all">{query.slice(0, 40)}</span>
                   &rdquo;.
@@ -117,8 +116,6 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
                 results.map((item) => (
                   <li
                     key={`${item.group}-${item.label}`}
-                    role="option"
-                    aria-selected={false}
                   >
                     <a
                       href={item.href}
